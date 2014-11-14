@@ -18,9 +18,7 @@ public class StudentDao {
     private EntityManager em;
 
     public void addStudent(StudentEntity student) {
-
         em.persist(student);
-
     }
 
 
