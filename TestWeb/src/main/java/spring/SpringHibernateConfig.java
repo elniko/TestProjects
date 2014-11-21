@@ -59,7 +59,7 @@ public class SpringHibernateConfig {
         return builder.buildSessionFactory();
     }
 
-    @Bean(name = "transactionManager")
+    @Bean
     public HibernateTransactionManager getTransactionManager(SessionFactory sessionFactory) {
         HibernateTransactionManager transactionManager = new HibernateTransactionManager(sessionFactory);
         return transactionManager;
