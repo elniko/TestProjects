@@ -26,10 +26,10 @@ public class SpringConfig {
     @Bean
     public DriverManagerDataSource getDataSource() {
         DriverManagerDataSource ds = new DriverManagerDataSource();
-        ds.setUrl("jdbc:mysql://192.168.1.44:3306/lst_dev");
+        ds.setUrl("jdbc:mysql://127.0.0.1:3306/lst_dev");
         ds.setDriverClassName("com.mysql.jdbc.Driver");
-        ds.setUsername("lst_dev");
-        ds.setPassword("L2tdb!");
+        ds.setUsername("root");
+        ds.setPassword("");
         return ds;
     }
 
@@ -54,7 +54,7 @@ public class SpringConfig {
 
     private Properties getProperties() {
         Properties props = new Properties();
-        props.setProperty("hibernate.hbm2ddl.auto", "update");
+        props.setProperty("hibernate.hbm2ddl.auto", "create");
         props.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
         props.setProperty("hibernate.show_sql", "true");
 

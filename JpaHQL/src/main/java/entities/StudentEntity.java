@@ -1,7 +1,8 @@
 package entities;
+
+
 import javax.persistence.*;
-import javax.persistence.Entity;
-import java.util.Date;
+import java.util.Calendar;
 
 /**
  * Created by stagiaire on 14/11/2014.
@@ -11,7 +12,7 @@ import java.util.Date;
 public class StudentEntity  {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.AUTO)
     protected long id;
 
     public long getId() {
@@ -22,8 +23,8 @@ public class StudentEntity  {
         this.id = id;
     }
 
-    @Column(name = "group_id")
-    long groupId;
+   // @Column(name = "group_id")
+    //long groupId;
 
     @Column(name = "first_name")
     String firstName;
@@ -32,36 +33,34 @@ public class StudentEntity  {
     String lastName;
 
     @Temporal(TemporalType.DATE)
-    Date date;
+    Calendar date;
 
     @Column(name = "created_at")
     @Temporal(TemporalType.TIMESTAMP)
-    Date createdAt;
+    Calendar createdAt;
 
     @Column(name = "updated_at")
     @Temporal(TemporalType.TIMESTAMP)
-    Date updatedAt;
+    Calendar updatedAt;
 
+
+    @ManyToOne(cascade = CascadeType.ALL)
+   // @JoinColumn(name = "group_idd")
+    Groupp groupp;
 
     @PrePersist
     public void onCrerate() {
-        createdAt = new Date();
+        createdAt = Calendar.getInstance();
         updatedAt = createdAt;
     }
 
     @PreUpdate
     public void onUpdate() {
-        updatedAt = new Date();
-    }
-
-
-
-    public long getGroupId() {
-        return groupId;
+        updatedAt = Calendar.getInstance();
     }
 
     public void setGroupId(long groupId) {
-        this.groupId = groupId;
+      //  this.groupId = groupId;
     }
 
     public String getFirstName() {
@@ -80,27 +79,35 @@ public class StudentEntity  {
         this.lastName = lastName;
     }
 
-    public Date getDate() {
+    public Calendar getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(Calendar date) {
         this.date = date;
     }
 
-    public Date getCreatedAt() {
+    public Calendar getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(Calendar createdAt) {
         this.createdAt = createdAt;
     }
 
-    public Date getUpdatedAt() {
+    public Calendar getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Date updatedAt) {
+    public void setUpdatedAt(Calendar updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public Groupp getGroup() {
+        return groupp;
+    }
+
+    public void setGroup(Groupp group) {
+        this.groupp = group;
     }
 }
