@@ -1,18 +1,30 @@
 package controller;
 
+import entities.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import service.TestService;
 
 /**
  * Created by nike on 30/11/14.
  */
 
-@Controller
-
+@RestController
 public class MainServlet {
+
+    @Autowired
+    TestService ts;
 
     @RequestMapping("/")
     public String hello(){
+
+
+        entities.Process process = new entities.Process();
+        process.setState("started");
+        process.setType("xct");
+
+        ts.add(process);
         return "hello";
     }
 

@@ -69,4 +69,10 @@ public class Process {
     public void setType(String type) {
         this.type = type;
     }
+
+    @PrePersist
+    private void onPersist() {
+        Calendar cal = Calendar.getInstance();
+        startedAt = cal;
+    }
 }
