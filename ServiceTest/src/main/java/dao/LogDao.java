@@ -1,11 +1,9 @@
 package dao;
 
-import entities.Log;
-import org.springframework.stereotype.Repository;
+import entities.LogEntity;
 
 /**
- * Created by nike on 27/11/14.
+ * Created by stagiaire on 04/12/2014.
  */
-
-public class LogDao  {
+public interface LogDao extends Dao<LogEntity> {
 }

@@ -1,13 +1,20 @@
 package service;
 
-import entities.*;
-import entities.Process;
-import org.springframework.stereotype.*;
+
+import dao.Dao;
+import entities.ProcessEntity;
 
 /**
- * Created by nike on 27/11/14.
+ * Created by stagiaire on 04/12/2014.
  */
-@org.springframework.stereotype.Service
-public class ProcessService extends GenericService<entities.Process> implements  TestService{
+public interface ProcessService extends Service<ProcessEntity>{
+
+    public void start(ProcessEntity entity);
+
+    public void stop(ProcessEntity entity);
+
+    public void stop(long id);
+
+    public Dao<ProcessEntity> getDao();
 
 }

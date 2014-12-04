@@ -3,11 +3,15 @@
   <component name="EntryPointsManager">
     <entry_points version="2.0" />
   </component>
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/ServiceTest" />
+  </component>
   <component name="IdProvider" IDEtalkID="A55B70BDED478BC6841FE9381ECFDB9F" />
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/JpaHQL/pom.xml" />
+        <option value="$PROJECT_DIR$/ServiceTest/pom.xml" />
       </list>
     </option>
   </component>

@@ -27,7 +27,7 @@ import java.util.Properties;
  */
 @Configuration
 @EnableTransactionManagement
-@ComponentScan(basePackages = {"dao","service"})
+@ComponentScan(basePackages = {"dao","service", "testdao"})
 @PropertySource(value = "classpath:db.properties")
 public class SpringConfig {
 

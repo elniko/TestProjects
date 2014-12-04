@@ -6,6 +6,7 @@ import dao.ProcessDao;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 /**
  * Created by nike on 27/11/14.
@@ -19,14 +20,33 @@ public abstract class GenericService<T> implements Service<T>{
     Dao<T> dao;
 
     @Override
-    @Transactional
+    @Transactional(value = Transactional.TxType.REQUIRES_NEW)
     public void add(T entity) {
           dao.add(entity);
     }
 
     @Override
-    @Transactional
-    public void edit(T entity) {
-        dao.edit(entity);
+    @Transactional(value = Transactional.TxType.REQUIRES_NEW)
+    public T edit(T entity) {
+       return dao.edit(entity);
     }
+
+    @Override
+    @Transactional
+    public T findById(long id){
+        //TODO
+        return null;
+    };
+
+    @Override
+    @Transactional
+    public List<T> getAll() {
+        //TODO
+        return null;
+    }
+
+    public Dao<T> getDao(){
+        return dao;
+    }
+
 }

@@ -1,11 +1,11 @@
 package dao;
 
-import entities.Log;
-import org.springframework.stereotype.Repository;
+
+import entities.ProcessEntity;
 
 /**
  * Created by nike on 27/11/14.
  */
 
-public class ProcessDao {
+public interface ProcessDao extends Dao<ProcessEntity> {
 }

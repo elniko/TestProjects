@@ -4,7 +4,7 @@ import entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import service.TestService;
+import service.ProcessService;
 
 /**
  * Created by nike on 30/11/14.
@@ -14,13 +14,13 @@ import service.TestService;
 public class MainServlet {
 
     @Autowired
-    TestService ts;
+    ProcessService ts;
 
     @RequestMapping("/")
     public String hello(){
 
 
-        entities.Process process = new entities.Process();
+        ProcessEntity process = new ProcessEntity();
         process.setState("started");
         process.setType("xct");
 
