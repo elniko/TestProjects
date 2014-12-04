@@ -2,18 +2,24 @@ package controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
+import service.TestService;
 
 /**
  * Created by nike on 30/11/14.
  */
 
-@Controller
-
+@RestController
 public class MainServlet {
 
     @RequestMapping("/")
     public String hello(){
-        return "hello";
+
+        AnnotationConfigWebApplicationContext context =new AnnotationConfigWebApplicationContext();
+        context.refresh();
+        TestService ps = context.getBean(TestService.class);
+        return ps.sayHello();
     }
 
 

@@ -3,6 +3,7 @@ package Test;
 import entities.*;
 import entities.Process;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import service.ProcessService;
 import service.TestService;
 import spring.SpringConfig;

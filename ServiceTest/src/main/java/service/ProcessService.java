@@ -10,4 +10,8 @@ import org.springframework.stereotype.*;
 @org.springframework.stereotype.Service
 public class ProcessService extends GenericService<entities.Process> implements  TestService{
 
+    @Override
+    public String sayHello() {
+        return "Hello bean";
+    }
 }

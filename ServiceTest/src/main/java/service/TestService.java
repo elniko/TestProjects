@@ -11,4 +11,5 @@ public interface TestService {
 
     public void edit(Process entity);
 
+    public String sayHello();
 }
