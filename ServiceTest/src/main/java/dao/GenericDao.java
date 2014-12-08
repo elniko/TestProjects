@@ -13,6 +13,12 @@ import java.util.List;
 @Repository
 public  class GenericDao<T>  implements Dao<T> {
 
+    private Class< T > clazz;
+
+    public void setClazz( Class<T> clazzToSet ){
+        this.clazz = clazzToSet;
+    }
+
     @PersistenceContext
     EntityManager em;
 
@@ -28,12 +34,12 @@ public  class GenericDao<T>  implements Dao<T> {
 
     @Override
     public T findById(long id) {
-        return null;
+        return em.find(clazz, id);
     }
 
     @Override
     public List<T> getAll() {
-        return null;
+        return em.createQuery("from " + clazz.getName()).getResultList();
     }
 
     public EntityManager getEntityManager(){

@@ -17,7 +17,11 @@ public abstract class GenericService<T> implements Service<T>{
 
 
     @Autowired
-    Dao<T> dao;
+    GenericDao<T> dao;
+
+    public void setDao( Class<T> clazz ){
+        dao.setClazz(clazz);
+    }
 
     @Override
     @Transactional(value = Transactional.TxType.REQUIRES_NEW)
@@ -34,8 +38,7 @@ public abstract class GenericService<T> implements Service<T>{
     @Override
     @Transactional
     public T findById(long id){
-        //TODO
-        return null;
+        return dao.findById(id);
     };
 
     @Override

@@ -1,9 +1,12 @@
 package controller;
 
 import entities.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.*;
+import service.MessageGenerator;
 import service.ProcessService;
 
 import java.awt.*;
@@ -15,8 +18,14 @@ import java.awt.*;
 @RestController
 public class MainServlet {
 
+    Logger log = LoggerFactory.getLogger(this.getClass());
+
     @Autowired
     ProcessService ts;
+
+    @Autowired
+    MessageGenerator generator;
+
 
     @RequestMapping("/")
     public String hello(){
@@ -33,6 +42,23 @@ public class MainServlet {
         return process;
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "ProcessStart/{id}")
+    public String startProcess(@PathVariable int id) {
+        try {
+            generator.setId(id);
+            generator.run();
+        }
+        catch(Exception ex) {
+            log.error("Error", ex);
+        }
+        return "Ok";
+
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "GetLog/{id}")
+    public void getLog(@PathVariable int id) {
+
+    }
 
     @RequestMapping(value = "test/{name}", method = RequestMethod.GET)
     public String testRest(@PathVariable String name){

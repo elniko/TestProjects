@@ -2,8 +2,10 @@ package service;
 
 import entities.ProcessEntity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.*;
 
+import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
 
 /**
@@ -12,14 +14,16 @@ import javax.transaction.Transactional;
 @org.springframework.stereotype.Service
 public class ProcessServiceImpl extends GenericService<ProcessEntity> implements ProcessService {
 
-    @Autowired
-    MessageGenerator generator;
+    @PostConstruct
+    public void onConstruct() {
+        setDao(ProcessEntity.class);
+    }
+
 
     @Override
     @Transactional
     public void start(ProcessEntity entity) {
-        //entity = edit(entity);
-        generator.generate(entity);
+
     }
 
     @Override
