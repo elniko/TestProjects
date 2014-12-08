@@ -17,4 +17,8 @@ public interface ProcessService extends Service<ProcessEntity>{
 
     public Dao<ProcessEntity> getDao();
 
+    @Override
+    public String sayHello() {
+        return "Hello bean";
+    }
 }
