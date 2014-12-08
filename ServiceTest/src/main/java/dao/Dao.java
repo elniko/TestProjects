@@ -18,4 +18,6 @@ public interface Dao<T> {
 
     public EntityManager getEntityManager();
 
+
+
 }

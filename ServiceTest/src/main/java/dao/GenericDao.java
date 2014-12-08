@@ -19,8 +19,7 @@ public  class GenericDao<T>  implements Dao<T> {
     @Override
     public void add(T entity) {
         em.persist(entity);
-
-    }
+   }
 
     @Override
     public T edit(T entity) {

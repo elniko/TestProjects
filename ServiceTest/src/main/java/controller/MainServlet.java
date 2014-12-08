@@ -2,9 +2,11 @@ package controller;
 
 import entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+
 import org.springframework.web.bind.annotation.*;
 import service.ProcessService;
+
+import java.awt.*;
 
 /**
  * Created by nike on 30/11/14.
@@ -18,20 +20,17 @@ public class MainServlet {
 
     @RequestMapping("/")
     public String hello(){
-
-
-        ProcessEntity process = new ProcessEntity();
-        process.setState("started");
-        process.setType("xct");
-
-        ts.add(process);
         return "hello";
     }
 
 
-    @RequestMapping(method = RequestMethod.GET, value = "/start")
-    public String startProcess() {
-       return "HELLO";
+    @RequestMapping(method = RequestMethod.GET, value = "ProcessAdd/{type}")
+    public  ProcessEntity processAdd(@PathVariable String type) {
+        ProcessEntity process = new ProcessEntity();
+        process.setState("scheduled");
+        process.setType(type);
+        process = ts.edit(process);
+        return process;
     }
 
 
@@ -40,4 +39,6 @@ public class MainServlet {
         String res = "Hello " + name;
         return res;
     }
+
+
 }
