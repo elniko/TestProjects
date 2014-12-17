@@ -20,8 +20,8 @@ import java.util.Set;
 /**
  * Created by stagiaire on 16/12/2014.
  */
-@Service
-public class UserService implements  IUserService{
+@Service("authService")
+public class UserService implements  UserDetailsService{
 
 
     @Autowired
@@ -35,7 +35,7 @@ public class UserService implements  IUserService{
 
     }
 
-    @Override
+
     @Transactional
     public entity.User loadByUserName(String s) {
       return dao.findByUserName(s);

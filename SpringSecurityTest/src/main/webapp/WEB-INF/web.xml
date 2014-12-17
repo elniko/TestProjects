@@ -30,9 +30,7 @@
 
 
 
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
+
     <context-param>
         <param-name>contextClass</param-name>
         <param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
@@ -41,7 +39,6 @@
         <param-name>contextConfigLocation</param-name>
         <param-value>spring.SpringConfig</param-value>
     </context-param>
-
 
 
 
@@ -57,5 +54,8 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
 
 </web-app>
