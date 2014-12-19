@@ -1,7 +1,6 @@
 package spring;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -10,6 +9,7 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import spring.security.SecurityConfig;
 
 import javax.persistence.EntityManagerFactory;
 import java.util.Properties;
@@ -19,7 +19,7 @@ import java.util.Properties;
  */
 @Configuration
 @EnableTransactionManagement
-@ComponentScan(basePackages = {"dao","service"})
+@ComponentScan(basePackages = {"dao","service","log4j2" })
 @PropertySource(value = "classpath:db.properties")
 @Import({ SecurityConfig.class })
 public class SpringConfig {
@@ -43,7 +43,7 @@ public class SpringConfig {
         return transaction;
     }
 
-    @Bean
+    @Bean(name = "entytyManagerFactory")
     public LocalContainerEntityManagerFactoryBean getEntityManagerFactory() {
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
         factory.setPackagesToScan("entity");
