@@ -10,6 +10,7 @@ import org.apache.logging.log4j.core.config.plugins.PluginAttribute;
 import org.apache.logging.log4j.core.config.plugins.PluginElement;
 import org.apache.logging.log4j.core.config.plugins.PluginFactory;
 import org.apache.logging.log4j.core.layout.PatternLayout;
+import org.springframework.context.ApplicationContext;
 
 import java.io.Serializable;
 
@@ -21,6 +22,7 @@ public class SqlQueryAppender extends AbstractAppender {
 
     private static DBaseProvider provider;
 
+    ApplicationContext ctx;
 
     protected SqlQueryAppender(String name, Filter filter, org.apache.logging.log4j.core.Layout<? extends Serializable> layout, String prov) {
         super(name, filter, layout);
@@ -32,6 +34,11 @@ public class SqlQueryAppender extends AbstractAppender {
         }
 
 
+    }
+
+    public void setCtx(ApplicationContext ctx) {
+        this.ctx = ctx;
+        provider.setContext(ctx);
     }
 
     @PluginFactory
@@ -61,6 +68,6 @@ public class SqlQueryAppender extends AbstractAppender {
 
     @Override
     public void append(LogEvent logEvent) {
-       provider.execQuery(logEvent);
+        provider.execQuery(logEvent);
     }
 }

@@ -5,7 +5,7 @@
 <h1>Title : ${title}</h1>
 <h1>Message : ${message}</h1>
 
-<c:url value="/logout" var="logoutUrl" />
+<c:url value="/logout" var="logoutU rl" />
 <form action="${logoutUrl}" method="post" id="logoutForm">
     <input type="hidden" name="${_csrf.parameterName}"
            value="${_csrf.token}" />

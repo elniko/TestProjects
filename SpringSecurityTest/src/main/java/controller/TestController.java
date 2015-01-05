@@ -21,7 +21,7 @@ public class TestController {
         return model;
     }
 
-    @RequestMapping(value = "/admin**", method = RequestMethod.GET)
+   // @RequestMapping(value = "/admin**", method = RequestMethod.GET)
     public ModelAndView adminPage() {
         ModelAndView model = new ModelAndView();
         model.addObject("title", "Spring Security Hello World");

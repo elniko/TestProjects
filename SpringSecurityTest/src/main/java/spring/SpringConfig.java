@@ -21,7 +21,7 @@ import java.util.Properties;
 @EnableTransactionManagement
 @ComponentScan(basePackages = {"dao","service","log4j2" })
 @PropertySource(value = "classpath:db.properties")
-@Import({ SecurityConfig.class })
+//@Import({ SecurityConfig.class })
 public class SpringConfig {
 
     @Autowired

@@ -1,6 +1,7 @@
 package entity;
 
 import javax.persistence.*;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Set;
 
@@ -21,6 +22,9 @@ public class User {
     String password;
 
     boolean enabled;
+
+    @Column(name = "created_at")
+    Calendar createdAt;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.LAZY)
     Set<UserRole> role;
@@ -64,4 +68,19 @@ public class User {
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
+
+    public Calendar getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Calendar createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    @PrePersist
+    private void onPersist() {
+        Calendar cal = Calendar.getInstance();
+        createdAt = cal;
+    }
+
 }

@@ -137,13 +137,47 @@
           <version>5.1.33</version>
       </dependency>
 
+
+      <dependency>
+          <groupId>commons-dbcp</groupId>
+          <artifactId>commons-dbcp</artifactId>
+          <version>[1,)</version>
+      </dependency>
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+
+      <dependency>
+          <groupId>com.microsoft.sqlserver</groupId>
+          <artifactId>sqljdbc</artifactId>
+          <version>4.1</version>
+          <classifier>sqljdbc41</classifier>
+      </dependency>
+
   </dependencies>
+
+    <repositories>
+
+
+        <!--repository>
+          <id>ubp</id>
+          <url>http://127.0.0.1:8080/nexus-2.6.3-01/content/groups/ubp</url>
+          <releases><enabled>true</enabled></releases>
+          <snapshots><enabled>true</enabled></snapshots>
+        </repository-->
+        <repository>
+            <id>ubprelease</id>
+            <url>http://ubserveur:8081/nexus-2.7.1/content/repositories/ubprelease</url>
+            <releases><enabled>true</enabled></releases>
+            <snapshots><enabled>false</enabled></snapshots>
+        </repository>
+
+    </repositories>
+
   <build>
     <finalName>SpringSecurityTest</finalName>
       <sourceDirectory>src/main/java</sourceDirectory>

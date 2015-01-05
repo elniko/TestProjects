@@ -13,6 +13,7 @@ public class UserRole {
     @GeneratedValue
     int id;
 
+    @Column(unique = true)
     String role;
 
 
