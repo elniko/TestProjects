@@ -6,9 +6,10 @@ import org.springframework.context.ApplicationContext;
 /**
  * Created by stagiaire on 18/12/2014.
  */
+@FunctionalInterface
 public interface DBaseProvider {
     public void execQuery(LogEvent event);
 
-    public void setContext(ApplicationContext ctx);
+
 
 }

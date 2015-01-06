@@ -24,20 +24,11 @@ import javax.transaction.Transactional;
 public class MyDbProvider implements DBaseProvider, ApplicationContextAware {
 
 
-    String queryString = "call addLog(?,?,?)";
-
-    ApplicationContext ctx;
-
-
-    public void setQuery(String query) {
-        queryString = query;
-    }
+       ApplicationContext ctx;
 
     @Override
 
     public void execQuery(LogEvent event) {
-
-
         //event.get
       //  ApplicationContext ctx = new AnnotationConfigApplicationContext(spring.SpringConfig.class);
         ILogService logService = ctx.getBean(ILogService.class);
@@ -61,7 +52,7 @@ public class MyDbProvider implements DBaseProvider, ApplicationContextAware {
 //        em.clear();
     }
 
-    @Override
+
     public void setContext(ApplicationContext ctx) {
         this.ctx = ctx;
     }

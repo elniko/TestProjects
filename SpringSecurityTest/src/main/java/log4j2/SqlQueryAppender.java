@@ -13,6 +13,7 @@ import org.apache.logging.log4j.core.layout.PatternLayout;
 import org.springframework.context.ApplicationContext;
 
 import java.io.Serializable;
+import java.util.function.Consumer;
 
 /**
  * Created by stagiaire on 18/12/2014.
@@ -20,30 +21,30 @@ import java.io.Serializable;
 @Plugin(name = "SqlQuery", category = "Core", elementType = "appender", printObject = true)
 public class SqlQueryAppender extends AbstractAppender {
 
-    private static DBaseProvider provider;
+    //private static DBaseProvider provider;
 
-    ApplicationContext ctx;
+   // ApplicationContext ctx;
 
-    protected SqlQueryAppender(String name, Filter filter, org.apache.logging.log4j.core.Layout<? extends Serializable> layout, String prov) {
+    Consumer<LogEvent> executor;
+
+    public void setExecutor(Consumer<LogEvent> executor) {
+        this.executor = executor;
+    }
+
+
+
+    protected SqlQueryAppender(String name, Filter filter, org.apache.logging.log4j.core.Layout<? extends Serializable> layout) {
         super(name, filter, layout);
-        try {
-            Class clx =  Class.forName(prov);
-            provider = (DBaseProvider)clx.newInstance();
-        } catch (Exception e) {
-            LOGGER.error("", e);
-        }
-
-
     }
 
-    public void setCtx(ApplicationContext ctx) {
-        this.ctx = ctx;
-        provider.setContext(ctx);
-    }
+    //public void setCtx(ApplicationContext ctx) {
+        //this.ctx = ctx;
+        //provider.setContext(ctx);
+    //}
 
     @PluginFactory
     public static SqlQueryAppender createAppender(@PluginAttribute("name") String name,
-                                                  @PluginAttribute("provider") String provider,
+                                                 // @PluginAttribute("provider") String provider,
                                                   @PluginElement("Filter") Filter filter,
                                                   @PluginElement("Layout") Layout layout
                                                   ) {
@@ -53,21 +54,27 @@ public class SqlQueryAppender extends AbstractAppender {
             return null;
         }
 
-        if(provider == null) {
-            LOGGER.error("No provider selected");
-            return null;
-        }
+       // if(provider == null) {
+         //   LOGGER.error("No provider selected");
+           // return null;
+        //}
 
         if(layout == null) {
             layout = PatternLayout.createDefaultLayout();
         }
 
-        return new SqlQueryAppender(name, filter, layout, provider);
+        return new SqlQueryAppender(name, filter, layout);
     }
 
 
     @Override
     public void append(LogEvent logEvent) {
-        provider.execQuery(logEvent);
+
+        try {
+            executor.accept(logEvent);
+            //provider.execQuery(logEvent);
+        } catch (Exception ex) {
+            LOGGER.error("Error:", ex);
+        }
     }
 }

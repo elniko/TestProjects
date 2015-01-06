@@ -33,7 +33,7 @@ public class Test {
 
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(spring.SpringConfig.class);
         SqlQueryAppender appender = (SqlQueryAppender) config.getAppender("QueryAppender");
-        appender.setCtx(ctx);
+        //appender.setCtx(ctx);
         coreLogger.addAppender(appender);
 
 
@@ -42,7 +42,7 @@ public class Test {
 
 
         logger.info("hello1");
-        coreLogger.info("hello2");
+       // coreLogger.info("hello2");
 //        ApplicationContext ctx = new AnnotationConfigApplicationContext(spring.SpringConfig.class);
 //        IUserService us =  ctx.getBean(IUserService.class);
 //        User user = new User();

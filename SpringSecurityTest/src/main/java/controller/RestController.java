@@ -1,9 +1,16 @@
 package controller;
 
 
+import log4j2.MyDbProvider;
+import log4j2.SqlQueryAppender;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
+import org.apache.logging.log4j.core.LoggerContext;
+import org.apache.logging.log4j.core.config.Configuration;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,24 +26,35 @@ import javax.servlet.ServletConfig;
 
 @org.springframework.web.bind.annotation.RestController
 @RequestMapping(value="/rest")
-public class RestController implements ServletConfigAware{
+public class RestController {
 
-    Logger logger = LogManager.getLogger(this.getClass().getName());
+    Logger logger;
 
     ServletConfig config;
+
+    @Autowired
+    public RestController(ApplicationContext ctx) {
+
+        logger = LogManager.getLogger(this.getClass().getName());
+        org.apache.logging.log4j.core.Logger coreLogger = (org.apache.logging.log4j.core.Logger)logger;
+        Configuration config =  coreLogger.getContext().getConfiguration();
+
+        SqlQueryAppender appender = (SqlQueryAppender) config.getAppender("QueryAppender");
+        MyDbProvider prov = new MyDbProvider();
+        prov.setContext(ctx);
+        appender.setExecutor(prov::execQuery);
+        coreLogger.addAppender(appender);
+
+    }
 
     @PersistenceContext
     EntityManager em;
 
     @RequestMapping("/hello")
     public String getHello() {
-
-
-
         for(int  i =0; i < 5; i++) {
             logger.info("Hello Message");
         }
-
         return config.getServletContext().getServletContextName();
     }
 
@@ -51,8 +69,5 @@ public class RestController implements ServletConfigAware{
     }
 
 
-    @Override
-    public void setServletConfig(ServletConfig servletConfig) {
-        config = servletConfig;
-    }
+
 }

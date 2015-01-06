@@ -4,7 +4,7 @@
         <Console name="Console" target="SYSTEM_OUT">
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
         </Console>
-        <SqlQuery name="QueryAppender" provider = "log4j2.MyDbProvider">
+        <SqlQuery name="QueryAppender" >
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
         </SqlQuery>
     </Appenders>
@@ -15,8 +15,8 @@
         <Logger name="org.springframework.security" level="INFO">
             <AppenderRef ref="Console"/>
         </Logger>
-        <!--Logger name="controller.RestController" level="TRACE">
+        <Logger name="controller.RestController" level="TRACE">
             <AppenderRef ref="QueryAppender"/>
-        </Logger-->
+        </Logger>
     </Loggers>
 </Configuration>

@@ -60,7 +60,10 @@
     <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-core:2.1" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.apache.logging.log4j:log4j-web:2.1" level="project" />
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.33" level="project" />
+    <orderEntry type="library" name="Maven: commons-dbcp:commons-dbcp:1.4" level="project" />
+    <orderEntry type="library" name="Maven: commons-pool:commons-pool:1.5.4" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:3.8.1" level="project" />
+    <orderEntry type="library" name="Maven: com.microsoft.sqlserver:sqljdbc:sqljdbc41:4.1" level="project" />
   </component>
 </module>
 
