@@ -6,6 +6,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.core.Ordered;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
@@ -30,6 +32,14 @@ public class ServletConfig extends WebMvcConfigurerAdapter {
         viewResolver.setSuffix(".jsp");
         return viewResolver;
     }
+
+    @Bean
+    public MultipartResolver multipartResolver() {
+        CommonsMultipartResolver mResolver = new CommonsMultipartResolver();
+        mResolver.setMaxUploadSize(500000);
+        return mResolver;
+    }
+
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/SpringSecurity/login").setViewName("login");

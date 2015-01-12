@@ -2,6 +2,7 @@ package entity;
 
 import javax.persistence.*;
 import java.util.Calendar;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -27,7 +28,7 @@ public class User {
     Calendar createdAt;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.LAZY)
-    Set<UserRole> role;
+    Set<UserRole> role = new HashSet<>();
 
     public int getId() {
         return id;

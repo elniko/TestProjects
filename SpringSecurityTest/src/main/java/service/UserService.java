@@ -21,7 +21,7 @@ import java.util.Set;
  * Created by stagiaire on 16/12/2014.
  */
 @Service("authService")
-public class UserService implements  UserDetailsService{
+public class UserService implements  UserDetailsService, IUserService{
 
 
     @Autowired
