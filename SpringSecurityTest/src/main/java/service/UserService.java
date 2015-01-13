@@ -46,6 +46,12 @@ public class UserService implements  UserDetailsService, IUserService{
         dao.addUser(user);
     }
 
+    @Override
+    @Transactional
+    public List<entity.User> loadUsers() {
+        return dao.loadUsers();
+    }
+
     public List<GrantedAuthority> createUserAutorities(Set<UserRole> roles) {
         List<GrantedAuthority> auth =new  ArrayList<>();
         for(UserRole role : roles) {

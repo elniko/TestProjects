@@ -18,7 +18,7 @@ public class UserDao {
     EntityManager em;
 
     public User findByUserName(String name) {
-       Query query = em.createQuery("SELECT u FROM  User u  WHERE name = :name");
+       Query query = em.createQuery("SELECT u FROM  User u  WHERE u.name = :name");
        query.setParameter("name", name);
        List<User> users = query.getResultList();
        if(users.size() >0) {
@@ -33,6 +33,12 @@ public class UserDao {
         em.persist(user);
     }
 
+
+    public List<User> loadUsers() {
+        Query query = em.createQuery("SELECT u FROM User u INNER JOIN FETCH u.role");
+        List<User> users = query.getResultList();
+        return users;
+    }
 
 
 }

@@ -19,7 +19,7 @@ public class UserRole {
 
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
     User user;
 
     public int getId() {

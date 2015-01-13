@@ -36,9 +36,10 @@ public class AdminController
     }
 
     @RequestMapping("users")
-    public String getUserList() {
-
-        return "admin/users";
+    public String getUserList(Model model) {
+        List<User> users = userService.loadUsers();
+        model.addAttribute("users", users);
+        return "admin/user/users";
     }
 
     @RequestMapping("roles")
@@ -65,7 +66,7 @@ public class AdminController
             return "admin/user";
         }
         userService.addUser(user);
-        return "redirect:admin/users";
+        return "redirect:users";
     }
 
     @InitBinder
