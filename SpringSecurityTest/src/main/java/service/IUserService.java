@@ -1,6 +1,6 @@
 package service;
 
-import entity.User;
+import entity.UserEntity;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
@@ -13,10 +13,10 @@ public interface IUserService extends UserDetailsService {
 
     public UserDetails loadUserByUsername(String s) ;
 
-    public User loadByUserName(String s);
+    public UserEntity loadByUserName(String s);
 
-    public void addUser(User user);
+    public void addUser(UserEntity user);
 
-    public List<User> loadUsers();
+    public List<UserEntity> loadUsers();
 
 }

@@ -1,13 +1,12 @@
 package controller;
 
-import entity.User;
-import entity.UserRole;
+import entity.UserEntity;
+import entity.UserRoleEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomCollectionEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +15,6 @@ import service.IUserService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import java.beans.PropertyEditorSupport;
 import java.util.*;
 
 /**
@@ -37,7 +35,7 @@ public class AdminController
 
     @RequestMapping("users")
     public String getUserList(Model model) {
-        List<User> users = userService.loadUsers();
+        List<UserEntity> users = userService.loadUsers();
         model.addAttribute("users", users);
         return "admin/user/users";
     }
@@ -51,7 +49,7 @@ public class AdminController
 
     @RequestMapping(value = "user", method = RequestMethod.GET, params = "new")
     public String createUser(Model model) {
-        model.addAttribute("user", new User());
+        model.addAttribute("user", new UserEntity());
         Map<String, String> roles = new HashMap<>();
         roles.put("ROLE_ADMIN", "Admin");
         roles.put("ROLE_USER", "User");
@@ -61,7 +59,7 @@ public class AdminController
     }
 
     @RequestMapping(value = "user", method = RequestMethod.POST)
-    public    String saveUserFromForm(@Valid User user, BindingResult result) {
+    public    String saveUserFromForm(@Valid UserEntity user, BindingResult result) {
         if(result.hasErrors()) {
             return "admin/user";
         }
@@ -75,7 +73,7 @@ public class AdminController
             protected Object convertElement(Object element) {
                 if (element != null) {
                     String ur = (String)element;
-                    UserRole role = new UserRole();
+                    UserRoleEntity role = new UserRoleEntity();
                     role.setRole(ur);
                     return role;
                 }

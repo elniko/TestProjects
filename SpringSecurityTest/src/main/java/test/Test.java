@@ -1,23 +1,13 @@
 package test;
 
-import dao.LogDao;
-import entity.LogEntity;
-import entity.ProcessEntity;
-import entity.User;
-import entity.UserRole;
+import log4j2.MyDbProvider;
 import log4j2.SqlQueryAppender;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.ThreadContext;
 import org.apache.logging.log4j.core.LoggerContext;
 import org.apache.logging.log4j.core.config.Configuration;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.web.bind.annotation.PathVariable;
-import service.ILogService;
-import service.IUserService;
-import service.UserService;
 
 /**
  * Created by stagiaire on 16/12/2014.
@@ -33,7 +23,9 @@ public class Test {
 
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(spring.SpringConfig.class);
         SqlQueryAppender appender = (SqlQueryAppender) config.getAppender("QueryAppender");
-        //appender.setCtx(ctx);
+        MyDbProvider prov = new MyDbProvider();
+        prov.setContext(ctx);
+        appender.setExecutor(prov::execQuery);
         coreLogger.addAppender(appender);
 
 

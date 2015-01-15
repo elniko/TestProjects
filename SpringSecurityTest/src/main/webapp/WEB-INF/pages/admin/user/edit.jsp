@@ -29,6 +29,11 @@
                     <td><sf:password path="password" size="15" maxlength="15" id="password"/>
                     </td>
                 </tr>
+                <tr>
+                    <th><label for="email">Email:</label></th>
+                    <td><sf:password path="email" size="15" maxlength="15" id="email"/>
+                    </td>
+                </tr>
                 <!--tr>
                     <th><label for="password_check">Repeat password:</label></th>
                     <td><!--sf:password path="password_check" size="15" maxlength="15" id="password_check"/-->

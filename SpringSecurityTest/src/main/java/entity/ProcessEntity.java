@@ -8,7 +8,7 @@ import java.util.List;
  * Created by nike on 27/11/14.
  */
 @Entity
-@Table(name="process")
+@Table(name="process", schema ="mmi")
 
 public class ProcessEntity {
 
@@ -30,6 +30,18 @@ public class ProcessEntity {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "process", fetch = FetchType.LAZY)
     List<LogEntity> messages;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", nullable = false)
+    UserEntity user;
+
+    public UserEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UserEntity user) {
+        this.user = user;
+    }
 
     public long getId() {
         return id;

@@ -1,18 +1,20 @@
 package entity;
 
+import org.hibernate.validator.constraints.Email;
+
 import javax.persistence.*;
 import java.util.Calendar;
 
 /**
  * Created by nike on 27/11/14.
  */
-@NamedStoredProcedureQuery(name = "addLog", procedureName = "addLog",parameters = {
+@NamedStoredProcedureQuery(name = "addLog", procedureName = "mmi.addLog",parameters = {
         @StoredProcedureParameter(name = "processId",type = Long.class, mode = ParameterMode.IN),
         @StoredProcedureParameter(name = "message",type = String.class, mode = ParameterMode.IN),
         @StoredProcedureParameter(name = "lineCount",type = Long.class, mode = ParameterMode.IN)
 })
 @Entity
-@Table(name="log")
+@Table(name="log", schema = "mmi")
 public class LogEntity {
 
     @Id
@@ -32,6 +34,8 @@ public class LogEntity {
 
     @Column(name = "line_count")
     long lineCount;
+
+
 
     public long getLineCount() {
         return lineCount;

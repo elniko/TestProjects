@@ -1,9 +1,12 @@
 package dao;
 
-import entity.User;
+import entity.UserEntity;
+import org.hibernate.annotations.SelectBeforeUpdate;
 import org.springframework.stereotype.Repository;
 
+import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
+import javax.persistence.FlushModeType;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.List;
@@ -14,13 +17,21 @@ import java.util.List;
 @Repository
 public class UserDao {
 
+
+
     @PersistenceContext
     EntityManager em;
 
-    public User findByUserName(String name) {
+    @PostConstruct
+    public void init() {
+
+    }
+
+
+    public UserEntity findByUserName(String name) {
        Query query = em.createQuery("SELECT u FROM  User u  WHERE u.name = :name");
        query.setParameter("name", name);
-       List<User> users = query.getResultList();
+       List<UserEntity> users = query.getResultList();
        if(users.size() >0) {
            return users.get(0);
        } else {
@@ -29,14 +40,14 @@ public class UserDao {
 
     }
 
-    public void addUser(User user) {
+    public void addUser(UserEntity user) {
         em.persist(user);
     }
 
 
-    public List<User> loadUsers() {
+    public List<UserEntity> loadUsers() {
         Query query = em.createQuery("SELECT u FROM User u INNER JOIN FETCH u.role");
-        List<User> users = query.getResultList();
+        List<UserEntity> users = query.getResultList();
         return users;
     }
 

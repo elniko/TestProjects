@@ -2,7 +2,8 @@ package service;
 
 import dao.UserDao;
 
-import entity.UserRole;
+import entity.UserEntity;
+import entity.UserRoleEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -30,31 +31,31 @@ public class UserService implements  UserDetailsService, IUserService{
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        entity.User user =  dao.findByUserName(s);
+        UserEntity user =  dao.findByUserName(s);
         return new User(user.getName(), user.getPassword(), createUserAutorities(user.getRole()));
 
     }
 
 
     @Transactional
-    public entity.User loadByUserName(String s) {
+    public UserEntity loadByUserName(String s) {
       return dao.findByUserName(s);
     }
 
     @Transactional
-    public void addUser(entity.User  user) {
+    public void addUser(UserEntity user) {
         dao.addUser(user);
     }
 
     @Override
     @Transactional
-    public List<entity.User> loadUsers() {
+    public List<UserEntity> loadUsers() {
         return dao.loadUsers();
     }
 
-    public List<GrantedAuthority> createUserAutorities(Set<UserRole> roles) {
+    public List<GrantedAuthority> createUserAutorities(Set<UserRoleEntity> roles) {
         List<GrantedAuthority> auth =new  ArrayList<>();
-        for(UserRole role : roles) {
+        for(UserRoleEntity role : roles) {
             auth.add(new SimpleGrantedAuthority(role.getRole()));
         }
         return auth;
