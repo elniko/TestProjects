@@ -1,11 +1,11 @@
-package dao;
+package dao.implimentation;
 
+import dao.interfaces.ILogDao;
 import entity.LogEntity;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.persistence.StoredProcedureQuery;
 import javax.transaction.Transactional;
 
@@ -13,7 +13,7 @@ import javax.transaction.Transactional;
  * Created by stagiaire on 22/12/2014.
  */
 @Repository
-public class LogDao implements ILogDao{
+public class LogDao implements ILogDao {
     @PersistenceContext
     EntityManager em;
 

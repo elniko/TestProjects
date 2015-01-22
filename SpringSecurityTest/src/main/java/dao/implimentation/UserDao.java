@@ -1,4 +1,4 @@
-package dao;
+package dao.implimentation;
 
 import entity.UserEntity;
 import org.hibernate.annotations.SelectBeforeUpdate;

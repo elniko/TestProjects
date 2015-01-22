@@ -1,13 +1,8 @@
 package test;
 
-import log4j2.MyDbProvider;
-import log4j2.SqlQueryAppender;
+import exceptions.NoRoleException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.ThreadContext;
-import org.apache.logging.log4j.core.LoggerContext;
-import org.apache.logging.log4j.core.config.Configuration;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
  * Created by stagiaire on 16/12/2014.
@@ -17,23 +12,34 @@ public class Test {
     public static void main(String[] args) {
 
 
-        org.apache.logging.log4j.core.Logger coreLogger = (org.apache.logging.log4j.core.Logger)logger;
-        LoggerContext logContext = coreLogger.getContext();
-        Configuration config =  logContext.getConfiguration();
+        Init init = new Init();
 
-        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(spring.SpringConfig.class);
-        SqlQueryAppender appender = (SqlQueryAppender) config.getAppender("QueryAppender");
-        MyDbProvider prov = new MyDbProvider();
-        prov.setContext(ctx);
-        appender.setExecutor(prov::execQuery);
-        coreLogger.addAppender(appender);
+        //init.initTypes();
 
-
-        ThreadContext.put("process_id", 5 +"");
-        ThreadContext.put("line_count", 5 + "");
+        try {
+            init.addUser("Terst", "test", "mail@mail.com", "ROLE_USER");
+        } catch (NoRoleException e) {
+            e.printStackTrace();
+        }
 
 
-        logger.info("hello1");
+//        org.apache.logging.log4j.core.Logger coreLogger = (org.apache.logging.log4j.core.Logger)logger;
+//        LoggerContext logContext = coreLogger.getContext();
+//        Configuration config =  logContext.getConfiguration();
+//
+//        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(spring.SpringConfig.class);
+//        SqlQueryAppender appender = (SqlQueryAppender) config.getAppender("QueryAppender");
+//        MyDbProvider prov = new MyDbProvider();
+//        prov.setContext(ctx);
+//        appender.setExecutor(prov::execQuery);
+//        coreLogger.addAppender(appender);
+//
+//
+//        ThreadContext.put("process_id", 5 +"");
+//        ThreadContext.put("line_count", 5 + "");
+//
+//
+//        logger.info("hello1");
        // coreLogger.info("hello2");
 //        ApplicationContext ctx = new AnnotationConfigApplicationContext(spring.SpringConfig.class);
 //        IUserService us =  ctx.getBean(IUserService.class);

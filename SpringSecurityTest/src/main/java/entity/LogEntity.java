@@ -1,6 +1,7 @@
 package entity;
 
 import org.hibernate.validator.constraints.Email;
+import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
 import java.util.Calendar;
@@ -14,7 +15,7 @@ import java.util.Calendar;
         @StoredProcedureParameter(name = "lineCount",type = Long.class, mode = ParameterMode.IN)
 })
 @Entity
-@Table(name="log", schema = "mmi")
+@Table(name="log")
 public class LogEntity {
 
     @Id
@@ -29,7 +30,7 @@ public class LogEntity {
     String message;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "process_id")
+    @JoinColumn(name = "process_id", foreignKey = @ForeignKey(name = "fk_process_log"))
     ProcessEntity process;
 
     @Column(name = "line_count")

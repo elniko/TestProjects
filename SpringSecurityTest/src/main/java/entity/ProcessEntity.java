@@ -1,14 +1,13 @@
 package entity;
 
 import javax.persistence.*;
-import java.util.Calendar;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by nike on 27/11/14.
  */
 @Entity
-@Table(name="process", schema ="mmi")
+@Table(name="process")
 
 public class ProcessEntity {
 
@@ -24,16 +23,49 @@ public class ProcessEntity {
     @Column(name="ended_at")
     Calendar endedAt;
 
-    String state;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "status_id", nullable = false, foreignKey = @ForeignKey(name = "fk_status_process"))
+    ProcessStatusEntity status;
 
-    String type;
+    @Column(name = "thread_name")
+    String threadName;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="type_id", nullable = false, foreignKey = @ForeignKey(name = "fk_type_process"))
+    ProcessTypeEntity type;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "process", fetch = FetchType.LAZY)
-    List<LogEntity> messages;
+    List<LogEntity> messageList;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false, foreignKey =  @ForeignKey(name = "fk_user_process"))
     UserEntity user;
+
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "process_resource",  joinColumns = @JoinColumn(name = "process_id"),
+           inverseJoinColumns = {@JoinColumn(name = "resource_id")}, foreignKey = @ForeignKey(name = "fk_process_resource"))
+    Set<ResourceEntity> resourceList =  new HashSet<>();
+
+    @OneToMany(mappedBy = "process")
+    @MapKeyJoinColumn(name = "property_id")
+    Map<PropertyEntity, PropertyValueEntity> propetyValueList;
+
+    public Set<ResourceEntity> getResourceList() {
+        return resourceList;
+    }
+
+    public void setResourceList(Set<ResourceEntity> resourceList) {
+        this.resourceList = resourceList;
+    }
+
+    public String getThreadName() {
+        return threadName;
+    }
+
+    public void setThreadName(String threadName) {
+        this.threadName = threadName;
+    }
 
     public UserEntity getUser() {
         return user;
@@ -67,28 +99,28 @@ public class ProcessEntity {
         this.endedAt = endedAt;
     }
 
-    public String getState() {
-        return state;
+    public ProcessStatusEntity getStatus() {
+        return status;
     }
 
-    public void setState(String state) {
-        this.state = state;
+    public void setStatus(ProcessStatusEntity status) {
+        this.status = status;
     }
 
-    public String getType() {
+    public ProcessTypeEntity getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(ProcessTypeEntity type) {
         this.type = type;
     }
 
-    public List<LogEntity> getMessages() {
-        return messages;
+    public List<LogEntity> getMessageList() {
+        return messageList;
     }
 
-    public void setMessages(List<LogEntity> messages) {
-        this.messages = messages;
+    public void setMessageList(List<LogEntity> messageList) {
+        this.messageList = messageList;
     }
 
     @PrePersist

@@ -6,16 +6,8 @@ import org.apache.logging.log4j.core.LogEvent;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Component;
-import service.ILogService;
-import service.LogService;
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-import javax.transaction.Transactional;
+import service.interfaces.ILogService;
 
 /**
  * Created by stagiaire on 18/12/2014.
@@ -27,7 +19,6 @@ public class MyDbProvider implements DBaseProvider, ApplicationContextAware {
        ApplicationContext ctx;
 
     @Override
-
     public void execQuery(LogEvent event) {
         //event.get
       //  ApplicationContext ctx = new AnnotationConfigApplicationContext(spring.SpringConfig.class);

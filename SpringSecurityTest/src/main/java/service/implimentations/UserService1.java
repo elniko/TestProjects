@@ -1,6 +1,6 @@
-package service;
+package service.implimentations;
 
-import dao.UserDao;
+import dao.implimentation.UserDao;
 
 import entity.UserEntity;
 import entity.UserRoleEntity;
@@ -12,17 +12,17 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import service.interfaces.IUserService;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by stagiaire on 16/12/2014.
  */
 @Service("authService")
-public class UserService implements  UserDetailsService, IUserService{
+public class UserService1 implements  UserDetailsService, IUserService {
 
 
     @Autowired
@@ -53,11 +53,11 @@ public class UserService implements  UserDetailsService, IUserService{
         return dao.loadUsers();
     }
 
-    public List<GrantedAuthority> createUserAutorities(Set<UserRoleEntity> roles) {
+    public List<GrantedAuthority> createUserAutorities(UserRoleEntity role) {
         List<GrantedAuthority> auth =new  ArrayList<>();
-        for(UserRoleEntity role : roles) {
+
             auth.add(new SimpleGrantedAuthority(role.getRole()));
-        }
+
         return auth;
     }
 }

@@ -28,29 +28,30 @@ import javax.servlet.ServletConfig;
 @RequestMapping(value="/rest")
 public class RestController {
 
+    @Autowired
     Logger logger;
 
     ServletConfig config;
 
-    @Autowired
-    public RestController(ApplicationContext ctx) {
+   // @Autowired
+    public RestController() {
 
-        logger = LogManager.getLogger(this.getClass().getName());
-        org.apache.logging.log4j.core.Logger coreLogger = (org.apache.logging.log4j.core.Logger)logger;
-        Configuration config =  coreLogger.getContext().getConfiguration();
-
-        SqlQueryAppender appender = (SqlQueryAppender) config.getAppender("QueryAppender");
-        MyDbProvider prov = new MyDbProvider();
-        prov.setContext(ctx);
-        appender.setExecutor(prov::execQuery);
-        coreLogger.addAppender(appender);
+//        logger = LogManager.getLogger(this.getClass().getName());
+//        org.apache.logging.log4j.core.Logger coreLogger = (org.apache.logging.log4j.core.Logger)logger;
+//        Configuration config =  coreLogger.getContext().getConfiguration();
+//
+//        SqlQueryAppender appender = (SqlQueryAppender) config.getAppender("QueryAppender");
+//        MyDbProvider prov = new MyDbProvider();
+//        prov.setContext(ctx);
+//        appender.setExecutor(prov::execQuery);
+//        coreLogger.addAppender(appender);
 
     }
 
     @PersistenceContext
     EntityManager em;
 
-    @RequestMapping("/hello")
+    @RequestMapping("/")
     public String getHello() {
         for(int  i =0; i < 5; i++) {
             logger.info("Hello Message");

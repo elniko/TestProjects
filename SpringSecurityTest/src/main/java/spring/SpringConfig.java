@@ -1,7 +1,17 @@
 package spring;
 
+import log4j2.MyDbProvider;
+import log4j2.SqlQueryAppender;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.config.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -27,6 +37,14 @@ public class SpringConfig {
     @Autowired
     Environment env;
 
+    //@Value()
+    String url;
+
+    @Bean
+    public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
+        return new PropertySourcesPlaceholderConfigurer();
+    }
+
 
     public DriverManagerDataSource getDataSource() {
         DriverManagerDataSource ds = new DriverManagerDataSource();
@@ -51,6 +69,20 @@ public class SpringConfig {
         factory.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         factory.setJpaProperties(getProperties());
         return factory;
+    }
+
+    @Bean
+    @Autowired
+    public Logger getLogger(ApplicationContext ctx) {
+        Logger logger = LogManager.getLogger("controller.RestController");
+        org.apache.logging.log4j.core.Logger coreLogger = (org.apache.logging.log4j.core.Logger)logger;
+        org.apache.logging.log4j.core.config.Configuration config =  coreLogger.getContext().getConfiguration();
+        SqlQueryAppender appender = (SqlQueryAppender) config.getAppender("QueryAppender");
+        MyDbProvider prov = new MyDbProvider();
+        prov.setContext(ctx);
+        appender.setExecutor(prov::execQuery);
+        coreLogger.addAppender(appender);
+        return logger;
     }
 
     private Properties getProperties() {

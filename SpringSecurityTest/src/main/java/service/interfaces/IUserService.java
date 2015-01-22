@@ -1,4 +1,4 @@
-package service;
+package service.interfaces;
 
 import entity.UserEntity;
 import org.springframework.security.core.userdetails.UserDetails;

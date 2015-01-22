@@ -1,10 +1,10 @@
-package service;
+package service.implimentations;
 
-import dao.ILogDao;
+import dao.interfaces.ILogDao;
 import entity.LogEntity;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
+import service.interfaces.ILogService;
 
 import javax.transaction.Transactional;
 
