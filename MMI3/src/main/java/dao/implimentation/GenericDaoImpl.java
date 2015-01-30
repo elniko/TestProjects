@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import java.util.Collection;
 
 /**
@@ -26,6 +27,19 @@ public class GenericDaoImpl<T extends Entity> implements GenericDao<T> {
     @PersistenceContext
     protected  EntityManager em;
 
+
+    @Override
+    public Collection<T> getAllEntities(int start, int count, String order) {
+        if (!order.equals("")) {
+            order = " order by " + order;
+        }
+        Query query = em.createQuery("from " + clazz.getName() + order);
+        query.setFirstResult(start);
+        if (count > 0) {
+            query.setMaxResults(count);
+        }
+        return query.getResultList();
+    }
 
     @Override
     public Collection<T> getAllEntities() {

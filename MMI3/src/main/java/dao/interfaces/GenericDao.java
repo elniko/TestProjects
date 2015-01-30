@@ -9,6 +9,8 @@ import java.util.Collection;
  */
 public interface GenericDao<T extends Entity> {
 
+    public Collection<T> getAllEntities(int start, int count, String order);
+
     public Collection<T> getAllEntities();
 
     public T getEntityById(int id);
@@ -22,6 +24,8 @@ public interface GenericDao<T extends Entity> {
     public void remove(Entity  entity);
 
     public void setClass(Class<T> cl);
+
+
 
 
 }

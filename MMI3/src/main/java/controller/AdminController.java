@@ -11,7 +11,6 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import service.interfaces.IUserService;
 
 import javax.validation.Valid;
 import java.util.*;
@@ -24,8 +23,6 @@ import java.util.*;
 public class AdminController
 {
 
-    @Autowired
-    IUserService userService;
 
     @RequestMapping("/")
     public String getHomeAdmin() {
@@ -34,8 +31,8 @@ public class AdminController
 
     @RequestMapping("users")
     public String getUserList(Model model) {
-        List<UserEntity> users = userService.loadUsers();
-        model.addAttribute("users", users);
+       // List<UserEntity> users = userService.loadUsers();
+       // model.addAttribute("users", users);
         return "admin/user/users";
     }
 
@@ -62,7 +59,7 @@ public class AdminController
         if(result.hasErrors()) {
             return "admin/user";
         }
-        userService.addUser(user);
+        //userService.addUser(user);
         return "redirect:users";
     }
 

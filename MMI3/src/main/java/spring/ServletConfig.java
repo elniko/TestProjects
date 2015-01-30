@@ -33,7 +33,7 @@ public class ServletConfig extends WebMvcConfigurerAdapter {
         return viewResolver;
     }
 
-    @Bean
+   @Bean
     public MultipartResolver multipartResolver() {
         CommonsMultipartResolver mResolver = new CommonsMultipartResolver();
         mResolver.setMaxUploadSize(500000);

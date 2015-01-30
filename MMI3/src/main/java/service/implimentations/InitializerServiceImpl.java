@@ -64,12 +64,8 @@ public class InitializerServiceImpl implements InitializerService {
 
 
    private void clearAll(GenericDao<? extends Entity> dao) {
-        Collection<? extends Entity> entities  = dao.getAllEntities();
-       // entities.stream().forEach((entity) -> dao.remove(entity));
-
-        for(Entity entity : entities) {
-            dao.remove(entity);
-       }
+       Collection<? extends Entity> entities  = dao.getAllEntities();
+       entities.stream().forEach(dao::saveEntity);
     }
 
 

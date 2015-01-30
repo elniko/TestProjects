@@ -5,9 +5,7 @@ import log4j2.SqlQueryAppender;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.core.config.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.*;
 import org.springframework.context.annotation.Configuration;
@@ -19,7 +17,6 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import spring.security.SecurityConfig;
 
 import javax.persistence.EntityManagerFactory;
 import java.util.Properties;
@@ -31,7 +28,7 @@ import java.util.Properties;
 @EnableTransactionManagement
 @ComponentScan(basePackages = {"dao","service","log4j2" })
 @PropertySource(value = "classpath:db.properties")
-//@Import({ SecurityConfig.class })
+@ImportResource("classpath:mmi3-security.xml")
 public class SpringConfig {
 
     @Autowired

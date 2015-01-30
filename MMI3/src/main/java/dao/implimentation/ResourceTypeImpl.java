@@ -22,7 +22,7 @@ public class ResourceTypeImpl extends GenericDaoImpl<ResourceTypeEntity> impleme
 
     @Override
     public List<ResourceTypeEntity> findByName(String name) {
-        Query q = em.createQuery("From " + ResourceTypeEntity.class + " rt where rt.name=:name");
+        Query q = em.createQuery("From " + ResourceTypeEntity.class.getName() + " rt where rt.name=:name", ResourceTypeEntity.class);
         q.setParameter("name", name);
         return q.getResultList();
     }
