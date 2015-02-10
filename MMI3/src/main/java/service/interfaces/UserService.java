@@ -17,4 +17,6 @@ public interface UserService extends UserDetailsService {
     public void removeUsers(int[] ids);
 
     public void removeUsers(List<UserEntity> users);
+
+    public void addUser(UserEntity user);
 }

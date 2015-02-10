@@ -14,7 +14,7 @@ public class Test {
         Init init = new Init();
         init.initTypes(true);
         try {
-            init.addUser("Terst2", "test", "mail@mail.com", "ROLE_USER");
+            init.addUser("Test", "test", "mail@mail.com", "ROLE_USER");
         } catch (RoleNotExistException e) {
             e.printStackTrace();
         } catch (UserAlreadyExistException e) {

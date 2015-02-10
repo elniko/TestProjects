@@ -1,5 +1,6 @@
 package controller;
 
+import dao.interfaces.RoleDao;
 import entity.RoleEntity;
 import entity.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,18 +12,28 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import service.interfaces.UserService;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.transaction.Transactional;
 import javax.validation.Valid;
+import java.beans.PropertyEditor;
+import java.beans.PropertyEditorSupport;
 import java.util.*;
 
 /**
  * Created by stagiaire on 05/01/2015.
  */
 @Controller
-@RequestMapping(value = "/admin**")
+@RequestMapping(value = "/admin")
 public class AdminController
 {
 
+    @Autowired
+    UserService userService;
+
+    @Autowired
+    RoleDao roleDao;
 
     @RequestMapping("/")
     public String getHomeAdmin() {
@@ -46,10 +57,7 @@ public class AdminController
     @RequestMapping(value = "user", method = RequestMethod.GET, params = "new")
     public String createUser(Model model) {
         model.addAttribute("user", new UserEntity());
-        Map<String, String> roles = new HashMap<>();
-        roles.put("ROLE_ADMIN", "Admin");
-        roles.put("ROLE_USER", "User");
-        roles.put("ROLE_GUEST", "Guest");
+        List<RoleEntity> roles = (List<RoleEntity>) roleDao.getAllEntities();
         model.addAttribute("roles", roles);
         return "admin/user/edit";
     }
@@ -59,24 +67,58 @@ public class AdminController
         if(result.hasErrors()) {
             return "admin/user";
         }
-        //userService.addUser(user);
+        userService.addUser(user);
         return "redirect:users";
     }
 
-    @InitBinder
-    protected void initBinder(WebDataBinder binder) throws Exception {
-        binder.registerCustomEditor(Set.class, "role", new CustomCollectionEditor(Set.class) {
-            protected Object convertElement(Object element) {
-                if (element != null) {
-                    String ur = (String)element;
-                    RoleEntity role = new RoleEntity();
-                    role.setRole(ur);
-                    return role;
-                }
-                return null;
-            }
-        });
+   @InitBinder
+    protected void initBinder(WebDataBinder binder, HttpServletRequest request) {
+        binder.registerCustomEditor(RoleEntity.class, "role",new RolePropertyEditor(roleDao) );
+
     }
+
+    private class RolePropertyEditor extends PropertyEditorSupport {
+
+        RoleDao roleDao;
+
+        public RolePropertyEditor(RoleDao rd) {
+         roleDao = rd;
+        }
+
+        @Override
+        @Transactional
+        public void setAsText(String text) throws IllegalArgumentException {
+            int id =  Integer.valueOf(text);
+             RoleEntity re = roleDao.getEntityById(id);
+            setValue(re);
+            //setSource(re);
+            //super.setAsText(text);
+        }
+
+
+        @Override
+        public String getAsText() {
+            return super.getAsText();
+            //RoleEntity re = (RoleEntity) getValue();
+            //if(re == null) return "";
+            //return re.getRole();
+        }
+    }
+
+
+//    protected void initBinder(WebDataBinder binder) throws Exception {
+//        binder.registerCustomEditor(Set.class, "role", new CustomCollectionEditor(Set.class) {
+//            protected Object convertElement(Object element) {
+//                if (element != null) {
+//                    String ur = (String)element;
+//                    RoleEntity role = new RoleEntity();
+//                    role.setRole(ur);
+//                    return role;
+//                }
+//                return null;
+//            }
+//        });
+//    }
 
 
 

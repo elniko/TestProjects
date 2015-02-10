@@ -2,23 +2,24 @@ package spring;
 
 import log4j2.MyDbProvider;
 import log4j2.SqlQueryAppender;
-
+import org.apache.commons.dbcp.BasicDataSource;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.*;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.env.Environment;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.password.StandardPasswordEncoder;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.persistence.EntityManagerFactory;
+import javax.sql.DataSource;
 import java.util.Properties;
 
 /**
@@ -28,23 +29,24 @@ import java.util.Properties;
 @EnableTransactionManagement
 @ComponentScan(basePackages = {"dao","service","log4j2" })
 @PropertySource(value = "classpath:db.properties")
-@ImportResource("classpath:mmi3-security.xml")
+//@ImportResource(value = "/WEB-INF/mmi3-security.xml")
+@Import({SecurityConfig.class})
 public class SpringConfig {
 
     @Autowired
     Environment env;
 
-    //@Value()
-    String url;
 
     @Bean
     public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
         return new PropertySourcesPlaceholderConfigurer();
     }
 
+    @Bean
+    public DataSource getDataSource() {
 
-    public DriverManagerDataSource getDataSource() {
-        DriverManagerDataSource ds = new DriverManagerDataSource();
+        BasicDataSource ds = new BasicDataSource();
+        //DriverManagerDataSource ds = new DriverManagerDataSource();
         ds.setUrl(env.getProperty("ds.url"));
         ds.setUsername(env.getProperty("ds.user"));
         ds.setPassword(env.getProperty("ds.pass"));
@@ -59,10 +61,10 @@ public class SpringConfig {
     }
 
     @Bean(name = "entytyManagerFactory")
-    public LocalContainerEntityManagerFactoryBean getEntityManagerFactory() {
+    public LocalContainerEntityManagerFactoryBean getEntityManagerFactory(DataSource ds) {
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
         factory.setPackagesToScan("entity");
-        factory.setDataSource(getDataSource());
+        factory.setDataSource(ds);
         factory.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         factory.setJpaProperties(getProperties());
         return factory;
@@ -80,6 +82,11 @@ public class SpringConfig {
         appender.setExecutor(prov::execQuery);
         coreLogger.addAppender(appender);
         return logger;
+    }
+
+    @Bean(name ="passwordEncoder")
+    public PasswordEncoder getPasswordEncoder() {
+        return new StandardPasswordEncoder();
     }
 
     private Properties getProperties() {

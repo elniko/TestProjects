@@ -6,8 +6,8 @@ import javax.persistence.Entity;
 /**
  * Created by stagiaire on 21/01/2015.
  */
-@Entity
-@Table(name = "resource_type")
+//@Entity
+//@Table(name = "resource_type")
 public class ResourceTypeEntity extends entity.Entity {
 
     @Column(nullable = false, unique = true)

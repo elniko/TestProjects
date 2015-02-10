@@ -35,12 +35,12 @@ public class Init {
             initService.clearProcessStatus();
             initService.clearProcessType();
             initService.clearPropertyType();
-            initService.clearResourceType();
+            //initService.clearResourceType();
         }
         initService.initRoles(Roles.values());
         initService.initProcessStatuses(ProcessStatus.values());
         initService.initProcessTypes(Process.values());
-        initService.initResourceTypes(Files.values());
+        //initService.initResourceTypes(Files.values());
         initService.initPropertyTypes(PropertTypes.values());
 
 

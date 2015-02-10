@@ -4,7 +4,7 @@
 <body>
 <h1>Title : ${title}</h1>
 <h1>Message : ${message}</h1>
-
+<h4>Jrabel test3h</h4>
 <sec:authorize access="hasRole('ROLE_USER')">
     <!-- For login user -->
     <c:url value="/j_spring_security_logout" var="logoutUrl" />

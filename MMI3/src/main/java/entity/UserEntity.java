@@ -42,9 +42,9 @@ public class UserEntity extends entity.Entity {
     }
 
    // @OneToMany(cascade =  CascadeType.ALL, mappedBy = "user", fetch = FetchType.LAZY)
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "role_id", foreignKey = @ForeignKey(name ="fk_role" ))
-   RoleEntity role ;
+    RoleEntity role ;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.LAZY)
     Set<ProcessEntity> processList = new HashSet<>();

@@ -28,13 +28,13 @@ public class RoleEntity extends entity.Entity{
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "role", orphanRemoval = true)
     Set<UserEntity> userList =  new HashSet<>();
 
-    //public int getId() {
-      //  return id;
-    //}
+    public int getId() {
+        return id;
+    }
 
-    //public void setId(int id) {
-      //  this.id = id;
-    //}
+    public void setId(int id) {
+       this.id = id;
+    }
 
     public String getRole() {
         return role;

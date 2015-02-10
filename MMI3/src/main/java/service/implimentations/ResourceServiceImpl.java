@@ -32,11 +32,8 @@ public class ResourceServiceImpl implements ResourceService{
 
     @Transactional
     @Override
-    public int addResource(byte[] resource, String type, String user) throws BadResourceTypeException, UserNotExistsException {
-        List<ResourceTypeEntity> types = resourceTypeDao.findByName(type);
-        if(types.size() == 0) {
-            throw new BadResourceTypeException(type);
-        }
+    public int addResource(byte[] resource, String ext ,String type, String user) throws BadResourceTypeException, UserNotExistsException {
+
 
         List<UserEntity> users = userDao.findByUserName(user);
         if(users.size() == 0) {
@@ -44,7 +41,8 @@ public class ResourceServiceImpl implements ResourceService{
         }
 
         ResourceEntity entity = new ResourceEntity();
-        entity.setType(types.get(0));
+        entity.setResourceExt(ext);
+       // entity.setType(types.get(0));
         entity.setUser(users.get(0));
         entity.setResource(resource);
         resourceDao.saveEntity(entity);
@@ -53,19 +51,17 @@ public class ResourceServiceImpl implements ResourceService{
 
     @Override
     @Transactional
-    public int addResource(byte[] resource, int typeId, int userId) throws BadResourceTypeException, UserNotExistsException {
-         ResourceTypeEntity type = resourceTypeDao.getEntityById(typeId);
-         if(type == null) {
-             throw new BadResourceTypeException("ID: " + typeId);
-         }
-         UserEntity user = userDao.getEntityById(userId);
-        if(user == null) {
-            throw new UserNotExistsException("ID: " + userId);
+    public int addResource(byte[] resource, String ext, int typeId, String user) throws BadResourceTypeException, UserNotExistsException {
+
+        List<UserEntity> users = userDao.findByUserName(user);
+        if(users.size() == 0) {
+            throw new UserNotExistsException(user);
         }
         ResourceEntity entity = new ResourceEntity();
-        entity.setUser(user);
-        entity.setType(type);
+        entity.setUser(users.get(0));
+        //entity.setType(type);
         entity.setResource(resource);
+        entity.setResourceExt(ext);
         resourceDao.saveEntity(entity);
         return entity.getId();
     }

@@ -41,7 +41,7 @@
                 </tr-->
                 <tr>
                     <th><label for="role">Role:</label></th>
-                    <td><sf:select multiple="true" path="role" size="4" maxlength="15" id="role" items="${roles}" >
+                    <td><sf:select multiple="false" path="role" size="4" maxlength="15" id="role" items="${roles}" itemLabel="role" itemValue="id">
 
 
                         </sf:select >

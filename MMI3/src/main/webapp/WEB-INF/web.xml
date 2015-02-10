@@ -38,10 +38,6 @@
         <param-value>spring.SpringConfig</param-value>
     </context-param>
 
-
-
-
-
     <filter>
         <filter-name>springSecurityFilterChain</filter-name>
         <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
@@ -51,17 +47,7 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-    <!--filter>
-        <filter-name>multipartFilter</filter-name>
-        <filter-class>org.springframework.web.multipart.support.MultipartFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>multipartFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping-->
-
-
-    <filter>
+     <filter>
         <filter-name>log4jServletFilter</filter-name>
         <filter-class>org.apache.logging.log4j.web.Log4jServletFilter</filter-class>
     </filter>
@@ -80,5 +66,19 @@
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
+
+
+    <error-page>
+        <error-code>401</error-code>
+        <location>/mmi/errors/401</location>
+    </error-page>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/mmi/errors/404</location>
+    </error-page>
+    <error-page>
+        <error-code>403</error-code>
+        <location>/mmi/errors/403</location>
+    </error-page>
 
 </web-app>

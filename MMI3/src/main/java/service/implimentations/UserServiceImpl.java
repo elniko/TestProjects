@@ -12,6 +12,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import service.interfaces.UserService;
 
@@ -22,7 +23,7 @@ import java.util.List;
 /**
  * Created by Nick on 22/01/2015.
  */
-@Service
+@Service(value = "authService")
 public class UserServiceImpl  implements UserService {
 
     @Autowired
@@ -31,7 +32,8 @@ public class UserServiceImpl  implements UserService {
     @Autowired
     UserDao userDao;
 
-
+    @Autowired
+    PasswordEncoder encoder;
 
 
     @Override
@@ -53,8 +55,16 @@ public class UserServiceImpl  implements UserService {
         user.setRole(roles.get(0));
         user.setEnabled(true);
         userDao.saveEntity(user);
-
     }
+
+
+    @Override
+    @Transactional
+    public void addUser(UserEntity user) {
+        user.setPassword(encodePassword(user.getPassword()));
+        userDao.saveEntity(user);
+    }
+
 
     @Override
     public void removeUsers(int[] ids) {
@@ -69,7 +79,8 @@ public class UserServiceImpl  implements UserService {
     }
 
     private String encodePassword(String pass) {
-        return pass;
+        return encoder.encode(pass);
+        //return pass;
     }
 
     @Override
