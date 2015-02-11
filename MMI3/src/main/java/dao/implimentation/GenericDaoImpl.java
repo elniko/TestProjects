@@ -2,11 +2,13 @@ package dao.implimentation;
 
 import dao.interfaces.GenericDao;
 import entity.Entity;
+import entity.UserEntity;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 import javax.persistence.Query;
 import java.util.Collection;
 
@@ -24,7 +26,7 @@ public class GenericDaoImpl<T extends Entity> implements GenericDao<T> {
         clazz = cl;
     }
 
-    @PersistenceContext
+    @PersistenceContext()
     protected  EntityManager em;
 
 
@@ -34,6 +36,32 @@ public class GenericDaoImpl<T extends Entity> implements GenericDao<T> {
             order = " order by " + order;
         }
         Query query = em.createQuery("from " + clazz.getName() + order);
+        query.setFirstResult(start);
+        if (count > 0) {
+            query.setMaxResults(count);
+        }
+        return query.getResultList();
+    }
+
+    public Collection<T> getAllByCondition(String alias, String condition, int start, int count, String order) {
+        if (!order.equals("")) {
+            order = " order by " + order;
+        }
+        Query query = em.createQuery("from " + clazz.getName() + " " + alias + " where " + condition + " "  + order);
+        query.setFirstResult(start);
+        if (count > 0) {
+            query.setMaxResults(count);
+        }
+        return query.getResultList();
+    }
+
+
+    public Collection<T> getAllByUserAndCondition(String alias, UserEntity user ,String condition, int start, int count, String order) {
+        if (!order.equals("")) {
+            order = " order by " + order;
+        }
+        Query query = em.createQuery("from " + clazz.getName() + " " + alias + " where " + alias + ".user=:user " + condition + " "  + order);
+        query.setParameter("user", user);
         query.setFirstResult(start);
         if (count > 0) {
             query.setMaxResults(count);

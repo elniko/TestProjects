@@ -68,8 +68,14 @@ public class ResourceServiceImpl implements ResourceService{
 
     @Override
     @Transactional
-    public List<ResourceEntity> getAllResources(int start, int count, String order) {
-        return (List<ResourceEntity>) resourceDao.getAllEntities(start, count, order);
+    public List<ResourceEntity> getAllResources(String user, int start, int count, String order) throws UserNotExistsException {
+        List<UserEntity> users = userDao.findByUserName(user);
+        if(users.size() == 0) {
+            throw new UserNotExistsException(user);
+        }
+        List<ResourceEntity> res = (List<ResourceEntity>) resourceDao.getAllByUserAndCondition("r", users.get(0), "", start,count, order);
+
+        return res;
     }
 
 

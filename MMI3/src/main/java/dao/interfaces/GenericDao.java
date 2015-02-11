@@ -1,6 +1,7 @@
 package dao.interfaces;
 
 import entity.Entity;
+import entity.UserEntity;
 
 import java.util.Collection;
 
@@ -25,7 +26,7 @@ public interface GenericDao<T extends Entity> {
 
     public void setClass(Class<T> cl);
 
-
+    public Collection<T> getAllByUserAndCondition(String alias, UserEntity user ,String condition, int start, int count, String order);
 
 
 }

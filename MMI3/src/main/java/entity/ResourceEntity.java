@@ -1,5 +1,7 @@
 package entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.persistence.Entity;
 import java.util.HashSet;
@@ -20,10 +22,12 @@ public class ResourceEntity extends entity.Entity{
     //@JoinColumn(name = "type_id", nullable = false, foreignKey = @ForeignKey(name = "fk_type_resource"))
     //ResourceTypeEntity type;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", foreignKey = @ForeignKey(name="fk_user_resource"))
     UserEntity user;
 
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "resourceList")
     Set<ProcessEntity> processList = new HashSet<>();
 

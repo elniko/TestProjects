@@ -17,5 +17,5 @@ public interface ResourceService {
 
     public int addResource(byte[] resource, String ext , int typeId, String user) throws BadResourceTypeException, UserNotExistsException;
 
-    public List<ResourceEntity> getAllResources(int start, int count, String order);
+    public List<ResourceEntity> getAllResources(String user, int start, int count, String order) throws UserNotExistsException;
 }

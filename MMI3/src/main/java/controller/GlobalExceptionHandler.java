@@ -1,13 +1,19 @@
 package controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import exceptions.ExceptionJSONInfo;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+import org.springframework.web.servlet.mvc.multiaction.NoSuchRequestHandlingMethodException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,24 +23,29 @@ import java.io.IOException;
  * Created by Nick on 02/02/2015.
  */
 @ControllerAdvice
-public class GlobalExceptionHandler {
+public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
 
     @Autowired
     Logger logger;
 
+
+    @Override
+    protected ResponseEntity<Object> handleNoSuchRequestHandlingMethod(NoSuchRequestHandlingMethodException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
+        ExceptionJSONInfo exJson = new ExceptionJSONInfo();
+        //exJson.setUrl(request.get);
+        exJson.setMessage(ex.getMessage());
+        exJson.setException(ex.getClass().getSimpleName());
+        logger.error("Exception: ", ex);
+        ResponseEntity re = new ResponseEntity(String.format(
+                "{\"error\":{\"java.class\":\"%s\", \"message\":\"%s\"}}", ex.getClass(), ex.getMessage()), headers, HttpStatus.OK);
+        return re;
+    }
+
     @ExceptionHandler(value = Exception.class)
     @ResponseStatus(value = HttpStatus.OK)
     public @ResponseBody ExceptionJSONInfo exHandler(HttpServletRequest request, Exception ex) {
-
-        String url = (String) request.getAttribute("url");
-
-
-
         ExceptionJSONInfo exJson = new ExceptionJSONInfo();
-        if(url == "")
-         exJson.setUrl(request.getRequestURL().toString());
-        else
-            exJson.setUrl(url);
+        exJson.setUrl(request.getRequestURL().toString());
         exJson.setMessage(ex.getMessage());
         exJson.setException(ex.getClass().getSimpleName());
         logger.error("Exception: ", ex);

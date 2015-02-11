@@ -38,8 +38,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http.authorizeRequests()
-                .antMatchers("/mmi/file/**").hasRole("ADMIN")
-                .and().csrf().and()
+                .antMatchers("/file/**").hasRole("ADMIN")
+                .and().csrf().disable()
                 .httpBasic();
 
 //        http.authorizeRequests().antMatchers("/SpringSecurity/admin/**")
