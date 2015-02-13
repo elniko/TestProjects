@@ -5,19 +5,14 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import entity.ResourceEntity;
-import exceptions.BadRequestParameters;
-import exceptions.BadResourceTypeException;
-import exceptions.UserNotExistsException;
+import exceptions.*;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.MatrixVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.multiaction.NoSuchRequestHandlingMethodException;
 import service.interfaces.ResourceService;
@@ -54,7 +49,8 @@ public class FileController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String name = auth.getName();
         String ext = FilenameUtils.getExtension(file.getOriginalFilename());
-        return resourceService.addResource(file.getBytes(), ext, type, name) + "";
+        String filename = file.getOriginalFilename();
+        return resourceService.addResource(file.getBytes(), filename, ext, type, name) + "";
     }
 
 
@@ -67,37 +63,54 @@ public class FileController {
         return resourceService.addResource(file.getBytes(), ext, typeId, name) + "";
     }
 
-@RequestMapping("/ex")
-public String getException(HttpServletRequest req) throws NoSuchRequestHandlingMethodException {
-    throw new NoSuchRequestHandlingMethodException(req);
-}
+    @RequestMapping("/ex")
+    public String getException(HttpServletRequest req) throws NoSuchRequestHandlingMethodException {
+        throw new NoSuchRequestHandlingMethodException(req);
+    }
 
-    @RequestMapping(value = {"/", "all"}, method = RequestMethod.GET)
-    public List<ResourceEntity> getFiles(@MatrixVariable Optional<String> st) throws UserNotExistsException {
-        int start = 0;
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    public List<ResourceEntity> getFiles(@RequestParam(value = "start") Optional <Integer> st,
+                                         @RequestParam(value = "count") Optional <Integer> co,
+                                         @RequestParam(value = "order") Optional<String> or) throws UserNotExistsException {
+
+      Integer start =  st.orElse(0);
+      Integer count = co.orElse(0);
+      String order = or.orElse("");
+
+      if(!order.equals("")) {
+         order = order.replace("_", " ");
+      }
+
+      Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+      String name = auth.getName();
+        List<ResourceEntity> resources = resourceService.getAllResources(name, start, count, order);
+
+      return resources;
+    }
+
+    @RequestMapping(value = "/remove/{ids}", method = RequestMethod.GET)
+    public String removeResources(@PathVariable int[] ids) throws EntityNotExistsException, UserNotExistsException, BadOwnerException {
         int count = 0;
-        String order = "";
-
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String name = auth.getName();
 
-        st.ifPresent(value -> logger.info(value));
-//        if(params != null) {
-//            if (params.containsKey("order")) {
-//                order = params.get("order");
-//            }
-//            if (params.containsKey("start")) {
-//                start = Integer.parseInt(params.get("start"));
-//            }
-//            if (params.containsKey("count")) {
-//                count = Integer.parseInt(params.get("count"));
-//            }
-//        }
+        if(auth.getAuthorities().stream().anyMatch((authtority) -> authtority.getAuthority().equals("ROLE_ADMIN"))) {
+            for ( int id : ids) {
+                if (resourceService.removeResource(id)) {
+                    count++;
+                }
+            }
+        } else {
+            for (int id : ids) {
+                if (resourceService.removeResource(id, name)) {
+                    count++;
+                }
+            }
+        }
 
-          List<ResourceEntity> resources = resourceService.getAllResources(name, start, count, order);
-
-        return resources;
+        return String.format("Deleted: %s items", count);
     }
+
 
 
 

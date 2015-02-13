@@ -9,10 +9,8 @@ import org.springframework.format.FormatterRegistry;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
-import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.*;
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
@@ -24,7 +22,7 @@ import java.util.List;
 @Configuration
 @EnableWebMvc
 @ComponentScan("controller")
-public class ServletConfig extends WebMvcConfigurerAdapter  {
+public class ServletConfig extends WebMvcConfigurationSupport {
 
 
     @Bean
@@ -34,6 +32,14 @@ public class ServletConfig extends WebMvcConfigurerAdapter  {
         viewResolver.setPrefix("/WEB-INF/pages/");
         viewResolver.setSuffix(".jsp");
         return viewResolver;
+    }
+
+    @Override
+    @Bean
+    public RequestMappingHandlerMapping requestMappingHandlerMapping() {
+        RequestMappingHandlerMapping r = super.requestMappingHandlerMapping();
+        r.setRemoveSemicolonContent(false);
+        return r;
     }
 
     @Bean

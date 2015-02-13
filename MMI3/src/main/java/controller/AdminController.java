@@ -54,7 +54,7 @@ public class AdminController
     }
 
 
-    @RequestMapping(value = "user", method = RequestMethod.GET, params = "new")
+    @RequestMapping(value = "/user", method = RequestMethod.GET, params = "new")
     public String createUser(Model model) {
         model.addAttribute("user", new UserEntity());
         List<RoleEntity> roles = (List<RoleEntity>) roleDao.getAllEntities();

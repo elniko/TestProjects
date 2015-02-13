@@ -3,6 +3,7 @@ package dao.implimentation;
 import dao.interfaces.GenericDao;
 import entity.Entity;
 import entity.UserEntity;
+import exceptions.EntityNotExistsException;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
 
@@ -79,6 +80,8 @@ public class GenericDaoImpl<T extends Entity> implements GenericDao<T> {
         return em.find(clazz, id);
     }
 
+
+
     @Override
     public void saveEntity(Entity entity) {
         em.persist(entity);
@@ -90,14 +93,25 @@ public class GenericDaoImpl<T extends Entity> implements GenericDao<T> {
     }
 
     @Override
-    public void remove(int id) {
+    public boolean remove(int id) throws EntityNotExistsException {
         T entity = getEntityById(id);
-        remove(entity);
+        if (entity == null)
+            throw new EntityNotExistsException("Entity not exists id: " + id);
+        return remove(entity);
     }
 
     @Override
-    public void remove(Entity entity) {
+    public boolean remove(Entity entity) throws EntityNotExistsException {
+        if (entity == null)
+            throw new EntityNotExistsException();
+
         em.remove(entity);
+        entity = getEntityById(entity.getId());
+        if(entity != null) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
 

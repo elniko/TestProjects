@@ -1,5 +1,6 @@
 package controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import exceptions.ExceptionJSONInfo;
 import org.apache.logging.log4j.Logger;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -38,6 +40,29 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
         logger.error("Exception: ", ex);
         ResponseEntity re = new ResponseEntity(String.format(
                 "{\"error\":{\"java.class\":\"%s\", \"message\":\"%s\"}}", ex.getClass(), ex.getMessage()), headers, HttpStatus.OK);
+        return re;
+    }
+
+
+    @Override
+    protected ResponseEntity<Object> handleHttpRequestMethodNotSupported(HttpRequestMethodNotSupportedException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
+
+        ExceptionJSONInfo exJson = new ExceptionJSONInfo();
+        //exJson.setUrl(request.get);
+        exJson.setMessage(ex.getMessage());
+        exJson.setException(ex.getClass().getSimpleName());
+        logger.error("Exception: ", ex);
+
+        ObjectMapper mapper = new ObjectMapper();
+        String jsonString = null;
+        try {
+            jsonString = mapper.writeValueAsString(exJson);
+        } catch (JsonProcessingException e) {
+
+            return new ResponseEntity(e.getMessage(), headers, HttpStatus.OK);
+        }
+        ResponseEntity re = new ResponseEntity(jsonString, headers, HttpStatus.OK);
+
         return re;
     }
 

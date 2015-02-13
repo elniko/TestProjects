@@ -2,6 +2,7 @@ package dao.interfaces;
 
 import entity.Entity;
 import entity.UserEntity;
+import exceptions.EntityNotExistsException;
 
 import java.util.Collection;
 
@@ -20,9 +21,9 @@ public interface GenericDao<T extends Entity> {
 
     public void updateEntity(T entity);
 
-    public void remove(int id);
+    public boolean remove(int id) throws EntityNotExistsException;
 
-    public void remove(Entity  entity);
+    public boolean remove(Entity  entity) throws EntityNotExistsException;
 
     public void setClass(Class<T> cl);
 

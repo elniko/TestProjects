@@ -26,6 +26,18 @@ public class ErrorController {
         throw new HttpClientErrorException(HttpStatus.NOT_FOUND);
     }
 
+    @RequestMapping("/400")
+    public void handleError400() {
+        throw new HttpClientErrorException(HttpStatus.BAD_REQUEST);
+    }
+
+    @RequestMapping("/405")
+    public void handleError405() {
+        throw new HttpClientErrorException(HttpStatus.BAD_REQUEST);
+    }
+
+
+
     @RequestMapping("/403")
     public void handleError403(HttpServletRequest req) {
         String url = req.getRequestURL().toString();

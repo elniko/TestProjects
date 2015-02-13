@@ -1,6 +1,8 @@
 package entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import javax.persistence.Entity;
@@ -22,8 +24,8 @@ public class ResourceEntity extends entity.Entity{
     //@JoinColumn(name = "type_id", nullable = false, foreignKey = @ForeignKey(name = "fk_type_resource"))
     //ResourceTypeEntity type;
 
-    @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonBackReference
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", foreignKey = @ForeignKey(name="fk_user_resource"))
     UserEntity user;
 
@@ -37,6 +39,18 @@ public class ResourceEntity extends entity.Entity{
 
     @Column(name = "resource_ext")
     String resourceExt;
+
+    @Column(name="resource_name")
+    String resourceName;
+
+
+    public String getResourceName() {
+        return resourceName;
+    }
+
+    public void setResourceName(String resourceName) {
+        this.resourceName = resourceName;
+    }
 
     public String getResourceExt() {
         return resourceExt;

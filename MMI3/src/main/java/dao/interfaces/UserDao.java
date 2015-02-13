@@ -10,4 +10,6 @@ import java.util.List;
 public interface UserDao extends GenericDao<UserEntity> {
 
     public List<UserEntity> findByUserName(String name);
+
+    public boolean checkResource(int resourcId, int userId);
 }
