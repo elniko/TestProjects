@@ -35,7 +35,7 @@ public class ResourceServiceImpl implements ResourceService{
 
     @Transactional
     @Override
-    public int addResource(byte[] resource, String filename, String ext ,String type, String user) throws BadResourceTypeException, UserNotExistsException {
+    public int addResource(byte[] resource, String filename, String ext, String user) throws  UserNotExistsException {
 
         List<UserEntity> users = userDao.findByUserName(user);
         if(users.size() == 0) {
@@ -54,7 +54,7 @@ public class ResourceServiceImpl implements ResourceService{
 
     @Override
     @Transactional
-    public int addResource(byte[] resource, String ext, int typeId, String user) throws BadResourceTypeException, UserNotExistsException {
+    public int addResource(byte[] resource, String ext, int typeId, String user) throws      UserNotExistsException {
 
         List<UserEntity> users = userDao.findByUserName(user);
         if(users.size() == 0) {
@@ -107,7 +107,7 @@ public class ResourceServiceImpl implements ResourceService{
 
     @Override
     @Transactional
-    public void removeResources(int[] ids) {
+    public void removeResources(int[] ids) throws EntityNotExistsException {
         resourceDao.removeResources(ids);
     }
 

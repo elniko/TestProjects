@@ -21,7 +21,8 @@ public class RoleDaoImpl extends GenericDaoImpl<RoleEntity> implements RoleDao {
 
     @Override
     public List<RoleEntity> findByRole(String role) {
-        Query query = em.createQuery("from " + clazz.getName());
+        Query query = em.createQuery("from " + clazz.getName() + " r where r.role= :role");
+        query.setParameter("role", role);
 
        return query.getResultList();
     }

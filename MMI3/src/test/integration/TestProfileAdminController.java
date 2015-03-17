@@ -1,0 +1,224 @@
+package integration;
+
+import entity.ProfileEntity;
+import entity.UserEntity;
+import exceptions.EntityNotExistsException;
+import org.apache.commons.codec.binary.Base64;
+import org.junit.*;
+import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.security.web.FilterChainProxy;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.RestTemplate;
+import service.interfaces.UserService;
+import spring.ServletConfig;
+import spring.SpringConfig;
+
+import javax.annotation.PostConstruct;
+import java.util.*;
+
+/**
+ * Created by Nick on 26/02/2015.
+ */
+
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = {SpringConfig.class})
+public class TestProfileAdminController {
+
+   // @Autowired
+    UserService serv;
+
+
+    @PostConstruct
+    public void postCOnstruct() {
+        userService = serv;
+    }
+
+    static UserService userService;
+
+    final static String SUPER_USER = "super";
+    final static String SUPER_PASSWORD = "super";
+    final static String URL = "http://127.0.0.1:8080/";
+    final static String USER = "user";
+    final static String PASSWORD = "user";
+
+    static RestTemplate restTemplate;
+    static HttpHeaders headersSuper;
+    static HttpHeaders headers;
+
+    static int userId = 0;
+
+    static List<LinkedHashMap<String, String>> list;
+
+    @BeforeClass
+    public static void initialize() throws Exception {
+
+        JettyRunner.runServer();
+        restTemplate = new RestTemplate();
+        headers = new HttpHeaders();
+        headersSuper = new HttpHeaders();
+
+        String authString = SUPER_USER + ":" + SUPER_PASSWORD;
+        String authStringEnc = new String(Base64.encodeBase64(authString.getBytes()));
+        headersSuper.add("Authorization", "Basic " + authStringEnc);
+
+        authString = USER + ":" + PASSWORD;
+        authStringEnc = new String(Base64.encodeBase64(authString.getBytes()));
+        headers.add("Authorization", "Basic " + authStringEnc);
+
+
+
+    }
+
+
+    //@AfterClass
+    public static void tearDown() throws EntityNotExistsException {
+       List<UserEntity> list =  userService.getAllUsers(0, 0, "", "USER");
+
+        for(UserEntity user : list) {
+            userService.removeUsers(user.getId());
+        }
+    }
+
+
+    @Test
+    public void test001AddUser() {
+        HttpEntity entity = new HttpEntity(null, headersSuper);
+        HttpEntity res = restTemplate.exchange(URL + String.format("user/add?role=ROLE_USER&name=%s&password=%s&email=mail@mail.com", USER, PASSWORD), HttpMethod.GET, entity, String.class);
+        Assert.assertFalse("Exception while adding", res.getBody().toString().contains("exception"));
+        userId = Integer.valueOf(res.getBody().toString());
+    }
+
+    @Test
+    public void test002AddProfile() {
+        HttpEntity entity = new HttpEntity(null, headers);
+        HttpEntity res = restTemplate.exchange(URL + "user/profile/add?params=hello", HttpMethod.POST, entity, String.class);
+        Assert.assertFalse("Exception while adding",res.getBody().toString().contains("exception"));
+        try {
+            userId = Integer.valueOf(res.getBody().toString());
+        } catch (Exception e) {
+            Assert.fail("Not valid ID");
+        }
+    }
+
+    @Test
+    public void test003GetProfile() {
+        HttpEntity entity = new HttpEntity(null, headers);
+        HttpEntity res = restTemplate.exchange(URL + "user/profile/" + userId, HttpMethod.GET, entity, ProfileEntity.class);
+        try {
+            ProfileEntity profile = (ProfileEntity) res.getBody();
+        } catch (Exception ex) {
+            Assert.fail();
+        }
+    }
+
+    @Test
+    public void test004SetActive() {
+        HttpEntity entity = new HttpEntity(null, headers);
+        restTemplate.exchange(URL + "user/profile/active/" + userId, HttpMethod.GET, entity, ProfileEntity.class);
+        HttpEntity res = restTemplate.exchange(URL + "user/profile/" + userId, HttpMethod.GET, entity, ProfileEntity.class);
+        try {
+            ProfileEntity profile = (ProfileEntity) res.getBody();
+            Assert.assertTrue(profile.isActive());
+        } catch (Exception ex) {
+            Assert.fail();
+        }
+    }
+
+    @Test
+    public void test005GetProfileUnauthorized() {
+        HttpEntity entity = new HttpEntity(null, headers);
+        HttpEntity res = restTemplate.exchange(URL + "user/profileById/" + userId, HttpMethod.GET, entity, String.class);
+        Assert.assertTrue(res.getBody().toString().contains("exception"));
+    }
+
+    @Test
+    public void test006GetPofileAdmin() {
+        HttpEntity entity = new HttpEntity(null, headersSuper);
+
+        HttpEntity res = restTemplate.exchange(URL + "user/profileById/{userId}", HttpMethod.GET, entity, ProfileEntity.class, userId);
+        try {
+            ProfileEntity profile = (ProfileEntity) res.getBody();
+        } catch (Exception ex) {
+            Assert.fail();
+        }
+    }
+
+    @Test
+    public void test007EditProfile() {
+        String expected = "New value";
+        MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+        params.add("params", expected);
+        HttpEntity entity = new HttpEntity(params, headers);
+        restTemplate.exchange(URL + "user/profile/edit/{userId}", HttpMethod.POST, entity, String.class, userId);
+        HttpEntity res = restTemplate.exchange(URL + "user/profile/" + userId, HttpMethod.GET, entity, ProfileEntity.class);
+        try {
+            ProfileEntity profile = (ProfileEntity) res.getBody();
+            Assert.assertTrue(profile.getParams().equals(expected));
+        } catch (Exception ex) {
+            Assert.fail();
+        }
+    }
+
+    @Test
+    public void test008EditProfile() {
+        String expected = "New value 2";
+        MultiValueMap<String, Object> params = new LinkedMultiValueMap<>();
+
+        ProfileEntity pe = new ProfileEntity();
+        pe.setId(userId);
+        pe.setParams(expected);
+
+        params.add("profile", pe);
+        HttpEntity entity = new HttpEntity(pe, headers);
+
+        restTemplate.exchange(URL + "user/profile/edit", HttpMethod.POST, entity, String.class);
+        HttpEntity res = restTemplate.exchange(URL + "user/profile/" + userId, HttpMethod.GET, entity, ProfileEntity.class);
+        try {
+            ProfileEntity profile = (ProfileEntity) res.getBody();
+            Assert.assertTrue(profile.getParams().equals(expected));
+        } catch (Exception ex) {
+            Assert.fail();
+        }
+    }
+
+
+    @Test
+    public void test009GetProfiles() {
+        HttpEntity entity = new HttpEntity(null, headers);
+        restTemplate.exchange(URL + "user/profile/add?params=hello", HttpMethod.POST, entity, String.class);
+        HttpEntity res = restTemplate.exchange(URL + "user/profile/all", HttpMethod.GET, entity, List.class);
+        list = (List<LinkedHashMap<String, String>>) res.getBody();
+        Assert.assertTrue(list.size() > 0);
+    }
+
+
+    @Test
+    public void test010RemoveProfiles() {
+        HttpEntity entity = new HttpEntity(null, headers);
+        String ids = "";
+        for(LinkedHashMap pe : list) {
+            ids += pe.get("id") + ",";
+        }
+        Optional<String> val = list.stream().map(value->String.valueOf(value.get("id"))).reduce((v1, v2) -> v1 + "," + v2);
+
+        val.ifPresent((value) -> {
+            HttpEntity res = restTemplate.exchange(URL + "user/profile/remove/{ids}", HttpMethod.GET, entity, String.class, value);
+            Assert.assertTrue(res.getBody().toString().contains("Deleted: 2 items"));
+        });
+
+
+
+    }
+
+
+
+}

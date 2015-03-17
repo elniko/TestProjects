@@ -3,16 +3,23 @@ package spring;
 import log4j2.MyDbProvider;
 import log4j2.SqlQueryAppender;
 import org.apache.commons.dbcp.BasicDataSource;
+import org.apache.log4j.spi.LoggerFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.*;
+import org.springframework.context.event.SimpleApplicationEventMulticaster;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.env.Environment;
+import org.springframework.core.task.SimpleAsyncTaskExecutor;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scripting.groovy.GroovyScriptFactory;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.StandardPasswordEncoder;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -27,10 +34,12 @@ import java.util.Properties;
  */
 @Configuration
 @EnableTransactionManagement
-@ComponentScan(basePackages = {"dao","service","log4j2" })
-@PropertySource(value = "classpath:db.properties")
+@EnableScheduling
+//@EnableWebMvcSecurity
+
+@PropertySource(value = {"classpath:db.properties"})
 //@ImportResource(value = "/WEB-INF/mmi3-security.xml")
-@Import({SecurityConfig.class})
+//@Import({SecurityConfig.class})
 public class SpringConfig {
 
     @Autowired
@@ -60,7 +69,7 @@ public class SpringConfig {
         return transaction;
     }
 
-    @Bean(name = "entytyManagerFactory")
+    @Bean(name = "entityManagerFactory")
     public LocalContainerEntityManagerFactoryBean getEntityManagerFactory(DataSource ds) {
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
         factory.setPackagesToScan("entity");
@@ -73,14 +82,15 @@ public class SpringConfig {
     @Bean
     @Autowired
     public Logger getLogger(ApplicationContext ctx) {
+
         Logger logger = LogManager.getLogger("controller.RestController");
         org.apache.logging.log4j.core.Logger coreLogger = (org.apache.logging.log4j.core.Logger)logger;
         org.apache.logging.log4j.core.config.Configuration config =  coreLogger.getContext().getConfiguration();
         SqlQueryAppender appender = (SqlQueryAppender) config.getAppender("QueryAppender");
         MyDbProvider prov = new MyDbProvider();
         prov.setContext(ctx);
-        appender.setExecutor(prov::execQuery);
-        coreLogger.addAppender(appender);
+       // appender.setExecutor(prov::execQuery);
+       // coreLogger.addAppender(appender);
         return logger;
     }
 
@@ -96,5 +106,14 @@ public class SpringConfig {
         props.setProperty("hibernate.show_sql", env.getProperty("hibernate.showsql"));
         return props;
     }
+
+    @Bean
+    public SimpleApplicationEventMulticaster applicationEventMulticaster() {
+        SimpleApplicationEventMulticaster caster = new SimpleApplicationEventMulticaster();
+        caster.setTaskExecutor(new SimpleAsyncTaskExecutor());
+        return caster;
+    }
+
+
 
 }

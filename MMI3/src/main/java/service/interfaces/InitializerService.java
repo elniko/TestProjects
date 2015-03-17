@@ -2,6 +2,7 @@ package service.interfaces;
 
 import dao.interfaces.GenericDao;
 import entity.Entity;
+import exceptions.EntityNotExistsException;
 
 /**
  * Created by Nick on 23/01/2015.
@@ -18,15 +19,15 @@ public interface InitializerService {
 
     public void initPropertyTypes(Object[] propTypes);
 
-    public void clearRole() ;
+    public void clearRole() throws EntityNotExistsException;
 
-    public void clearProcessType();
+    public void clearProcessType() throws EntityNotExistsException;
 
-    public void clearProcessStatus();
+    public void clearProcessStatus() throws EntityNotExistsException;
 
-    public void clearResourceType();
+    public void clearResourceType() throws EntityNotExistsException;
 
-    public void clearPropertyType();
+    public void clearPropertyType() throws EntityNotExistsException;
 
     public void clearUsers();
 

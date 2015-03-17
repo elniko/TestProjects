@@ -26,7 +26,7 @@ import java.util.*;
  */
 @Controller
 @RequestMapping(value = "/admin")
-public class AdminController
+public class AdminWebController
 {
 
     @Autowired
@@ -74,7 +74,6 @@ public class AdminController
    @InitBinder
     protected void initBinder(WebDataBinder binder, HttpServletRequest request) {
         binder.registerCustomEditor(RoleEntity.class, "role",new RolePropertyEditor(roleDao) );
-
     }
 
     private class RolePropertyEditor extends PropertyEditorSupport {

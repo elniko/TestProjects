@@ -29,5 +29,6 @@ public interface GenericDao<T extends Entity> {
 
     public Collection<T> getAllByUserAndCondition(String alias, UserEntity user ,String condition, int start, int count, String order);
 
+    public Collection<T> getAllByCondition(String alias, String condition, int start, int count, String order);
 
 }

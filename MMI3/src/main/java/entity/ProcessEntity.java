@@ -13,6 +13,10 @@ import java.util.*;
 public class ProcessEntity extends entity.Entity{
 
     @Temporal(TemporalType.TIMESTAMP)
+    @Column(name="created_at")
+    Calendar createdAt;
+
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name="started_at")
     Calendar startedAt;
 
@@ -39,13 +43,15 @@ public class ProcessEntity extends entity.Entity{
     UserEntity user;
 
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "process_resource",  joinColumns = @JoinColumn(name = "process_id"),
-           inverseJoinColumns = {@JoinColumn(name = "resource_id")}, foreignKey = @ForeignKey(name = "fk_process_resource"))
+//    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    @JoinTable(name = "process_resource",  joinColumns = @JoinColumn(name = "process_id"),
+//           inverseJoinColumns = {@JoinColumn(name = "resource_id")}, foreignKey = @ForeignKey(name = "fk_process_resource"))
+@Transient
     Set<ResourceEntity> resourceList =  new HashSet<>();
 
-    @OneToMany(mappedBy = "process")
-    @MapKeyJoinColumn(name = "property_id")
+//    @OneToMany(mappedBy = "process")
+//    @MapKeyJoinColumn(name = "property_id")
+    @Transient
     Map<PropertyEntity, PropertyValueEntity> propetyValueList;
 
     public Set<ResourceEntity> getResourceList() {
@@ -114,9 +120,17 @@ public class ProcessEntity extends entity.Entity{
         this.messageList = messageList;
     }
 
+    public Calendar getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Calendar createdAt) {
+        this.createdAt = createdAt;
+    }
+
     @PrePersist
     public void onPersist() {
         Calendar cal = Calendar.getInstance();
-        startedAt = cal;
+        createdAt = cal;
     }
 }

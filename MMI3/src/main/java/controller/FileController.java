@@ -9,9 +9,12 @@ import exceptions.*;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestWrapper;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.multiaction.NoSuchRequestHandlingMethodException;
@@ -43,30 +46,17 @@ public class FileController {
     }
 
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
-    public String uploadFile(@RequestParam MultipartFile file,
-                             @RequestParam String type) throws IOException, BadResourceTypeException, UserNotExistsException {
+    public ResponseEntity<Integer> uploadFile(@RequestParam MultipartFile file) throws IOException, UserNotExistsException {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String name = auth.getName();
         String ext = FilenameUtils.getExtension(file.getOriginalFilename());
         String filename = file.getOriginalFilename();
-        return resourceService.addResource(file.getBytes(), filename, ext, type, name) + "";
+        int res = resourceService.addResource(file.getBytes(), filename, ext, name);
+        return  new ResponseEntity<>(res, HttpStatus.OK);
     }
 
 
-    @RequestMapping(value = "/upload2", method = RequestMethod.POST)
-    public String uploadFile(@RequestParam MultipartFile file,
-                             @RequestParam int typeId) throws IOException, BadResourceTypeException, UserNotExistsException {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String name = auth.getName();
-        String ext = FilenameUtils.getExtension(file.getName());
-        return resourceService.addResource(file.getBytes(), ext, typeId, name) + "";
-    }
-
-    @RequestMapping("/ex")
-    public String getException(HttpServletRequest req) throws NoSuchRequestHandlingMethodException {
-        throw new NoSuchRequestHandlingMethodException(req);
-    }
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public List<ResourceEntity> getFiles(@RequestParam(value = "start") Optional <Integer> st,
@@ -83,7 +73,7 @@ public class FileController {
 
       Authentication auth = SecurityContextHolder.getContext().getAuthentication();
       String name = auth.getName();
-        List<ResourceEntity> resources = resourceService.getAllResources(name, start, count, order);
+      List<ResourceEntity> resources = resourceService.getAllResources(name, start, count, order);
 
       return resources;
     }

@@ -1,6 +1,7 @@
 package test;
 
 import entity.*;
+import exceptions.EntityNotExistsException;
 import exceptions.RoleNotExistException;
 import exceptions.UserAlreadyExistException;
 import org.springframework.context.ApplicationContext;
@@ -19,7 +20,7 @@ public class Init {
     enum Roles {ROLE_SUPERADMIN, ROLE_ADMIN, ROLE_USER, ROLE_GUEST}
     enum Files {TAXO, INPUT_XCT, INPUT_XRT, INPUT_XVT}
     enum Process {XCT, XRT, XVT, MERGE, SPLIT, BULK}
-    enum ProcessStatus {SHEDULED, RUNNING, STOPPED, ERROR, FINISHED}
+    enum ProcessStatus {SCHEDULED, RUNNING, STOPPED, ERROR, FINISHED, PENDING}
     enum PropertTypes {STRING, INTEGER, BOOLEAN, DATE}
 
     public void addUser(String name, String pass, String mail ,String role) throws RoleNotExistException, UserAlreadyExistException {
@@ -28,7 +29,7 @@ public class Init {
 
 
 
-    public void initTypes(boolean clearAll) {
+    public void initTypes(boolean clearAll) throws EntityNotExistsException {
 
         if(clearAll) {
             initService.clearRole();

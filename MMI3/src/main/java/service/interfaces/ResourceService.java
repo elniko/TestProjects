@@ -13,11 +13,11 @@ import java.util.List;
  */
 public interface ResourceService {
 
-    public int addResource(byte[] resource, String filename, String ext , String type, String user) throws BadResourceTypeException, UserNotExistsException;
+    public int addResource(byte[] resource, String filename, String ext, String user) throws  UserNotExistsException;
 
-    public void removeResources(int[] ids);
+    public void removeResources(int[] ids) throws EntityNotExistsException;
 
-    public int addResource(byte[] resource, String ext , int typeId, String user) throws BadResourceTypeException, UserNotExistsException;
+    public int addResource(byte[] resource, String ext , int typeId, String user) throws  UserNotExistsException;
 
     public List<ResourceEntity> getAllResources(String user, int start, int count, String order) throws UserNotExistsException;
 

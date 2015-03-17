@@ -13,11 +13,20 @@ public class ProfileEntity extends entity.Entity{
 
     String params;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @Column(name = "active")
+    boolean isActive;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
     @JoinColumn(name = "user_id", foreignKey =   @ForeignKey(name = "fk_user_profile"))
     UserEntity user;
 
+    public boolean isActive() {
+        return isActive;
+    }
 
+    public void setActive(boolean isActive) {
+        this.isActive = isActive;
+    }
 
     public String getParams() {
         return params;

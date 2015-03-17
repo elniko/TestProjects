@@ -1,5 +1,8 @@
 package entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import javax.persistence.Entity;
 import java.lang.reflect.Field;
@@ -25,6 +28,7 @@ public class RoleEntity extends entity.Entity{
 
     //@ManyToOne(cascade = CascadeType.ALL)
     //@JoinColumn(name = "user_id", nullable = false)
+    @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "role", orphanRemoval = true)
     Set<UserEntity> userList =  new HashSet<>();
 

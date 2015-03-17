@@ -1,14 +1,14 @@
 package entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 
 import javax.persistence.*;
 import javax.persistence.Entity;
-import java.util.Calendar;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by stagiaire on 16/12/2014.
@@ -18,9 +18,11 @@ import java.util.Set;
 public class UserEntity extends entity.Entity {
 
 
+    @NotEmpty
     @Column(unique = true)
     String name;
 
+    @NotEmpty
     String password;
 
     boolean enabled;
@@ -30,6 +32,7 @@ public class UserEntity extends entity.Entity {
 
 
     @Email
+    @NotEmpty
     @Column(nullable = true)
     String email;
 
@@ -42,42 +45,46 @@ public class UserEntity extends entity.Entity {
     }
 
    // @OneToMany(cascade =  CascadeType.ALL, mappedBy = "user", fetch = FetchType.LAZY)
+   @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "role_id", foreignKey = @ForeignKey(name ="fk_role" ))
     RoleEntity role ;
 
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.LAZY)
-    Set<ProcessEntity> processList = new HashSet<>();
+    List<ProcessEntity> processList = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.LAZY)
-    Set<ProfileEntity> profaileList = new HashSet<>();
+    List<ProfileEntity> profileList = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.LAZY)
-    Set<ResourceEntity> resourceList = new HashSet<>();
+    List<ResourceEntity> resourceList = new ArrayList<>();
 
 
-    public Set<ResourceEntity> getResourceList() {
+    public List<ResourceEntity> getResourceList() {
         return resourceList;
     }
 
-    public void setResourceList(Set<ResourceEntity> resourceList) {
+    public void setResourceList(List<ResourceEntity> resourceList) {
         this.resourceList = resourceList;
     }
 
-    public Set<ProcessEntity> getProcessList() {
+    public List<ProcessEntity> getProcessList() {
         return processList;
     }
 
-    public void setProcessList(Set<ProcessEntity> processList) {
+    public void setProcessList(List<ProcessEntity> processList) {
         this.processList = processList;
     }
 
-    public Set<ProfileEntity> getProfaileList() {
-        return profaileList;
+    public List<ProfileEntity> getProfileList() {
+        return profileList;
     }
 
-    public void setProfaileList(Set<ProfileEntity> profaileList) {
-        this.profaileList = profaileList;
+    public void setProfileList(List<ProfileEntity> profileList) {
+        this.profileList = profileList;
     }
 
 

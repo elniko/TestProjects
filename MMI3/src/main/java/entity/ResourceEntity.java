@@ -29,8 +29,9 @@ public class ResourceEntity extends entity.Entity{
     @JoinColumn(name = "user_id", foreignKey = @ForeignKey(name="fk_user_resource"))
     UserEntity user;
 
-    @JsonIgnore
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "resourceList")
+   // @JsonIgnore
+   // @ManyToMany(fetch = FetchType.LAZY, mappedBy = "resourceList")
+    @Transient
     Set<ProcessEntity> processList = new HashSet<>();
 
     @Column(nullable = false)

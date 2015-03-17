@@ -2,6 +2,7 @@ package service.implimentations;
 
 import dao.interfaces.*;
 import entity.*;
+import exceptions.EntityNotExistsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import service.interfaces.InitializerService;
@@ -38,6 +39,7 @@ public class InitializerServiceImpl implements InitializerService {
     PropertyTypeDao propTypeDao;
 
 
+
     public RoleDao getRoleDao() {
         return roleDao;
     }
@@ -63,9 +65,11 @@ public class InitializerServiceImpl implements InitializerService {
     }
 
 
-   private void clearAll(GenericDao<? extends Entity> dao) {
+   private void clearAll(GenericDao<? extends Entity> dao) throws EntityNotExistsException {
        Collection<? extends Entity> entities  = dao.getAllEntities();
-       entities.stream().forEach(dao::remove);
+       for(Entity entity : entities) {
+           dao.remove(entity);
+       }
     }
 
 
@@ -121,31 +125,31 @@ public class InitializerServiceImpl implements InitializerService {
 
     @Override
     @Transactional
-    public void clearRole() {
+    public void clearRole() throws EntityNotExistsException {
         clearAll(roleDao);
     }
 
     @Override
     @Transactional
-    public void clearProcessType() {
+    public void clearProcessType() throws EntityNotExistsException {
         clearAll(procTypeDao);
     }
 
     @Override
     @Transactional
-    public void clearProcessStatus() {
+    public void clearProcessStatus() throws EntityNotExistsException {
         clearAll(procStatusDao);
     }
 
     @Override
     @Transactional
-    public void clearResourceType() {
+    public void clearResourceType() throws EntityNotExistsException {
         clearAll(resTypeDao);
     }
 
     @Override
     @Transactional
-    public void clearPropertyType() {
+    public void clearPropertyType() throws EntityNotExistsException {
         clearAll(propTypeDao);
     }
 

@@ -48,7 +48,11 @@ public class GenericDaoImpl<T extends Entity> implements GenericDao<T> {
         if (!order.equals("")) {
             order = " order by " + order;
         }
-        Query query = em.createQuery("from " + clazz.getName() + " " + alias + " where " + condition + " "  + order);
+        if (!condition.equals("")) {
+           condition = " where " + condition;
+        }
+
+        Query query = em.createQuery("from " + clazz.getName() + " " + alias +  condition + " "  + order);
         query.setFirstResult(start);
         if (count > 0) {
             query.setMaxResults(count);

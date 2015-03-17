@@ -1,5 +1,6 @@
 package test;
 
+import exceptions.EntityNotExistsException;
 import exceptions.RoleNotExistException;
 import exceptions.UserAlreadyExistException;
 import org.apache.logging.log4j.LogManager;
@@ -11,13 +12,16 @@ import org.apache.logging.log4j.ThreadContext;
 public class Test {
    static  org.apache.logging.log4j.Logger logger = LogManager.getLogger("Test");
     public static void main(String[] args) {
-        Init init = new Init();
-        init.initTypes(true);
+
         try {
-            init.addUser("Test", "test", "mail@mail.com", "ROLE_USER");
+            Init init = new Init();
+            init.initTypes(true);
+            init.addUser("super", "super", "mail@mail.com", "ROLE_SUPERADMIN");
         } catch (RoleNotExistException e) {
             e.printStackTrace();
         } catch (UserAlreadyExistException e) {
+            e.printStackTrace();
+        } catch (EntityNotExistsException e) {
             e.printStackTrace();
         }
 

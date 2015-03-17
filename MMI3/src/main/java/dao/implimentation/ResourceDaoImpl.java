@@ -4,6 +4,7 @@ import dao.interfaces.ResourceDao;
 import entity.Entity;
 import entity.ResourceEntity;
 import entity.ResourceTypeEntity;
+import exceptions.EntityNotExistsException;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
@@ -19,7 +20,7 @@ public class ResourceDaoImpl extends GenericDaoImpl<ResourceEntity> implements R
         setClass(ResourceEntity.class);
     }
     @Override
-    public void removeResources(int[] ids) {
+    public void removeResources(int[] ids) throws EntityNotExistsException {
         for(int id : ids) {
             remove(id);
         }
