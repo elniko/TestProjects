@@ -1,12 +1,16 @@
 package controller;
 
 import entity.UserEntity;
+import exceptions.EntityNotExistsException;
+import exceptions.RoleNotExistException;
+import exceptions.UserAlreadyExistException;
 import exceptions.UserNotExistsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.boot.orm.jpa.EntityScan;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -16,6 +20,7 @@ import org.springframework.security.crypto.password.StandardPasswordEncoder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import service.interfaces.UserService;
+import test.BdInitializer;
 
 import javax.annotation.PostConstruct;
 
@@ -33,13 +38,27 @@ public class TestController   {
     @Autowired
     UserService userService;
 
-    @Autowired
-    LocalContainerEntityManagerFactoryBean entityManagerFactory;
+    //@Autowired
+    //LocalContainerEntityManagerFactoryBean entityManagerFactory;
 
-    @PostConstruct
-    public void init() {
-        entityManagerFactory.setPackagesToScan("entity");
+   @Autowired
+    ApplicationContext applicationContext;
 
+    //@PostConstruct
+    //@Autowired
+    public void init(ApplicationContext ctx) {
+        //BdInitializer bdInitializer = new BdInitializer(ctx);
+       // entityManagerFactory.setPackagesToScan("entity");
+    }
+
+
+    @RequestMapping("/init")
+    public UserEntity init () throws EntityNotExistsException, UserNotExistsException, RoleNotExistException, UserAlreadyExistException {
+        BdInitializer bdInitializer = new BdInitializer(applicationContext);
+        bdInitializer.initTypes(true);
+        bdInitializer.addUser("super", "super", "mail@mail.com", "ROLE_SUPERADMIN");
+        UserEntity e = userService.getUser(1);
+        return e;
     }
 
     @RequestMapping("/user")
