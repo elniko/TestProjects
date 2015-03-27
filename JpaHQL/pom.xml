@@ -8,6 +8,9 @@
     <artifactId>jpa-test</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>../SpringBootTest</module>
+    </modules>
 
     <properties>
         <hibernate.version>4.3.6.Final</hibernate.version>

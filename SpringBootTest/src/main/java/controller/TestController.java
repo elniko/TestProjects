@@ -20,7 +20,7 @@ import org.springframework.security.crypto.password.StandardPasswordEncoder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import service.interfaces.UserService;
-import test.BdInitializer;
+
 
 import javax.annotation.PostConstruct;
 
@@ -29,9 +29,9 @@ import javax.annotation.PostConstruct;
  */
 
 @RestController
-@SpringBootApplication
-@ComponentScan(basePackages = {"service", "dao", "controller"})
-@EntityScan("entity")
+//@SpringBootApplication
+//@ComponentScan(basePackages = {"service", "dao", "controller"})
+//@EntityScan("entity")
 public class TestController   {
 
 
@@ -52,14 +52,14 @@ public class TestController   {
     }
 
 
-    @RequestMapping("/init")
-    public UserEntity init () throws EntityNotExistsException, UserNotExistsException, RoleNotExistException, UserAlreadyExistException {
-        BdInitializer bdInitializer = new BdInitializer(applicationContext);
-        bdInitializer.initTypes(true);
-        bdInitializer.addUser("super", "super", "mail@mail.com", "ROLE_SUPERADMIN");
-        UserEntity e = userService.getUser(1);
-        return e;
-    }
+    //@RequestMapping("/init")
+    //public UserEntity init () throws EntityNotExistsException, UserNotExistsException, RoleNotExistException, UserAlreadyExistException {
+//        BdInitializer bdInitializer = new BdInitializer(applicationContext);
+//        bdInitializer.initTypes(true);
+//        bdInitializer.addUser("super", "super", "mail@mail.com", "ROLE_SUPERADMIN");
+//        UserEntity e = userService.getUser(1);
+      //  return e;
+//    }
 
     @RequestMapping("/user")
     public UserEntity test1() throws UserNotExistsException {

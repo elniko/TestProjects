@@ -23,8 +23,16 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="ServiceTest" />
+        <module name="ServiceTestClient" />
+        <module name="SpringSecurityTest" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="MMI3" target="1.8" />
+      <module name="MMInet" target="1.8" />
+      <module name="ServiceTest" target="1.7" />
+      <module name="SpringBootTest" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
 
