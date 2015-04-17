@@ -3,6 +3,8 @@ package service.interfaces;
 import dao.interfaces.GenericDao;
 import entity.Entity;
 import exceptions.EntityNotExistsException;
+import exceptions.RoleNotExistException;
+import exceptions.UserAlreadyExistException;
 
 /**
  * Created by Nick on 23/01/2015.
@@ -30,5 +32,9 @@ public interface InitializerService {
     public void clearPropertyType() throws EntityNotExistsException;
 
     public void clearUsers();
+
+    public void initProperties(Object[] props);
+
+    public void initTypes(boolean clearAll) throws EntityNotExistsException, RoleNotExistException, UserAlreadyExistException;
 
 }

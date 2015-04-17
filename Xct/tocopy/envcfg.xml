@@ -1,0 +1,1469 @@
+<?xml version="1.0" encoding="ISO-8859-15"?>
+<!-- Created by UBPartner(c) November 2014 v2.7 -->
+<items>
+	<item to="CRD4_COREP">
+		<pays id="FR" label="France">
+		<description lang="EN">Reporting complied with "Application OneGate. Note technique format fichier", version 10.1 as of October 2014. The submitted instance data is wrapped with the XbrlDelivery tag and accompanied by header tag with submission informations. Submission file is renamed according to UBPartner(c) internal standards.</description>
+		  <namingrules>
+				<filename zip="n">
+					<itemname extension="xml" separator="_">
+						<part order="1" type="text" value="{taxo}" source="instance"/>
+						<part order="2" type="date" value="{period}" format="yyyy-MM" source="instance"/>
+						<part order="3" type="text" value="{entity}" source="instance"/>
+						<part order="4" type="text" value="{currency}" source="instance"/>
+					</itemname>
+				</filename>
+		  </namingrules>
+		  <header>
+				<globalNode isInside="y" merge="n">
+					<XbrlDelivery></XbrlDelivery>
+				</globalNode>
+				<envelope>
+					<XbrlDelivery>
+						<XbrlDeclarationReport xmlns="http://www.onegate.eu/2010-01-01">
+							<Administration creationTime="{*date*}">
+								<From declarerType="CIB">{*entity*}</From>
+								<To>BDF</To>
+								<Domain>{domain}</Domain>
+								<Response feedback="{*feedback*}">
+									<Email>{*mail*}</Email>
+									<Language>{*lang*}</Language>
+								</Response>
+								<CustomParameters>
+									<Dim prop="og_txn_vrs">{og_txn_vrs} </Dim>
+									<Dim prop="og_delivery_opt">{og_delivery_opt}</Dim>
+								</CustomParameters>
+							</Administration>
+							<Report code="{report_code}" action="replace">
+								{*xbrl*}
+							</Report>
+						</XbrlDeclarationReport>
+					</XbrlDelivery>
+				</envelope>
+				<parameters>
+					<parameter name="date" source="system">
+						<format>yyyy-MM-dd'T'HH:mm:ss.SSS</format>
+					</parameter>
+					<parameter name="feedback" source="user">
+						<type>comboBox</type>
+						<label_fr>Reponse</label_fr>
+						<label_en>Feedback</label_en>
+						<options>
+							<option>y</option>
+							<option>n</option>
+						</options>
+					</parameter>
+					<parameter name="mail" source="user">
+						<type>txtBox</type>
+						<label_fr>E-mail</label_fr>
+						<label_en>E-mail</label_en> 
+					</parameter>
+					<parameter name="lang" source="user">
+						<type>comboBox</type>
+						<label_fr>Langue</label_fr>
+						<label_en>Language</label_en> 
+						<options>
+							<option>FR - Français</option>
+							<option>EN - English</option>
+						</options>
+					</parameter>
+					<parameter name="domain" source="taxo">
+						<type>txtBox</type>
+						<label_fr>Domain</label_fr>
+						<label_en>Domain</label_en> 
+						<required>yes</required>
+					</parameter>
+					<parameter name="og_txn_vrs" source="taxo">
+						<type>txtBox</type>
+						<label_fr>Version de la taxo</label_fr>
+						<label_en>Taxonomy version</label_en> 
+					</parameter>
+					<parameter name="og_delivery_opt" source="taxo">
+						<type>comboBox</type>
+						<label_fr>Option de remise</label_fr>
+						<label_en>Delivery</label_en> 
+						<options>
+							<option>social</option>
+							<option>consolidee</option>
+						</options>
+					</parameter>
+					<parameter name="report_code" source="taxo">
+						<type>txtBox</type>
+						<label_fr>Code du rapport</label_fr>
+						<label_en>Report code</label_en> 
+						<required>yes</required>
+					</parameter>
+				</parameters>
+			</header>
+		</pays>
+		<pays id="BE" label="Belgium">
+			<description lang="EN">Reporting complied with NBB document "Technical instructions for file upload to OneGate", v1.6.0 as for September 2014 issued by NBB. 
+		The submitted instance data is wrapped with the XbrlDelivery tag and accompanied by header tag with submission informations.</description>
+			<namingrules>
+				<filename zip="n">
+					<itemname extension="xml" separator="_">
+						<part order="1" type="text" value="{taxo}" source="instance"/>
+						<part order="2" type="date" value="{period}" format="yyyy-MM" source="instance"/>
+						<part order="3" type="text" value="{entity}" source="instance"/>
+						<part order="4" type="text" value="{currency}" source="instance"/>
+					</itemname>
+				</filename>
+		    </namingrules>
+			<header>
+				<globalNode isInside="y" merge="n">
+					<XbrlDelivery></XbrlDelivery>
+				</globalNode>
+				<envelope>
+					<XbrlDelivery>
+						<XbrlDeclarationReport xmlns="http://www.onegate.eu/2010-01-01">
+							<Administration creationTime="{*date*}">
+								<From declarerType="{*declarerType*}">{*entity*}</From>
+								<To>NBB</To>
+								<Domain>MBS</Domain>
+								<Response feedback="{*feedback*}">
+									<Email>{*mail*}</Email>
+									<Language>{*lang*}</Language>
+								</Response>
+								<CustomParameters>
+									<Dim prop="og_txn_vrs">{og_txn_vrs}</Dim>
+								</CustomParameters>
+							</Administration>
+							<Report code="{report_code}" action="replace">
+								{*xbrl*}
+							</Report>
+						</XbrlDeclarationReport>
+					</XbrlDelivery>
+				</envelope>
+				<parameters>
+				    <parameter name="date" source="system">
+						<format>yyyy-MM-dd'T'HH:mm:ss.SSS</format>
+					</parameter>
+					<parameter name="feedback" source="user" >
+						<type>comboBox</type>
+						<label_fr>Reponse</label_fr>
+						<label_en>Feedback</label_en>
+						<options>
+							<option>y</option>
+							<option>n</option>
+						</options>
+					</parameter>
+					<parameter name="mail" source="user" >
+						<type>txtBox</type>
+						<label_fr>E-mail</label_fr>
+						<label_en>E-mail</label_en> 
+					</parameter>
+					<parameter name="lang" source="user" >
+						<type>comboBox</type>
+						<label_fr>Langue</label_fr>
+						<label_en>Language</label_en> 
+						<options>
+							<option>FR - Français</option>
+							<option>EN - English</option>
+							<option>NL - Nederlands</option>
+						</options>
+					</parameter>
+					<parameter name="declarerType" source="user" >
+						<type>comboBox</type>
+						<label_fr>Type de déclarant</label_fr>
+						<label_en>Institution type</label_en> 
+						<options>
+							<option>BIC</option>
+							<option>CODE</option>
+							<option>KBO</option>
+						</options>
+					</parameter>
+					<parameter name="og_txn_vrs" source="taxo" >
+						<type>txtBox</type>
+						<label_fr>Version de la taxo</label_fr>
+						<label_en>Taxonomy version</label_en> 
+					</parameter>
+					<parameter name="report_code" source="taxo">
+						<type>comboBox</type>
+						<label_fr>Code du rapport</label_fr>
+						<label_en>Report code</label_en> 
+						<options>
+							<option>COREP_CON</option>
+							<option>COREP_IND</option>
+							<option>COREP_LCR_CON</option>
+							<option>COREP_LCR_IND</option>
+							<option>COREP_LE_CON</option>
+							<option>COREP_LE_IND</option>
+							<option>COREP_NSFR_CON</option>
+							<option>COREP_NSFR_IND</option>
+						</options>
+						<required>yes</required>
+					</parameter>
+				</parameters>
+			</header>
+		</pays>
+		<pays id="DE" label="Germany">
+				<description lang="EN">Submission files are renamed and zipped according to the Bundesbank naming convention referenced in the "Erläuterung des neuen bankaufsichtlichen Extranet-Postfachs einschließlich Dateinamenskonventionen", version 1.3 as for 30 September 2014.</description>
+			<namingrules>
+				<filename zip="y" zipbyinstance="y">
+					<zipname separator=".">
+						<part order="1" type="text" value="{domain}" source="taxo"/>
+						<part order="2" type="text" separator="none" value="{datatype}" source="user"/>
+						<part order="3" type="text" value="{datatype2}" source="taxo"/>
+						<part order="4" type="text" value="{entity}" source="instance"/>
+						<part order="5" type="date" value="{period}" format="yyyyMMdd" source="instance"/>
+						<part order="6" type="time" format="HHmmss" source="system"/>
+					</zipname>
+					<itemname extension="xml" separator=".">
+						<part order="1" type="text" value="{domain}" source="taxo"/>
+						<part order="2" type="text" separator="none" value="{datatype}" source="user"/>
+						<part order="3" type="text" value="{datatype2}" source="taxo"/>
+						<part order="4" type="text" value="{entity}" source="instance"/>
+						<part order="5" type="date" value="{period}" format="yyyyMMdd" source="instance"/>
+						<part order="6" type="time" format="HHmmss" source="system"/>
+						<part order="7" type="text" value="{service}" optional="y" source="taxo"/>
+						<part order="8" type="text" value="{service2}" optional="y" source="user"/>
+					</itemname>
+				</filename>
+				<parameters>
+					<parameter name="domain" source="taxo">
+						<type>comboBox</type>
+						<label_fr>Domain</label_fr>
+						<label_en>Domain</label_en>
+						<options>
+							<option>WIDAT</option>
+							<option>GROSS</option>
+						</options>
+						<required>yes</required>
+					</parameter>
+					<parameter name="datatype" source="user">
+						<type>comboBox</type>
+						<label_fr>Type des données</label_fr>
+						<label_en>Data type</label_en>
+						<options>
+							<option value="T">T - test data</option>
+							<option value="F">  - final data</option>
+						</options>
+					</parameter>
+					<parameter name="datatype2" source="taxo">
+						<type>comboBox</type>
+						<label_fr>Type des données</label_fr>
+						<label_en>Data consolidation</label_en>
+						<options>
+							<option value="A">A</option>
+							<option value="C">C</option>
+						</options>
+					</parameter>
+					<parameter name="service" source="taxo">
+						<type>comboBox</type>
+						<label_fr>Code du rapport</label_fr>
+						<label_en>Report code</label_en> 
+						<options>
+							<option>CO_Ind</option>
+							<option>CO_Con</option>
+							<option>CO_LCR_Ind</option>
+							<option>CO_LCR_Con</option>
+							<option>CO_NSFR_Ind</option>
+							<option>CO_NSFR_Con</option>
+							<option>FI_IFRS_Con</option>
+						</options>
+					</parameter>
+					<parameter name="service2" source="user">
+						<type>txtBox</type>
+						<label_fr>Service 2</label_fr>
+						<label_en>Service 2</label_en>
+					</parameter>
+				</parameters>
+			</namingrules>
+		</pays>
+		<pays id="LU" label="Luxembourg">
+		<description lang="EN">Submission files are renamed and zipped according to the CSSF naming convention referenced in the "Reporting requirements for credit
+institutions", final version as of 17 October 2014.</description>
+			<namingrules>
+				<filename zip="y" zipbyinstance="y">
+					<zipname separator="-">
+						<part order="1" type="text" value="COF" separator="none" source="default"/>
+						<part order="2" type="text" value="REP" source="default"/>
+						<part order="3" type="text" value="{entity}" source="instance"/>
+						<part order="4" type="date" format="yyyy-MM" value="{period}" source="instance"/>
+						<part order="5" type="text" value="{service}" source="taxo"/>
+						<part order="6" type="text" value="00" source="default"/>
+						<part order="7" type="text" value="{datatype}" source="user"/>
+						<part order="8" type="text" value="{dataversion}" source="user"/>
+						<part order="9" type="text" value="-" source="default"/>
+					</zipname>
+					<itemname extension="xbrl" separator="-">
+						<part order="1" type="text" value="COF" separator="none" source="default"/>
+						<part order="2" type="text" value="REP" source="default"/>
+						<part order="3" type="text" value="{entity}" source="instance"/>
+						<part order="4" type="date" format="yyyy-MM" value="{period}" source="instance"/>
+						<part order="5" type="text" value="{service}" source="taxo"/>
+						<part order="6" type="text" value="00" source="default"/>
+						<part order="7" type="text" value="{datatype}" source="user"/>
+						<part order="8" type="text" value="{dataversion}" source="user"/>
+						<part order="9" type="text" value="-" source="default"/>
+						<part order="10" type="text" value="{service}" source="taxo"/>
+					</itemname>
+				</filename>
+				<parameters>
+					<parameter name="service" source="taxo">
+						<type>comboBox</type>
+						<label_fr>Code du rapport</label_fr>
+						<label_en>Report code</label_en> 
+						<options>
+							<option>SCOREP</option>
+							<option>SLCRXX</option>
+							<option>SNSFRX</option>
+							<option>CCOREP</option>
+							<option>CLCRXX</option>
+							<option>CNSFRX</option>
+							<option>CFINRP</option>
+							<option>CAEXXX</option>
+							<option>SAEXXX</option>
+							<option>FPXXXX</option>
+						</options>
+					</parameter>
+					<parameter name="datatype" source="user">
+						<type>comboBox</type>
+						<label_en>Accounting version</label_en>
+						<label_fr>Version comptable</label_fr> 
+						<options>
+							<option value="L">L - individual data, Luxembourg banks</option>
+							<option value="N">N - individual data, including foreign branches</option>
+							<option value="S">S - separated data for each branch</option>
+							<option value="C">C - consolidated data</option>
+						</options>
+					</parameter>
+					<parameter name="dataversion" source="user">
+						<type>comboBox</type>
+						<label_fr>Version</label_fr>
+						<label_en>Submission version</label_en> 
+						<options>
+							<option value="D">D - final version</option>
+							<option value="N">N - preliminary version</option>
+						</options>
+					</parameter>
+				</parameters>
+			</namingrules>
+		</pays>
+	</item>
+	<item to="CRD4_COREP_CON_IND">
+		<pays id="FR" label="France">
+		<description lang="EN">Reporting complied with "Application OneGate. Note technique format fichier", version 10.1 as of October 2014. The submitted instance data is wrapped with the XbrlDelivery tag and accompanied by header tag with submission informations. Submission file is renamed according to UBPartner(c) internal standards.</description>
+		  <namingrules>
+				<filename zip="n">
+					<itemname extension="xml" separator="_">
+						<part order="1" type="text" value="{taxo}" source="instance"/>
+						<part order="2" type="date" value="{period}" format="yyyy-MM" source="instance"/>
+						<part order="3" type="text" value="{entity}" source="instance"/>
+						<part order="4" type="text" value="{currency}" source="instance"/>
+					</itemname>
+				</filename>
+		  </namingrules>
+		  <header>
+				<globalNode isInside="y" merge="n">
+					<XbrlDelivery></XbrlDelivery>
+				</globalNode>
+				<envelope>
+					<XbrlDelivery>
+						<XbrlDeclarationReport xmlns="http://www.onegate.eu/2010-01-01">
+							<Administration creationTime="{*date*}">
+								<From declarerType="CIB">{*entity*}</From>
+								<To>BDF</To>
+								<Domain>{domain}</Domain>
+								<Response feedback="{*feedback*}">
+									<Email>{*mail*}</Email>
+									<Language>{*lang*}</Language>
+								</Response>
+								<CustomParameters>
+									<Dim prop="og_txn_vrs">{og_txn_vrs} </Dim>
+									<Dim prop="og_delivery_opt">{og_delivery_opt}</Dim>
+								</CustomParameters>
+							</Administration>
+							<Report code="{report_code}" action="replace">
+								{*xbrl*}
+							</Report>
+						</XbrlDeclarationReport>
+					</XbrlDelivery>
+				</envelope>
+				<parameters>
+					<parameter name="date" source="system">
+						<format>yyyy-MM-dd'T'HH:mm:ss.SSS</format>
+					</parameter>
+					<parameter name="feedback" source="user">
+						<type>comboBox</type>
+						<label_fr>Reponse</label_fr>
+						<label_en>Feedback</label_en>
+						<options>
+							<option>y</option>
+							<option>n</option>
+						</options>
+					</parameter>
+					<parameter name="mail" source="user">
+						<type>txtBox</type>
+						<label_fr>E-mail</label_fr>
+						<label_en>E-mail</label_en> 
+					</parameter>
+					<parameter name="lang" source="user">
+						<type>comboBox</type>
+						<label_fr>Langue</label_fr>
+						<label_en>Language</label_en> 
+						<options>
+							<option>FR - Français</option>
+							<option>EN - English</option>
+						</options>
+					</parameter>
+					<parameter name="domain" source="taxo">
+						<type>txtBox</type>
+						<label_fr>Domain</label_fr>
+						<label_en>Domain</label_en> 
+						<required>yes</required>
+					</parameter>
+					<parameter name="og_txn_vrs" source="taxo">
+						<type>txtBox</type>
+						<label_fr>Version de la taxo</label_fr>
+						<label_en>Taxonomy version</label_en> 
+					</parameter>
+					<parameter name="og_delivery_opt" source="taxo">
+						<type>comboBox</type>
+						<label_fr>Option de remise</label_fr>
+						<label_en>Delivery</label_en> 
+						<options>
+							<option>social</option>
+							<option>consolidee</option>
+						</options>
+					</parameter>
+					<parameter name="report_code" source="taxo">
+						<type>txtBox</type>
+						<label_fr>Code du rapport</label_fr>
+						<label_en>Report code</label_en> 
+						<required>yes</required>
+					</parameter>
+				</parameters>
+			</header>
+		</pays>
+		<pays id="BE" label="Belgium">
+			<description lang="EN">Reporting complied with NBB document "Technical instructions for file upload to OneGate", v1.6.0 as for September 2014 issued by NBB. 
+		The submitted instance data is wrapped with the XbrlDelivery tag and accompanied by header tag with submission informations.</description>
+			<namingrules>
+				<filename zip="n">
+					<itemname extension="xml" separator="_">
+						<part order="1" type="text" value="{taxo}" source="instance"/>
+						<part order="2" type="date" value="{period}" format="yyyy-MM" source="instance"/>
+						<part order="3" type="text" value="{entity}" source="instance"/>
+						<part order="4" type="text" value="{currency}" source="instance"/>
+					</itemname>
+				</filename>
+		    </namingrules>
+			<header>
+				<globalNode isInside="y" merge="n">
+					<XbrlDelivery></XbrlDelivery>
+				</globalNode>
+				<envelope>
+					<XbrlDelivery>
+						<XbrlDeclarationReport xmlns="http://www.onegate.eu/2010-01-01">
+							<Administration creationTime="{*date*}">
+								<From declarerType="{*declarerType*}">{*entity*}</From>
+								<To>NBB</To>
+								<Domain>MBS</Domain>
+								<Response feedback="{*feedback*}">
+									<Email>{*mail*}</Email>
+									<Language>{*lang*}</Language>
+								</Response>
+								<CustomParameters>
+									<Dim prop="og_txn_vrs">{og_txn_vrs}</Dim>
+								</CustomParameters>
+							</Administration>
+							<Report code="{report_code}" action="replace">
+								{*xbrl*}
+							</Report>
+						</XbrlDeclarationReport>
+					</XbrlDelivery>
+				</envelope>
+				<parameters>
+				    <parameter name="date" source="system">
+						<format>yyyy-MM-dd'T'HH:mm:ss.SSS</format>
+					</parameter>
+					<parameter name="feedback" source="user" >
+						<type>comboBox</type>
+						<label_fr>Reponse</label_fr>
+						<label_en>Feedback</label_en>
+						<options>
+							<option>y</option>
+							<option>n</option>
+						</options>
+					</parameter>
+					<parameter name="mail" source="user" >
+						<type>txtBox</type>
+						<label_fr>E-mail</label_fr>
+						<label_en>E-mail</label_en> 
+					</parameter>
+					<parameter name="lang" source="user" >
+						<type>comboBox</type>
+						<label_fr>Langue</label_fr>
+						<label_en>Language</label_en> 
+						<options>
+							<option>FR - Français</option>
+							<option>EN - English</option>
+							<option>NL - Nederlands</option>
+						</options>
+					</parameter>
+					<parameter name="declarerType" source="user" >
+						<type>comboBox</type>
+						<label_fr>Type de déclarant</label_fr>
+						<label_en>Institution type</label_en> 
+						<options>
+							<option>BIC</option>
+							<option>CODE</option>
+							<option>KBO</option>
+						</options>
+					</parameter>
+					<parameter name="og_txn_vrs" source="taxo" >
+						<type>txtBox</type>
+						<label_fr>Version de la taxo</label_fr>
+						<label_en>Taxonomy version</label_en> 
+					</parameter>
+					<parameter name="report_code" source="taxo">
+						<type>comboBox</type>
+						<label_fr>Code du rapport</label_fr>
+						<label_en>Report code</label_en> 
+						<options>
+							<option>COREP_CON</option>
+							<option>COREP_IND</option>
+							<option>COREP_LCR_CON</option>
+							<option>COREP_LCR_IND</option>
+							<option>COREP_LE_CON</option>
+							<option>COREP_LE_IND</option>
+							<option>COREP_NSFR_CON</option>
+							<option>COREP_NSFR_IND</option>
+						</options>
+						<required>yes</required>
+					</parameter>
+				</parameters>
+			</header>
+		</pays>
+		<pays id="DE" label="Germany">
+				<description lang="EN">Submission files are renamed and zipped according to the Bundesbank naming convention referenced in the "Erläuterung des neuen bankaufsichtlichen Extranet-Postfachs einschließlich Dateinamenskonventionen", version 1.3 as for 30 September 2014.</description>
+			<namingrules>
+				<filename zip="y" zipbyinstance="y">
+					<zipname separator=".">
+						<part order="1" type="text" value="{domain}" source="taxo"/>
+						<part order="2" type="text" separator="none" value="{datatype}" source="user"/>
+						<part order="3" type="text" value="{datatype2}" source="taxo"/>
+						<part order="4" type="text" value="{entity}" source="instance"/>
+						<part order="5" type="date" value="{period}" format="yyyyMMdd" source="instance"/>
+						<part order="6" type="time" format="HHmmss" source="system"/>
+					</zipname>
+					<itemname extension="xml" separator=".">
+						<part order="1" type="text" value="{domain}" source="taxo"/>
+						<part order="2" type="text" separator="none" value="{datatype}" source="user"/>
+						<part order="3" type="text" value="{datatype2}" source="taxo"/>
+						<part order="4" type="text" value="{entity}" source="instance"/>
+						<part order="5" type="date" value="{period}" format="yyyyMMdd" source="instance"/>
+						<part order="6" type="time" format="HHmmss" source="system"/>
+						<part order="7" type="text" value="{service}" optional="y" source="taxo"/>
+						<part order="8" type="text" value="{service2}" optional="y" source="user"/>
+					</itemname>
+				</filename>
+				<parameters>
+					<parameter name="domain" source="taxo">
+						<type>comboBox</type>
+						<label_fr>Domain</label_fr>
+						<label_en>Domain</label_en>
+						<options>
+							<option>WIDAT</option>
+							<option>GROSS</option>
+						</options>
+						<required>yes</required>
+					</parameter>
+					<parameter name="datatype" source="user">
+						<type>comboBox</type>
+						<label_fr>Type des données</label_fr>
+						<label_en>Data type</label_en>
+						<options>
+							<option value="T">T - test data</option>
+							<option value="F">  - final data</option>
+						</options>
+					</parameter>
+					<parameter name="datatype2" source="taxo">
+						<type>comboBox</type>
+						<label_fr>Type des données</label_fr>
+						<label_en>Data consolidation</label_en>
+						<options>
+							<option value="A">A</option>
+							<option value="C">C</option>
+						</options>
+					</parameter>
+					<parameter name="service" source="taxo">
+						<type>comboBox</type>
+						<label_fr>Code du rapport</label_fr>
+						<label_en>Report code</label_en> 
+						<options>
+							<option>CO_Ind</option>
+							<option>CO_Con</option>
+							<option>CO_LCR_Ind</option>
+							<option>CO_LCR_Con</option>
+							<option>CO_NSFR_Ind</option>
+							<option>CO_NSFR_Con</option>
+							<option>FI_IFRS_Con</option>
+						</options>
+					</parameter>
+					<parameter name="service2" source="user">
+						<type>txtBox</type>
+						<label_fr>Service 2</label_fr>
+						<label_en>Service 2</label_en>
+					</parameter>
+				</parameters>
+			</namingrules>
+		</pays>
+		<pays id="LU" label="Luxembourg">
+		<description lang="EN">Submission files are renamed and zipped according to the CSSF naming convention referenced in the "Reporting requirements for credit
+institutions", final version as of 17 October 2014.</description>
+			<namingrules>
+				<filename zip="y" zipbyinstance="y">
+					<zipname separator="-">
+						<part order="1" type="text" value="COF" separator="none" source="default"/>
+						<part order="2" type="text" value="REP" source="default"/>
+						<part order="3" type="text" value="{entity}" source="instance"/>
+						<part order="4" type="date" format="yyyy-MM" value="{period}" source="instance"/>
+						<part order="5" type="text" value="{service}" source="taxo"/>
+						<part order="6" type="text" value="00" source="default"/>
+						<part order="7" type="text" value="{datatype}" source="user"/>
+						<part order="8" type="text" value="{dataversion}" source="user"/>
+						<part order="9" type="text" value="{ratiotype}" source="user"/>
+					</zipname>
+					<itemname extension="xbrl" separator="-">
+						<part order="1" type="text" value="COF" separator="none"  source="default"/>
+						<part order="2" type="text" value="REP" source="default"/>
+						<part order="3" type="text" value="{entity}" source="instance"/>
+						<part order="4" type="date" format="yyyy-MM" value="{period}" source="instance"/>
+						<part order="5" type="text" value="{service}" source="taxo"/>
+						<part order="6" type="text" value="00" source="default"/>
+						<part order="7" type="text" value="{datatype}" source="user"/>
+						<part order="8" type="text" value="{dataversion}" source="user"/>
+						<part order="9" type="text" value="{ratiotype}" source="user"/>
+						<part order="10" type="text" value="{service}" source="taxo"/>
+					</itemname>
+				</filename>
+				<parameters>
+					<parameter name="service" source="taxo">
+						<type>comboBox</type>
+						<label_fr>Code du rapport</label_fr>
+						<label_en>Report code</label_en> 
+						<options>
+							<option>SCOREP</option>
+							<option>SLCRXX</option>
+							<option>SNSFRX</option>
+							<option>CCOREP</option>
+							<option>CLCRXX</option>
+							<option>CNSFRX</option>
+							<option>CFINRP</option>
+							<option>CAEXXX</option>
+							<option>SAEXXX</option>
+							<option>FPXXXX</option>
+						</options>
+					</parameter>
+					<parameter name="datatype" source="user">
+						<type>comboBox</type>
+						<label_en>Accounting version</label_en>
+						<label_fr>Version comptable</label_fr> 
+						<options>
+							<option value="L">L - individual data, Luxembourg banks</option>
+							<option value="N">N - individual data, including foreign branches</option>
+							<option value="S">S - separated data for each branch</option>
+							<option value="C">C - consolidated data</option>
+						</options>
+					</parameter>
+					<parameter name="dataversion" source="user">
+						<type>comboBox</type>
+						<label_fr>Version</label_fr>
+						<label_en>Submission version</label_en> 
+						<options>
+							<option value="D">D - final version</option>
+							<option value="N">N - preliminary version</option>
+						</options>
+					</parameter>
+					<parameter name="ratiotype" source="user">
+						<type>comboBox</type>
+						<label_fr>Sous-type de ratio</label_fr>
+						<label_en>Ratio subtype</label_en> 
+						<options>
+							<option value="S">S - simplified</option>
+							<option value="I">I - integrated </option>
+						</options>
+					</parameter>
+				</parameters>
+			</namingrules>
+		</pays>
+	</item>
+	<item to="CRD4_COREP_LE">
+	    <pays id="FR" label="France">
+		<description lang="EN">Reporting complied with "Application OneGate. Note technique format fichier", version 10.1 as of October 2014. The submitted instance data is wrapped with the XbrlDelivery tag and accompanied by header tag with submission informations. Submission file is renamed according to UBPartner(c) internal standards.</description>
+		  <namingrules>
+				<filename zip="n">
+					<itemname extension="xml" separator="_">
+						<part order="1" type="text" value="{taxo}" source="instance"/>
+						<part order="2" type="date" value="{period}" format="yyyy-MM" source="instance"/>
+						<part order="3" type="text" value="{entity}" source="instance"/>
+						<part order="4" type="text" value="{currency}" source="instance"/>
+					</itemname>
+				</filename>
+		  </namingrules>
+		  <header>
+				<globalNode isInside="y" merge="n">
+					<XbrlDelivery></XbrlDelivery>
+				</globalNode>
+				<envelope>
+					<XbrlDelivery>
+						<XbrlDeclarationReport xmlns="http://www.onegate.eu/2010-01-01">
+							<Administration creationTime="{*date*}">
+								<From declarerType="CIB">{*entity*}</From>
+								<To>BDF</To>
+								<Domain>{domain}</Domain>
+								<Response feedback="{*feedback*}">
+									<Email>{*mail*}</Email>
+									<Language>{*lang*}</Language>
+								</Response>
+								<CustomParameters>
+									<Dim prop="og_txn_vrs">{og_txn_vrs} </Dim>
+									<Dim prop="og_delivery_opt">{og_delivery_opt}</Dim>
+								</CustomParameters>
+							</Administration>
+							<Report code="{report_code}" action="replace">
+								{*xbrl*}
+							</Report>
+						</XbrlDeclarationReport>
+					</XbrlDelivery>
+				</envelope>
+				<parameters>
+					<parameter name="date" source="system">
+						<format>yyyy-MM-dd'T'HH:mm:ss.SSS</format>
+					</parameter>
+					<parameter name="feedback" source="user">
+						<type>comboBox</type>
+						<label_fr>Reponse</label_fr>
+						<label_en>Feedback</label_en>
+						<options>
+							<option>y</option>
+							<option>n</option>
+						</options>
+					</parameter>
+					<parameter name="mail" source="user">
+						<type>txtBox</type>
+						<label_fr>E-mail</label_fr>
+						<label_en>E-mail</label_en> 
+					</parameter>
+					<parameter name="lang" source="user">
+						<type>comboBox</type>
+						<label_fr>Langue</label_fr>
+						<label_en>Language</label_en> 
+						<options>
+							<option>FR - Français</option>
+							<option>EN - English</option>
+						</options>
+					</parameter>
+					<parameter name="domain" source="taxo">
+						<type>txtBox</type>
+						<label_fr>Domain</label_fr>
+						<label_en>Domain</label_en> 
+						<required>yes</required>
+					</parameter>
+					<parameter name="og_txn_vrs" source="taxo">
+						<type>txtBox</type>
+						<label_fr>Version de la taxo</label_fr>
+						<label_en>Taxonomy version</label_en> 
+					</parameter>
+					<parameter name="og_delivery_opt" source="taxo">
+						<type>comboBox</type>
+						<label_fr>Option de remise</label_fr>
+						<label_en>Delivery</label_en> 
+						<options>
+							<option>social</option>
+							<option>consolidee</option>
+						</options>
+					</parameter>
+					<parameter name="report_code" source="taxo">
+						<type>txtBox</type>
+						<label_fr>Code du rapport</label_fr>
+						<label_en>Report code</label_en> 
+						<required>yes</required>
+					</parameter>
+				</parameters>
+			</header>
+		</pays>
+		<pays id="BE" label="Belgium">
+				<description lang="EN">Reporting complied with NBB document "Technical instructions for file upload to OneGate", v1.6.0 as for September 2014 issued by NBB. 
+		The submitted instance data is wrapped with the XbrlDelivery tag and accompanied by header tag with submission informations.</description>
+			<namingrules>
+				<filename zip="n">
+					<itemname extension="xml" separator="_">
+						<part order="1" type="text" value="{taxo}" source="instance"/>
+						<part order="2" type="date" value="{period}" format="yyyy-MM" source="instance"/>
+						<part order="3" type="text" value="{entity}" source="instance"/>
+						<part order="4" type="text" value="{currency}" source="instance"/>
+					</itemname>
+				</filename>
+		  </namingrules>
+			<header>
+				<globalNode isInside="y" merge="n">
+					<XbrlDelivery></XbrlDelivery>
+				</globalNode>
+				<envelope>
+					<XbrlDelivery>
+						<XbrlDeclarationReport xmlns="http://www.onegate.eu/2010-01-01">
+							<Administration creationTime="{*date*}">
+								<From declarerType="{*declarerType*}">{*entity*}</From>
+								<To>NBB</To>
+								<Domain>MBS</Domain>
+								<Response feedback="{*feedback*}">
+									<Email>{*mail*}</Email>
+									<Language>{*lang*}</Language>
+								</Response>
+								<CustomParameters>
+									<Dim prop="og_txn_vrs">{og_txn_vrs}</Dim>
+								</CustomParameters>
+							</Administration>
+							<Report code="{report_code}" action="replace">
+								{*xbrl*}
+							</Report>
+						</XbrlDeclarationReport>
+					</XbrlDelivery>
+				</envelope>
+				<parameters>
+				    <parameter name="date" source="system">
+						<format>yyyy-MM-dd'T'HH:mm:ss.SSS</format>
+					</parameter>
+					<parameter name="feedback" source="user" >
+						<type>comboBox</type>
+						<label_fr>Reponse</label_fr>
+						<label_en>Feedback</label_en>
+						<options>
+							<option>y</option>
+							<option>n</option>
+						</options>
+					</parameter>
+					<parameter name="mail" source="user" >
+						<type>txtBox</type>
+						<label_fr>E-mail</label_fr>
+						<label_en>E-mail</label_en> 
+					</parameter>
+					<parameter name="lang" source="user" >
+						<type>comboBox</type>
+						<label_fr>Langue</label_fr>
+						<label_en>Language</label_en> 
+						<options>
+							<option>FR - Français</option>
+							<option>EN - English</option>
+							<option>NL - Nederlands</option>
+						</options>
+					</parameter>
+					<parameter name="declarerType" source="user" >
+						<type>comboBox</type>
+						<label_fr>Type de déclarant</label_fr>
+						<label_en>Institution type</label_en> 
+						<options>
+							<option>BIC</option>
+							<option>CODE</option>
+							<option>KBO</option>
+						</options>
+					</parameter>
+					<parameter name="og_txn_vrs" source="taxo" >
+						<type>txtBox</type>
+						<label_fr>Version de la taxo</label_fr>
+						<label_en>Taxonomy version</label_en> 
+					</parameter>
+					<parameter name="report_code" source="taxo">
+						<type>comboBox</type>
+						<label_fr>Code du rapport</label_fr>
+						<label_en>Report code</label_en> 
+						<options>
+							<option>COREP_LE_CON</option>
+							<option>COREP_LE_IND</option>
+						</options>
+						<required>yes</required>
+					</parameter>
+				</parameters>
+			</header>
+		</pays>
+		<pays id="DE" label="Germany">
+				<description lang="EN">Submission files are renamed and zipped according to the Bundesbank naming convention referenced in the "Erläuterung des neuen bankaufsichtlichen Extranet-Postfachs einschließlich Dateinamenskonventionen", version 1.3 as for 30 September 2014.</description>
+			<namingrules>
+				<filename zip="y" zipbyinstance="y">
+					<zipname separator=".">
+						<part order="1" type="text" value="GROSS" source="default"/>
+						<part order="2" type="text" separator="none" value="{datatype}" source="user"/>
+						<part order="3" type="text" value="{datatype2}" source="taxo"/>
+						<part order="4" type="text" value="{entity}" source="instance"/>
+						<part order="5" type="date" format="yyyyMMdd" source="system"/>
+						<part order="6" type="time" format="HHmmss" source="system"/>
+					</zipname>
+					<itemname extension="xml" separator=".">
+						<part order="1" type="text" value="GROSS" source="default"/>
+						<part order="2" type="text" separator="none" value="{datatype}" source="user"/>
+						<part order="3" type="text" value="{datatype2}" source="taxo"/>
+						<part order="4" type="text" value="{entity}" source="instance"/>
+						<part order="5" type="date" format="yyyyMMdd" source="system"/>
+						<part order="6" type="time" format="HHmmss" source="system"/>
+					</itemname>
+				</filename>
+				<parameters>
+					<parameter name="datatype" source="user">
+						<type>comboBox</type>
+						<label_fr>Type des données</label_fr>
+						<label_en>Data type</label_en>
+						<options>
+							<option value="T">T - test data</option>
+							<option value="F">  - final data</option>
+						</options>
+					</parameter>
+					<parameter name="datatype2" source="taxo">
+						<type>comboBox</type>
+						<label_fr>Type des données</label_fr>
+						<label_en>Data consolidation</label_en>
+						<options>
+							<option value="A">A</option>
+							<option value="C">C</option>
+						</options>
+					</parameter>
+				</parameters>
+			</namingrules>
+		</pays>
+		<pays id="LU" label="Luxembourg">
+		<description lang="EN">Submission files are renamed and zipped according to the CSSF naming convention referenced in the "Reporting requirements for credit
+institutions", final version as of 17 October 2014.</description>
+			<namingrules>
+				<filename zip="y" zipbyinstance="y">
+					<zipname separator="-">
+						<part order="1" type="text" value="COF" separator="none" source="default"/>
+						<part order="2" type="text" value="REP" source="default"/>
+						<part order="3" type="text" value="{entity}" source="instance"/>
+						<part order="4" type="date" format="yyyy-MM" value="{period}" source="instance"/>
+						<part order="5" type="text" value="{service}" source="taxo"/>
+						<part order="6" type="text" value="00" source="default"/>
+						<part order="7" type="text" value="{datatype}" source="user"/>
+						<part order="8" type="text" value="{dataversion}" source="user"/>
+						<part order="9" type="text" value="-" source="default"/>
+					</zipname>
+					<itemname extension="xbrl" separator="-">
+						<part order="1" type="text" value="COF" separator="none" source="default"/>
+						<part order="2" type="text" value="REP" source="default"/>
+						<part order="3" type="text" value="{entity}" source="instance"/>
+						<part order="4" type="date" format="yyyy-MM" value="{period}" source="instance"/>
+						<part order="5" type="text" value="{service}" source="taxo"/>
+						<part order="6" type="text" value="00" source="default"/>
+						<part order="7" type="text" value="{datatype}" source="user"/>
+						<part order="8" type="text" value="{dataversion}" source="user"/>
+						<part order="9" type="text" value="-" source="default"/>
+						<part order="10" type="text" value="{service}" source="taxo"/>
+					</itemname>
+				</filename>
+				<parameters>
+					<parameter name="service" source="taxo">
+						<type>comboBox</type>
+						<label_fr>Code du rapport</label_fr>
+						<label_en>Report code</label_en> 
+						<options>
+							<option>SLAREX</option>
+							<option>CLAREX</option>
+						</options>
+					</parameter>
+					<parameter name="datatype" source="user">
+						<type>comboBox</type>
+						<label_en>Accounting version</label_en>
+						<label_fr>Version comptable</label_fr> 
+						<options>
+							<option value="L">L - individual data, Luxembourg banks</option>
+							<option value="N">N - individual data, including foreign branches</option>
+							<option value="S">S - separated data for each branch</option>
+							<option value="C">C - consolidated data</option>
+						</options>
+					</parameter>
+					<parameter name="dataversion" source="user">
+						<type>comboBox</type>
+						<label_fr>Version</label_fr>
+						<label_en>Submission version</label_en> 
+						<options>
+							<option value="D">D - final version</option>
+							<option value="N">N - preliminary version</option>
+						</options>
+					</parameter>
+				</parameters>
+			</namingrules>
+		</pays>
+	</item>
+	<item to="CRD4_FINREP">
+		<pays id="FR" label="France">
+		<description lang="EN">Reporting complied with "Application OneGate. Note technique format fichier", version 10.1 as of October 2014. The submitted instance data is wrapped with the XbrlDelivery tag and accompanied by header tag with submission informations. Submission file is renamed according to UBPartner(c) internal standards.</description>
+		    <namingrules>
+				<filename zip="n">
+					<itemname extension="xml" separator="_">
+						<part order="1" type="text" value="{taxo}" source="instance"/>
+						<part order="2" type="date" value="{period}" format="yyyy-MM" source="instance"/>
+						<part order="3" type="text" value="{entity}" source="instance"/>
+						<part order="4" type="text" value="{currency}" source="instance"/>
+					</itemname>
+				</filename>
+		    </namingrules>
+		    <header>
+				<globalNode isInside="y" merge="n">
+					<XbrlDelivery></XbrlDelivery>
+				</globalNode>
+				<envelope>
+					<XbrlDelivery>
+                        <XbrlDeclarationReport xmlns="http://www.onegate.eu/2010-01-01">
+                            <Administration creationTime="{*date*}">
+                                <From declarerType="CIB">{*entity*}</From>
+                                <To>BDF</To>
+								<Domain>{domain}</Domain>
+								<Response feedback="{*feedback*}">
+                                    <Email>{*mail*}</Email>
+                                    <Language>{*lang*}</Language>
+                                </Response>
+                                <CustomParameters>
+                                    <Dim prop="og_txn_vrs">{og_txn_vrs}</Dim>
+                                </CustomParameters>
+                            </Administration>
+							<Report code="{report_code}" action="replace">
+                                {*xbrl*}
+							</Report>
+                        </XbrlDeclarationReport>
+					</XbrlDelivery>
+				</envelope>
+				<parameters>
+					<parameter name="date" source="system">
+						<format>yyyy-MM-dd'T'HH:mm:ss.SSS</format>
+					</parameter>
+					<parameter name="feedback" source="user">
+						<type>comboBox</type>
+						<label_fr>Reponse</label_fr>
+						<label_en>Feedback</label_en>
+						<options>
+							<option>y</option>
+							<option>n</option>
+						</options>
+					</parameter>
+					<parameter name="mail" source="user">
+						<type>txtBox</type>
+						<label_fr>E-mail</label_fr>
+						<label_en>E-mail</label_en> 
+					</parameter>
+					<parameter name="lang" source="user">
+						<type>comboBox</type>
+						<label_fr>Langue</label_fr>
+						<label_en>Language</label_en> 
+						<options>
+							<option>FR - Français</option>
+							<option>EN - English</option>
+						</options>
+					</parameter>
+					<parameter name="domain" source="taxo">
+						<type>txtBox</type>
+						<label_fr>Domain</label_fr>
+						<label_en>Domain</label_en> 
+						<required>yes</required>
+					</parameter>
+					<parameter name="og_txn_vrs" source="taxo">
+						<type>txtBox</type>
+						<label_fr>Version de la taxo</label_fr>
+						<label_en>Taxonomy version</label_en> 
+					</parameter>
+					<parameter name="report_code" source="taxo">
+						<type>txtBox</type>
+						<label_fr>Code du rapport</label_fr>
+						<label_en>Report code</label_en> 
+						<required>yes</required>
+					</parameter>
+				</parameters>
+			</header>
+		</pays>
+		<pays id="BE" label="Belgium">
+				<description lang="EN">Reporting complied with NBB document "Technical instructions for file upload to OneGate", v1.6.0 as for September 2014.. 
+		The submitted instance data is wrapped with the XbrlDelivery tag and accompanied by header tag with submission informations.</description>
+			<namingrules>
+				<filename zip="n">
+					<itemname extension="xml" separator="_">
+						<part order="1" type="text" value="{taxo}" source="instance"/>
+						<part order="2" type="date" value="{period}" format="yyyy-MM" source="instance"/>
+						<part order="3" type="text" value="{entity}" source="instance"/>
+						<part order="4" type="text" value="{currency}" source="instance"/>
+					</itemname>
+				</filename>
+		  </namingrules>
+			<header>
+				<globalNode isInside="y" merge="n">
+					<XbrlDelivery></XbrlDelivery>
+				</globalNode>
+				<envelope>
+					<XbrlDelivery>
+						<XbrlDeclarationReport xmlns="http://www.onegate.eu/2010-01-01">
+							<Administration creationTime="{*date*}">
+								<From declarerType="{*declarerType*}">{*entity*}</From>
+								<To>NBB</To>
+								<Domain>MBS</Domain>
+								<Response feedback="{*feedback*}">
+									<Email>{*mail*}</Email>
+									<Language>{*lang*}</Language>
+								</Response>
+								<CustomParameters>
+									<Dim prop="og_txn_vrs">{og_txn_vrs}</Dim>
+								</CustomParameters>
+							</Administration>
+							<Report code="{report_code}" action="replace">
+								{*xbrl*}
+							</Report>
+						</XbrlDeclarationReport>
+					</XbrlDelivery>
+				</envelope>
+				<parameters>
+				     <parameter name="date" source="system">
+						<format>yyyy-MM-dd'T'HH:mm:ss.SSS</format>
+					</parameter>
+					<parameter name ="declarerType" source="user">
+						<type>comboBox</type>
+						<label_fr>Type de déclarant</label_fr>
+						<label_en>Institution type</label_en> 
+						<options>
+							<option>BIC</option>
+							<option>CODE</option>
+							<option>KBO</option>
+						</options>
+					</parameter>
+					<parameter name="feedback" source="user" >
+						<type>comboBox</type>
+						<label_fr>Reponse</label_fr>
+						<label_en>Feedback</label_en>
+						<options>
+							<option>y</option>
+							<option>n</option>
+						</options>
+					</parameter>
+					<parameter name="mail" source="user" >
+						<type>txtBox</type>
+						<label_fr>E-mail</label_fr>
+						<label_en>E-mail</label_en> 
+					</parameter>
+					<parameter name="lang" source="user" >
+						<type>comboBox</type>
+						<label_fr>Langue</label_fr>
+						<label_en>Language</label_en> 
+						<options>
+							<option>FR - Français</option>
+							<option>EN - English</option>
+							<option>NL - Nederlands</option>
+						</options>
+					</parameter>
+					<parameter name="report_code" source="taxo">
+						<type>comboBox</type>
+						<label_fr>Code du rapport</label_fr>
+						<label_en>Report code</label_en> 
+						<options>
+							<option>FINREP_CON_IFRS</option>
+						</options>
+						<required>yes</required>
+					</parameter>
+					<parameter name="og_txn_vrs" source="taxo">
+						<type>txtBox</type>
+						<label_fr>Version de la taxonomy</label_fr>
+						<label_en>Taxonomy version</label_en> 
+					</parameter>
+				</parameters>
+			</header>
+		</pays>
+		<pays id="DE" label="Germany">
+				<description lang="EN">Submission files are renamed and zipped according to the Bundesbank naming convention referenced in the "Erläuterung des neuen bankaufsichtlichen Extranet-Postfachs einschließlich Dateinamenskonventionen", version 1.3 as for 30 September 2014.</description>
+			<namingrules>
+				<filename zip="y" zipbyinstance="y">
+					<zipname separator=".">
+						<part order="1" type="text" value="{domain}" source="taxo"/>
+						<part order="2" type="text" separator="none" value="{datatype}" source="user"/>
+						<part order="3" type="text" value="{datatype2}" source="taxo"/>
+						<part order="4" type="text" value="{entity}" source="instance"/>
+						<part order="5" type="date" value="{period}" format="yyyyMMdd" source="instance"/>
+						<part order="6" type="time" format="HHmmss" source="system"/>
+					</zipname>
+					<itemname extension="xml" separator=".">
+						<part order="1" type="text" value="{domain}" source="taxo"/>
+						<part order="2" type="text" separator="none" value="{datatype}" source="user"/>
+						<part order="3" type="text" value="{datatype2}" source="taxo"/>
+						<part order="4" type="text" value="{entity}" source="instance"/>
+						<part order="5" type="date" value="{period}" format="yyyyMMdd" source="instance"/>
+						<part order="6" type="time" format="HHmmss" source="system"/>
+						<part order="7" type="text" value="{service}" optional="y" source="taxo"/>
+						<part order="8" type="text" value="{service2}" optional="y" source="user"/>
+					</itemname>
+				</filename>
+				<parameters>
+					<parameter name="domain" source="taxo">
+						<type>comboBox</type>
+						<label_fr>Domain</label_fr>
+						<label_en>Domain</label_en>
+						<options>
+							<option>WIDAT</option>
+							<option>GROSS</option>
+						</options>
+						<required>yes</required>
+					</parameter>
+					<parameter name="datatype" source="user">
+						<type>comboBox</type>
+						<label_fr>Type des données</label_fr>
+						<label_en>Data type</label_en>
+						<options>
+							<option value="T">T - test data</option>
+							<option value="F">  - final data</option>
+						</options>
+					</parameter>
+					<parameter name="datatype2" source="taxo">
+						<type>comboBox</type>
+						<label_fr>Type des données</label_fr>
+						<label_en>Data consolidation</label_en>
+						<options>
+							<option value="A">A</option>
+							<option value="C">C</option>
+						</options>
+					</parameter>
+					<parameter name="service" source="taxo">
+						<type>comboBox</type>
+						<label_fr>Code du rapport</label_fr>
+						<label_en>Report code</label_en> 
+						<options>
+							<option>CO_Ind</option>
+							<option>CO_Con</option>
+							<option>CO_LCR_Ind</option>
+							<option>CO_LCR_Con</option>
+							<option>CO_NSFR_Ind</option>
+							<option>CO_NSFR_Con</option>
+							<option>FI_IFRS_Con</option>
+						</options>
+					</parameter>
+					<parameter name="service2" source="user">
+						<type>txtBox</type>
+						<label_fr>Service 2</label_fr>
+						<label_en>Service 2</label_en>
+					</parameter>
+				</parameters>
+			</namingrules>
+		</pays>
+		<pays id="LU" label="Luxembourg">
+		<description lang="EN">Submission files are renamed and zipped according to the CSSF naming convention referenced in the "Reporting requirements for credit
+institutions", final version as of 17 October 2014.</description>
+			<namingrules>
+				<filename zip="y" zipbyinstance="y">
+					<zipname separator="-">
+						<part order="1" type="text" value="COF" separator="none" source="default"/>
+						<part order="2" type="text" value="REP" source="default"/>
+						<part order="3" type="text" value="{entity}" source="instance"/>
+						<part order="4" type="date" format="yyyy-MM" value="{period}" source="instance"/>
+						<part order="5" type="text" value="{service}" source="taxo"/>
+						<part order="6" type="text" value="00" source="default"/>
+						<part order="7" type="text" value="{datatype}" source="user"/>
+						<part order="8" type="text" value="{dataversion}" source="user"/>
+						<part order="9" type="text" value="-" source="default"/>
+					</zipname>
+					<itemname extension="xbrl" separator="-">
+						<part order="1" type="text" value="COF" separator="none" source="default"/>
+						<part order="2" type="text" value="REP" source="default"/>
+						<part order="3" type="text" value="{entity}" source="instance"/>
+						<part order="4" type="date" format="yyyy-MM" value="{period}" source="instance"/>
+						<part order="5" type="text" value="{service}" source="taxo"/>
+						<part order="6" type="text" value="00" source="default"/>
+						<part order="7" type="text" value="{datatype}" source="user"/>
+						<part order="8" type="text" value="{dataversion}" source="user"/>
+						<part order="9" type="text" value="-" source="default"/>
+						<part order="10" type="text" value="{service}" source="taxo"/>
+					</itemname>
+				</filename>
+				<parameters>
+					<parameter name="service" source="taxo">
+						<type>comboBox</type>
+						<label_fr>Code du rapport</label_fr>
+						<label_en>Report code</label_en> 
+						<options>
+							<option>SCOREP</option>
+							<option>SLAREX</option>
+							<option>SLCRXX</option>
+							<option>SNSFRX</option>
+							<option>CCOREP</option>
+							<option>CLAREX</option>
+							<option>CLCRXX</option>
+							<option>CNSFRX</option>
+							<option>CFINRP</option>
+							<option>CAEXXX</option>
+							<option>SAEXXX</option>
+							<option>FPXXXX</option>
+						</options>
+					</parameter>
+					<parameter name="datatype" source="user">
+						<type>comboBox</type>
+						<label_en>Accounting version</label_en>
+						<label_fr>Version comptable</label_fr> 
+						<options>
+							<option value="L">L - individual data, Luxembourg banks</option>
+							<option value="N">N - individual data, including foreign branches</option>
+							<option value="S">S - separated data for each branch</option>
+							<option value="C">C - consolidated data</option>
+						</options>
+					</parameter>
+					<parameter name="dataversion" source="user">
+						<type>comboBox</type>
+						<label_fr>Version</label_fr>
+						<label_en>Submission version</label_en> 
+						<options>
+							<option value="D">D - final version</option>
+							<option value="N">N - preliminary version</option>
+						</options>
+					</parameter>
+				</parameters>
+			</namingrules>
+		</pays>
+	</item>
+    <item to="S2_FR">
+	    <pays id="FR" label="France">
+			<description lang="EN">Reporting complied with "Cahier des charges informatique. Collecte Solvabilité II" version 1.4 of 27 March 2014. 
+			The submitted instance data is wrapped with the XbrlDelivery tag and accompanied by header tag with submission informations.
+			Submission file is renamed according to UBPartner(c) internal standards.</description>
+			<namingrules>
+					<filename zip="n">
+						<itemname extension="xml" separator="_">
+							<part order="1" type="text" value="{taxo}" source="instance"/>
+							<part order="2" type="date" value="{period}" format="yyyy-MM" source="instance"/>
+							<part order="3" type="text" value="{entity}" source="instance"/>
+							<part order="4" type="text" value="{currency}" source="instance"/>
+						</itemname>
+					</filename>
+			</namingrules>
+			<header>
+				<globalNode isInside="y" merge="n">
+					<XbrlDelivery></XbrlDelivery>
+				</globalNode>
+				<envelope>
+					<XbrlDelivery>
+						<XbrlDeclarationReport xmlns="http://www.onegate.eu/2010-01-01">
+							<Administration creationTime="{*date*}">
+								<From declarerType="SIREN">{*entity*}</From>
+								<To>BDF</To>
+								<Domain>{domain}</Domain>
+								<Response feedback="{*feedback*}">
+									<Email>{*mail*}</Email>
+									<Language>{*lang*}</Language>
+								</Response>
+								<CustomParameters>
+									<Dim prop="og_txn_vrs">{og_txn_vrs}</Dim>
+								</CustomParameters>
+							</Administration>
+							<Report code="{report_code}" action="replace">
+								{*xbrl*}
+							</Report>
+						</XbrlDeclarationReport>
+					</XbrlDelivery>
+				</envelope>
+				<parameters>
+					<parameter name="date" source="system">
+						<format>yyyy-MM-dd'T'HH:mm:ss.SSS</format>
+					</parameter>
+					<parameter name="feedback" source="user">
+						<type>comboBox</type>
+						<label_fr>Reponse</label_fr>
+						<label_en>Feedback</label_en>
+						<options>
+							<option>y</option>
+							<option>n</option>
+						</options>
+					</parameter>
+					<parameter name="mail" source="user">
+						<type>txtBox</type>
+						<label_fr>E-mail</label_fr>
+						<label_en>E-mail</label_en> 
+					</parameter>
+					<parameter name="lang" source="user">
+						<type>comboBox</type>
+						<label_fr>Langue</label_fr>
+						<label_en>Language</label_en> 
+						<options>
+							<option>FR - Français</option>
+						</options>
+					</parameter>
+					<parameter name="domain" source="taxo">
+						<type>txtBox</type>
+						<label_fr>Domain</label_fr>
+						<label_en>Domain</label_en> 
+						<required>yes</required>
+					</parameter>
+					<parameter name="og_txn_vrs" source="taxo">
+						<type>txtBox</type>
+						<label_fr>Version de la taxo</label_fr>
+						<label_en>Taxonomy version</label_en> 
+					</parameter>
+					<parameter name="report_code" source="taxo">
+						<type>txtBox</type>
+						<label_fr>Code du rapport</label_fr>
+						<label_en>Report code</label_en> 
+						<required>yes</required>
+					</parameter>
+				</parameters>
+			</header>
+		</pays>
+	</item>
+	<item to="EBA">
+        <pays id="FR" label="France">
+		<description lang="EN">Reporting complied with EBA rules. 
+		The submitted instance data is wrapped with the XbrlDelivery tag and accompanied by header tag with submission informations.</description>
+			<namingrules>
+				<filename zip="n">
+					<itemname extension="xml" separator="_">
+						<part order="1" type="text" value="{taxo}" source="instance"/>
+						<part order="2" type="date" value="{period}" format="yyyy-MM" source="instance"/>
+						<part order="3" type="text" value="{entity}" source="instance"/>
+						<part order="4" type="text" value="{currency}" source="instance"/>
+					</itemname>
+				</filename>
+		  </namingrules>
+			<header>
+				<globalNode isInside="y" merge="y">
+					<XbrlDelivery></XbrlDelivery>
+				</globalNode>
+				<envelope>
+					<XbrlDelivery>
+						<XbrlDeclarationReport xmlns="http://www.onegate.eu/2010-01-01">
+							<Administration creationTime="{*date*}">
+								<From declarerType="FI_ID">{*entity*}</From>
+								<To>EBA</To>
+								<Domain>{domain}</Domain>
+								<Response feedback="{*feedback*}">
+									<Email>{*mail*}</Email>
+									<Language>{*lang*}</Language>
+								</Response>
+								<CustomParameters>
+									<Dim prop="og_txn_vrs">{og_txn_vrs}</Dim>
+								</CustomParameters>
+							</Administration>
+							<Report code="{report_code}">
+								{*xbrl*}
+							</Report>
+						</XbrlDeclarationReport>
+					</XbrlDelivery>
+				</envelope>
+				<parameters>
+					<parameter name="date" source="system">
+						<format>yyyy-MM-dd'T'HH:mm:ss</format>
+					</parameter>
+					<parameter name = "domain" source="taxo">
+						<type>txtBox</type>
+						<label_fr>Domaine</label_fr>
+						<label_en>Domain</label_en> 
+					</parameter>
+					<parameter name = "og_txn_vrs" source="taxo">
+						<type>txtBox</type>
+						<label_fr>Version de taxo</label_fr>
+						<label_en>Taxonomy version</label_en> 
+					</parameter>
+					<parameter name = "report_code" source="taxo">
+						<type>txtBox</type>
+						<label_fr>Code du rapport</label_fr>
+						<label_en>Report code</label_en> 
+						<required>yes</required>
+					</parameter>
+				</parameters>
+			</header>
+		</pays>
+	</item>
+<countrys>
+	<country name="FR" label="France"/>
+	<country name="BE" label="Belgium"/>
+	<country name="DE" label="Germany"/>
+	<country name="LU" label="Luxembourg"/>
+</countrys>
+</items>

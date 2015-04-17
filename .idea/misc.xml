@@ -23,6 +23,7 @@
     <entry_points version="2.0" />
   </component>
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/AspectTest" />
     <file type="web" url="file://$PROJECT_DIR$/MMI3" />
     <file type="web" url="file://$PROJECT_DIR$/ServiceTest" />
     <file type="web" url="file://$PROJECT_DIR$/SpringBootTest" />
@@ -31,11 +32,11 @@
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
-        <option value="$PROJECT_DIR$/JpaHQL/pom.xml" />
-        <option value="$PROJECT_DIR$/ServiceTest/pom.xml" />
         <option value="$PROJECT_DIR$/SpringSecurityTest/pom.xml" />
-        <option value="$PROJECT_DIR$/ServiceTestClient/pom.xml" />
         <option value="$PROJECT_DIR$/MMI3/pom.xml" />
+        <option value="$PROJECT_DIR$/Xvt/pom.xml" />
+        <option value="$PROJECT_DIR$/Xct/pom.xml" />
+        <option value="$PROJECT_DIR$/LogManagement/pom.xml" />
       </list>
     </option>
   </component>

@@ -1,0 +1,14 @@
+<!DOCTYPE aspectj PUBLIC
+        "-//AspectJ//DTD//EN" "http://www.eclipse.org/aspectj/dtd/aspectj.dtd">
+<aspectj>
+    <aspects>
+        <aspect name="pkg.MyAspect"/>
+    </aspects>
+    <weaver options="-verbose -Xset:weaveJavaxPackages=true -set:weaveJavaPackages=true">
+
+        <include within="ubpartner.*"/>
+
+
+
+      </weaver>
+</aspectj>

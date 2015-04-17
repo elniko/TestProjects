@@ -1,0 +1,85 @@
+package tools;
+
+import entity.ProcessEntity;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+import tools.events.ProcessErrorEvent;
+import tools.events.ProcessRunEvent;
+
+import java.util.concurrent.RunnableFuture;
+import java.util.function.Function;
+
+/**
+ * Created by Nick on 10/03/2015.
+ */
+@Component
+@Scope("prototype")
+public class RunningProcess implements Runnable {
+
+    ProcessEntity processEntity = null;
+
+    Thread activeThread = null;
+
+    boolean stopped = false;
+
+    boolean error = false;
+
+    Exception exception;
+
+    @Autowired
+    ApplicationContext context;
+
+    public Exception getException() {
+        return exception;
+    }
+
+    public boolean isError() {
+        return error;
+    }
+
+    public boolean isStopped() {
+        return stopped;
+    }
+
+    public void setStopped(boolean stopped) {
+        this.stopped = stopped;
+    }
+
+    public Thread getActiveThread() {
+        return activeThread;
+    }
+
+    public void setActiveThread(Thread activeThread) {
+        this.activeThread = activeThread;
+    }
+
+    public ProcessEntity getProcessEntity () {
+        return processEntity;
+    }
+
+    public void setProcessEntity(ProcessEntity processEntity) {
+        this.processEntity = processEntity;
+    }
+
+    @Override
+    public void run() {
+        try {
+            int i = 0;
+            while (i < 10 && !Thread.currentThread().isInterrupted()) {
+                System.out.println("Hello: " + Thread.currentThread().getName() + " " + i);
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    break;
+                }
+                i++;
+            }
+        } catch (Exception e) {
+            error = true;
+            exception = e;
+            context.publishEvent(new ProcessErrorEvent(this));
+        }
+    }
+}

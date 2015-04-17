@@ -1,0 +1,219 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>Xvt</artifactId>
+	<version>2.7.0.1</version>
+	<parent>
+		<groupId>ubp</groupId>
+		<artifactId>ReleaseParent</artifactId>
+		<version>0.0.1</version>
+	</parent>
+
+	<properties>
+		<mainclass>ubpartner.Xvt</mainclass>
+		<exclude.artifacts>LogManagement,Lst,LibUtils,TaxonomyZipManagement,Rmt,ExcelToIn,xpe</exclude.artifacts>
+	</properties>
+
+	<!-- This plugin will be inherited from parent.pom -->
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.github.wvengen</groupId>
+				<artifactId>proguard-maven-plugin</artifactId>
+				<configuration>
+					<!-- libs> <lib>${java.home}/lib/rt.jar</lib> <lib>${java.home}/lib/jsse.jar</lib> 
+						<lib>${java.home}/lib/jce.jar</lib> <lib>C:\Users\stagiaire\.m2\repository\ubmatrix\xpe\5.0.3.313</lib> 
+						</libs -->
+					<assembly>
+						<inclusions>
+							<inclusion>
+								<groupId>ubp</groupId>
+								<artifactId>LogManagement</artifactId>
+							</inclusion>
+							<inclusion>
+								<groupId>ubp</groupId>
+								<artifactId>Lst</artifactId>
+							</inclusion>
+							<inclusion>
+								<groupId>ubp</groupId>
+								<artifactId>LibUtils</artifactId>
+							</inclusion>
+							<inclusion>
+								<groupId>ubp</groupId>
+								<artifactId>TaxonomyZipManagement</artifactId>
+							</inclusion>
+							<inclusion>
+								<groupId>ubp</groupId>
+								<artifactId>Rmt</artifactId>
+							</inclusion>
+							<inclusion>
+								<groupId>ubp</groupId>
+								<artifactId>ExcelToIn</artifactId>
+							</inclusion>
+						</inclusions>
+					</assembly>
+					<exclusions>
+
+					</exclusions>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+
+
+	<dependencies>
+		<dependency>
+			<groupId>ubp</groupId>
+			<artifactId>ExcelToIn</artifactId>
+			<version>1.6.2</version>
+		</dependency>
+		<dependency>
+			<groupId>ubmatrix</groupId>
+			<artifactId>xpe</artifactId>
+			<version>5.3.0.310</version>
+			<classifier>XBRLProcessorSDK</classifier>
+		</dependency>
+
+		<dependency>
+			<groupId>ubmatrix</groupId>
+			<artifactId>xpe</artifactId>
+			<version>5.3.0.310</version>
+			<classifier>jdic</classifier>
+		</dependency>
+		<!-- <dependency>
+			<groupId>ubmatrix</groupId>
+			<artifactId>xpe</artifactId>
+			<version>5.3.0.310</version>
+			<classifier>coreui</classifier>
+		</dependency> -->
+		<dependency>
+			<groupId>ubmatrix</groupId>
+			<artifactId>xpe</artifactId>
+			<version>5.3.0.310</version>
+			<classifier>ojdbc14</classifier>
+		</dependency>
+		<dependency>
+			<groupId>ubmatrix</groupId>
+			<artifactId>xpe</artifactId>
+			<version>5.3.0.310</version>
+			<classifier>xdb</classifier>
+		</dependency>
+		<dependency>
+			<groupId>ubmatrix</groupId>
+			<artifactId>xpe</artifactId>
+			<version>5.3.0.310</version>
+			<classifier>SECXPathExtensions</classifier>
+		</dependency>
+		<dependency>
+			<groupId>ubmatrix</groupId>
+			<artifactId>xpe</artifactId>
+			<version>5.3.0.310</version>
+			<classifier>dom</classifier>
+		</dependency>
+		<dependency>
+			<groupId>ubmatrix</groupId>
+			<artifactId>xpe</artifactId>
+			<version>5.3.0.310</version>
+			<classifier>org-jdesktop-layout</classifier>
+		</dependency>
+
+		<!-- ****dependency> <groupId>org.swinglabs</groupId> <artifactId>swing-layout</artifactId> 
+			<version>1.0.3</version> </dependency -->
+         <dependency>
+			<groupId>ubmatrix</groupId>
+			<artifactId>xpe</artifactId>
+			<version>5.3.0.310</version>
+			<classifier>swing-layout-1</classifier>
+			<type>0.jar</type>
+		</dependency>
+
+		<!-- ***dependency> <groupId>net.sf.ingenias</groupId> <artifactId>swixml</artifactId> 
+			<version>1.0</version> </dependency -->
+		<dependency>
+			<groupId>ubmatrix</groupId>
+			<artifactId>xpe</artifactId>
+			<version>5.3.0.310</version>
+			<classifier>swixml</classifier>
+		</dependency>
+
+
+		<!-- dependency> <groupId>net.sf.saxon</groupId> <artifactId>saxon</artifactId> 
+			<version>[8.7,)</version> </dependency -->
+	   <dependency>
+			<groupId>ubmatrix</groupId>
+			<artifactId>xpe</artifactId>
+			<version>5.3.0.310</version>
+			<classifier>saxon</classifier>
+		</dependency>
+
+		<!--*** dependency> <groupId>xalan</groupId> <artifactId>xalan</artifactId> 
+			<version>2.7.1</version> </dependency -->
+	 	<dependency>
+			<groupId>ubmatrix</groupId>
+			<artifactId>xpe</artifactId>
+			<version>5.3.0.310</version>
+			<classifier>xalan</classifier>
+		</dependency>
+
+		<!-- ***dependency> <groupId>javax.xml.parsers</groupId> <artifactId>jaxp-api</artifactId> 
+			<version>1.4.5</version> </dependency -->
+ 		<dependency>
+			<groupId>ubmatrix</groupId>
+			<artifactId>xpe</artifactId>
+			<version>5.3.0.310</version>
+			<classifier>jaxp-api</classifier>
+		</dependency>
+
+		<!-- *****dependency> <groupId>com.sun.xml</groupId> <artifactId>relaxngDatatype</artifactId> 
+			<version>1.0</version> </dependency -->
+		<dependency>
+			<groupId>ubmatrix</groupId>
+			<artifactId>xpe</artifactId>
+			<version>5.3.0.310</version>
+			<classifier>relaxngDatatype</classifier> 
+		</dependency>
+
+		<!-- ****dependency> <groupId>sax</groupId> <artifactId>sax</artifactId> 
+			<version>2.0.1</version> </dependency -->
+		<dependency>
+			<groupId>ubmatrix</groupId>
+			<artifactId>xpe</artifactId>
+			<version>5.3.0.310</version>
+			<classifier>sax</classifier>
+		</dependency>
+
+
+		<!-- dependency> <groupId>ubmatrix</groupId> <artifactId>xpe</artifactId> 
+			<version>5.0.3.313</version> <classifier>xml-apis</classifier> </dependency -->
+		<dependency>
+			<groupId>xml-apis</groupId>
+			<artifactId>xml-apis</artifactId>
+			<version>1.4.01</version>
+		</dependency> 
+		<!-- dependency> <groupId>jdom</groupId> <artifactId>jdom</artifactId> 
+			<version>1.0</version> </dependency -->
+		<!-- dependency> <groupId>ubmatrix</groupId> <artifactId>xpe</artifactId> 
+			<version>5.0.3.313</version> <classifier>jdom</classifier> </dependency> 
+			<dependency> <groupId>ubmatrix</groupId> <artifactId>xpe</artifactId> <version>5.0.3.313</version> 
+			<classifier>xercesImpl</classifier> </dependency -->
+		<dependency>
+			<groupId>ubmatrix</groupId>
+			<artifactId>xpe</artifactId>
+			<version>5.3.0.310</version>
+			<classifier>EurofilingXPathExtensions</classifier>
+		</dependency>
+		<dependency>
+			<groupId>ubmatrix</groupId>
+			<artifactId>xpe</artifactId>
+			<version>5.3.0.310</version>
+			<classifier>xpezip</classifier>
+			<type>zip</type>
+		</dependency> 
+		<dependency>
+		    <groupId>ubp</groupId>
+		    <artifactId>Rmt</artifactId>
+		</dependency>
+	</dependencies>
+
+</project>

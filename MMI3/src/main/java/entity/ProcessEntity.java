@@ -7,6 +7,11 @@ import java.util.*;
 /**
  * Created by nike on 27/11/14.
  */
+
+@NamedQuery(name = "GET_PENDING",
+               query = "from entity.ProcessEntity  p join fetch p.user join fetch p.status s join fetch p.type t where s.name='PENDING'")
+
+
 @Entity
 @Table(name="process")
 
@@ -24,14 +29,18 @@ public class ProcessEntity extends entity.Entity{
     @Column(name="ended_at")
     Calendar endedAt;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name="waiting_at")
+    Calendar waitingAt;
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "status_id", nullable = false, foreignKey = @ForeignKey(name = "fk_status_process"))
     ProcessStatusEntity status;
 
     @Column(name = "thread_name")
     String threadName;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="type_id", nullable = false, foreignKey = @ForeignKey(name = "fk_type_process"))
     ProcessTypeEntity type;
 
@@ -126,6 +135,14 @@ public class ProcessEntity extends entity.Entity{
 
     public void setCreatedAt(Calendar createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public Calendar getWaitingAt() {
+        return waitingAt;
+    }
+
+    public void setWaitingAt(Calendar waitingAt) {
+        this.waitingAt = waitingAt;
     }
 
     @PrePersist

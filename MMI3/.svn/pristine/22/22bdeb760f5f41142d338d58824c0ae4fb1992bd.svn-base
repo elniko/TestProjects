@@ -1,0 +1,72 @@
+package spring;
+
+import log4j2.MyDbProvider;
+import log4j2.SqlQueryAppender;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.embedded.ServletRegistrationBean;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
+import org.springframework.context.event.SimpleApplicationEventMulticaster;
+import org.springframework.core.task.AsyncTaskExecutor;
+import org.springframework.core.task.SimpleAsyncTaskExecutor;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
+import tools.AppContextListener;
+
+import javax.servlet.Servlet;
+import java.util.concurrent.ThreadFactory;
+
+/**
+ * Created by Nick on 24/03/2015.
+ */
+@Configuration
+
+public class BeansConfig {
+    @Bean
+    @Autowired
+    public Logger getLogger(ApplicationContext ctx) {
+
+        Logger logger = LogManager.getLogger("controller.RestController");
+        org.apache.logging.log4j.core.Logger coreLogger = (org.apache.logging.log4j.core.Logger)logger;
+        org.apache.logging.log4j.core.config.Configuration config =  coreLogger.getContext().getConfiguration();
+        SqlQueryAppender appender = (SqlQueryAppender) config.getAppender("QueryAppender");
+        MyDbProvider prov = new MyDbProvider();
+        prov.setContext(ctx);
+        // appender.setExecutor(prov::execQuery);
+        // coreLogger.addAppender(appender);
+        return logger;
+    }
+
+@Bean
+public AppContextListener appContextListener() {
+    return new AppContextListener();
+}
+
+    @Bean
+    public AsyncTaskExecutor asyncTaskExecutor() {
+        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+        executor.setCorePoolSize(1);
+        executor.setMaxPoolSize(1);
+        executor.setQueueCapacity(1);
+
+        executor.setThreadFactory(new ThreadFactory() {
+            @Override
+            public Thread newThread(Runnable r) {
+                Thread t = new Thread(r);
+                t.setName("th");
+                return t;
+            }
+        });
+        return executor;
+    }
+
+    //@Bean
+    public SimpleApplicationEventMulticaster applicationEventMulticaster() {
+        SimpleApplicationEventMulticaster caster = new SimpleApplicationEventMulticaster();
+        caster.setTaskExecutor(new SimpleAsyncTaskExecutor());
+        return caster;
+    }
+}

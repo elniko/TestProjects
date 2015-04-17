@@ -1,0 +1,142 @@
+package tools;
+
+import entity.ProcessEntity;
+import entity.UserEntity;
+import exceptions.ProcessNotExistsException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Component;
+import tools.events.ProcessFinishEvent;
+import tools.events.ProcessRunEvent;
+import tools.events.ProcessStopEvent;
+
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.function.Predicate;
+
+/**
+ * Created by Nick on 24/03/2015.
+ */
+@Component
+public class ProcessThreadPoolExecutor extends ThreadPoolExecutor  {
+
+    @Autowired
+    ApplicationContext context;
+
+    final Object monitor = new Object();
+
+    int activeThreads;
+
+    List<ProcessEntity> pendings = new ArrayList<>();
+
+    Map<String, List<RunningProcess>> userProc = new HashMap<>();
+
+    @Override
+    protected void afterExecute(Runnable r, Throwable t) {
+        RunningProcess rp = (RunningProcess) r;
+        context.publishEvent(new ProcessFinishEvent(rp));
+        String user = rp.getProcessEntity().getUser().getName();
+        int val = userProc.getOrDefault(user, new ArrayList<>()).size();
+        if (val == 0) {
+            userProc.remove(user);
+        } else {
+            userProc.compute(user, (key, value) -> {
+                value.remove(rp);
+                return value;
+            });
+        }
+    }
+
+    @Override
+    protected void beforeExecute(Thread t, Runnable r) {
+        synchronized (monitor) {
+            RunningProcess rp = (RunningProcess) r;
+            context.publishEvent(new ProcessRunEvent(rp));
+            String user = rp.getProcessEntity().getUser().getName();
+            rp.setActiveThread(t);
+            if (!userProc.containsKey(user)) {
+                List<RunningProcess> list = new ArrayList<>();
+                list.add(rp);
+                userProc.put(user, list);
+            } else {
+                userProc.get(user).add(rp);
+            }
+            monitor.notifyAll();
+        }
+    }
+
+
+
+    public void executePendings() throws InterruptedException {
+        while (hasFreeThreads() && pendings.size() > 0) {
+            synchronized (monitor) {
+                Collections.sort(pendings, (o1, o2) -> {
+                    int o1count = userProc.getOrDefault(o1.getUser().getName(), new ArrayList<>()).size();
+                    int o2count = userProc.getOrDefault(o2.getUser().getName(), new ArrayList<>()).size();
+                    if (o1count > o2count) {
+                        return 1;
+                    } else if (o1count < o2count) {
+                        return -1;
+                    } else {
+                        if (o1.getWaitingAt().after(o2.getWaitingAt())) {
+                            return 1;
+                        } else {
+                            return -1;
+                        }
+                    }
+                });
+                RunningProcess process = context.getBean(RunningProcess.class);
+                process.setProcessEntity(pendings.get(0));
+                super.execute(process);
+                monitor.wait(1000);
+                pendings.remove(0);
+            }
+        }
+    }
+
+    public Map<String, List<RunningProcess>> getUserProc() {
+        return userProc;
+    }
+
+    static int tCount = 0;
+
+    @Autowired(required = true)
+    public ProcessThreadPoolExecutor(@Value("${thread.active}") int activeThreads) {
+        super(activeThreads, activeThreads, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<>(), (r) -> {
+            Thread t = new Thread(r);
+            t.setDaemon(true);
+            t.setName("MMIWorkingThread-" + tCount);
+            tCount++;
+            return t;
+        });
+        //Executors.newCachedThreadPool()
+        this.activeThreads = activeThreads;
+    }
+
+    public void cancelThread(String user, int pid) throws ProcessNotExistsException {
+        if (!userProc.containsKey(user)) throw new ProcessNotExistsException(user, pid);
+        for (RunningProcess rp : userProc.get(user)) {
+            if (rp.getProcessEntity().getId() == pid) {
+                rp.activeThread.interrupt();
+                rp.setStopped(true);
+                context.publishEvent(new ProcessStopEvent(rp));
+                return;
+            }
+        }
+        throw new ProcessNotExistsException(user, pid);
+    }
+
+    public boolean hasFreeThreads() {
+       if(getActiveCount() < activeThreads) return true;
+       return false;
+    }
+
+    public void setPendings(List<ProcessEntity> pendings) {
+        this.pendings = pendings;
+    }
+
+    public List<ProcessEntity> getPendings() {
+        return pendings;
+    }
+}

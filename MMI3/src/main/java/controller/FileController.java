@@ -33,7 +33,7 @@ import java.util.Optional;
 @RequestMapping("/file")
 public class FileController {
 
-    @Autowired
+    //@Autowired
     Logger logger;
 
     @Autowired

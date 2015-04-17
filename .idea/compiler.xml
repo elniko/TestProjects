@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AjcSettings">
+    <option name="ajcPath" value="$MAVEN_REPOSITORY$/org/aspectj/aspectjtools/1.8.5/aspectjtools-1.8.5.jar" />
+    <option name="cmdLineParams" value="-Xlint:warning" />
+    <option name="delegateToJavac" value="true" />
+  </component>
   <component name="CompilerConfiguration">
-    <option name="DEFAULT_COMPILER" value="Javac" />
+    <option name="DEFAULT_COMPILER" value="ajc" />
     <resourceExtensions />
     <wildcardResourcePatterns>
       <entry name="!?*.java" />
@@ -22,17 +27,19 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="ServiceTest" />
-        <module name="ServiceTestClient" />
+        <module name="LogManagement" />
+        <module name="MMI3Aspects" />
         <module name="SpringSecurityTest" />
+        <module name="Xct" />
+        <module name="Xvt" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="MMI3" target="1.8" />
+    <bytecodeTargetLevel target="1.8">
+      <module name="LogManagement" target="1.8" />
+      <module name="MMI3Aspects" target="1.8" />
       <module name="MMInet" target="1.8" />
-      <module name="ServiceTest" target="1.7" />
-      <module name="SpringBootTest" target="1.8" />
+      <module name="Xct" target="1.8" />
+      <module name="Xvt" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
-

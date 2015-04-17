@@ -2,13 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/JpaHQL/JpaHQL.iml" filepath="$PROJECT_DIR$/JpaHQL/JpaHQL.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LogManagement/LogManagement.iml" filepath="$PROJECT_DIR$/LogManagement/LogManagement.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MMI3Aspects/MMI3Aspects.iml" filepath="$PROJECT_DIR$/MMI3Aspects/MMI3Aspects.iml" />
       <module fileurl="file://$PROJECT_DIR$/MMI3/MMInet.iml" filepath="$PROJECT_DIR$/MMI3/MMInet.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ServiceTest/ServiceTest.iml" filepath="$PROJECT_DIR$/ServiceTest/ServiceTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ServiceTestClient/ServiceTestClient.iml" filepath="$PROJECT_DIR$/ServiceTestClient/ServiceTestClient.iml" />
-      <module fileurl="file://$PROJECT_DIR$/SpringBootTest/SpringBootTest.iml" filepath="$PROJECT_DIR$/SpringBootTest/SpringBootTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Qsort/Qsort.iml" filepath="$PROJECT_DIR$/Qsort/Qsort.iml" />
       <module fileurl="file://$PROJECT_DIR$/Threads/Threads.iml" filepath="$PROJECT_DIR$/Threads/Threads.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Xct/Xct.iml" filepath="$PROJECT_DIR$/Xct/Xct.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Xvt/Xvt.iml" filepath="$PROJECT_DIR$/Xvt/Xvt.iml" />
     </modules>
   </component>
 </project>
-

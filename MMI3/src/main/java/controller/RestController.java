@@ -1,24 +1,16 @@
 package controller;
 
 
-import log4j2.MyDbProvider;
-import log4j2.SqlQueryAppender;
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
-import org.apache.logging.log4j.core.LoggerContext;
-import org.apache.logging.log4j.core.config.Configuration;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.context.ServletConfigAware;
+import tools.annotations.LoggerConfig;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.servlet.ServletConfig;
+import java.io.IOException;
 
 /**
  * Created by stagiaire on 18/12/2014.
@@ -28,7 +20,7 @@ import javax.servlet.ServletConfig;
 @RequestMapping(value="/rest")
 public class RestController {
 
-    @Autowired
+    @LoggerConfig
     Logger logger;
 
     ServletConfig config;
@@ -66,8 +58,10 @@ public class RestController {
             ThreadContext.put("line_count", i + "");
             logger.info("Hello Message" + i);
         }
+
         return "Ok";
     }
+
 
 
 

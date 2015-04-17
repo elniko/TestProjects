@@ -1,0 +1,42 @@
+<validationConfig>
+  <!--XBRL validation -->
+  <!--Activation de la validation XBRL seulement sans les CL-->
+  <xbrlValidation>
+    <option name="xmlValidatorClassification" uri="validation://ubmatrix.com/Xbrl/Validation#Xml,Xml" enable="true" />
+    <option name="instanceValidatorClassification" uri="validation://ubmatrix.com/Xbrl/Validation#DTS,InstanceDocument" enable="true" />
+    <option name="linkbaseValidatorClassification" uri="validation://ubmatrix.com/Xbrl/Validation#DTS,Linkbase" enable="false" />
+    <option name="FRTAValidatorClassification" uri="validation://ubmatrix.com/Xbrl/Validation#BestPractices,Frta" enable="false" />
+    <option name="dimensionLinkbaseValidatorClassification" uri="validation://ubmatrix.com/Xbrl/Validation#DTS,LinkbaseDimension" enable="false" />
+    <option name="dimInstanceValidatorClassification" uri="validation://ubmatrix.com/Xbrl/Validation#DTS,InstanceDimension" enable="false" />
+    <option name="genericLinkValidatorClassification" uri="validation://ubmatrix.com/Xbrl/Validation#DTS,GenericLinkbase" enable="false" />
+    <option name="formulaValidatorClassification" uri="validation://ubmatrix.com/Xbrl/Validation#DTS,Formula" enable="false" />
+    <option name="calculationValidatorClassification" uri="validation://ubmatrix.com/Xbrl/Validation#DTS,Calculation" enable="true" />
+  </xbrlValidation>
+  <!-- Dimension validation -->
+  <!--La validation Dimension est separee pour receptionner les erreurs dans 2 fichiers differents-->
+  <dimensionValidation separate="false">
+    <option name="xmlValidatorClassification" uri="validation://ubmatrix.com/Xbrl/Validation#Xml,Xml" enable="false" />
+    <option name="instanceValidatorClassification" uri="validation://ubmatrix.com/Xbrl/Validation#DTS,InstanceDocument" enable="false" />
+    <option name="linkbaseValidatorClassification" uri="validation://ubmatrix.com/Xbrl/Validation#DTS,Linkbase" enable="false" />
+    <option name="FRTAValidatorClassification" uri="validation://ubmatrix.com/Xbrl/Validation#BestPractices,Frta" enable="false" />
+    <option name="dimensionLinkbaseValidatorClassification" uri="validation://ubmatrix.com/Xbrl/Validation#DTS,LinkbaseDimension" enable="false" />
+    <option name="dimInstanceValidatorClassification" uri="validation://ubmatrix.com/Xbrl/Validation#DTS,InstanceDimension" enable="true" />
+    <option name="genericLinkValidatorClassification" uri="validation://ubmatrix.com/Xbrl/Validation#DTS,GenericLinkbase" enable="false" />
+    <option name="formulaValidatorClassification" uri="validation://ubmatrix.com/Xbrl/Validation#DTS,Formula" enable="false" />
+  </dimensionValidation>
+  <cacheLocations>
+   		<cacheLocation taxonomy="S2-1.0-2014-01_EU" cache="resources/System/cache_S2-1.2"/>
+  </cacheLocations>
+  <!-- Taxonomie validation-->
+  <!--La taxonomie n'est pas validee-->
+  <taxonomyValidation activate="false" />
+  <!-- Formula partioning-->
+  <!--La validation xbrl est lancee en VOM s'il est active et le fichier n'est charge qu'une seule fois-->
+  <formulaPartioning desactivateIfActive="false" />
+  <!-- Report level: Summary, Full Report, None, Exceptions -->
+  <tracing level="Full Report" />
+  <!-- Langage de la validation -->
+  <language>EN</language>
+  <!-- Minimum size of VOM validation. For files lighter than this (in Mb) the DOM validation is forced. -->
+  <domForceSize>0</domForceSize>
+</validationConfig>

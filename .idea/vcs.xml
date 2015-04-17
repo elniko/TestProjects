@@ -2,7 +2,10 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/LogManagement" vcs="svn" />
     <mapping directory="$PROJECT_DIR$/MMI3" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/Xct" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/Xvt" vcs="svn" />
   </component>
 </project>
 

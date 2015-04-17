@@ -14,11 +14,9 @@ import exceptions.UserNotExistsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import service.interfaces.ProcessService;
-import tools.ProcessRunner;
-
 import javax.transaction.Transactional;
+import java.util.Calendar;
 import java.util.List;
-import java.util.concurrent.Future;
 
 /**
  * Created by Nick on 05/03/2015.
@@ -39,8 +37,7 @@ public class ProcessServiceImpl implements ProcessService{
     @Autowired
     UserDao userDao;
 
-    @Autowired
-    ProcessRunner processRunner;
+
 
     @Override
     public int schedule(String type, String user) throws BadProcessTypeException, UserNotExistsException {
@@ -80,6 +77,7 @@ public class ProcessServiceImpl implements ProcessService{
        // List<ProcessStatusEntity> statuses = (List<ProcessStatusEntity>) processStatusDao.getAllByCondition("s", "s.name='PENDING'", 0, 0, "");
         ProcessStatusEntity status = getStatus("PENDING");
         process.setStatus(status);
+        process.setWaitingAt(Calendar.getInstance());
         processDao.updateEntity(process);
     }
 
@@ -89,8 +87,15 @@ public class ProcessServiceImpl implements ProcessService{
         return list.get(0);
     }
 
+    @Override
+    public List<ProcessEntity> getPendings() {
+        List<ProcessEntity> list = processDao.getPendings();
+        return list;
+    }
+
 
     @Override
+    @Transactional(value = Transactional.TxType.REQUIRES_NEW)
     public void editProcess(ProcessEntity pe) {
         processDao.updateEntity(pe);
     }
@@ -122,8 +127,5 @@ public class ProcessServiceImpl implements ProcessService{
     }
 
 
-    @Override
-    public ProcessRunner getProcessRunner() {
-        return processRunner;
-    }
+
 }

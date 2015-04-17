@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Created by Log Management null: 2015.4.1 11:54:18-->
+<!---->
+<xct>
+  <messages>
+    <message type="INFO">01/04/2015 11:54:14 Run Xct in API mode</message>
+    <message type="INFO">01/04/2015 11:54:14 LST Processing.</message>
+    <message type="INFO">01/04/2015 11:54:16 Your license is validated! Now you can enter application!</message>
+    <message type="INFO">01/04/2015 11:54:16 XBRL Converting Tools null</message>
+    <message type="INFO">01/04/2015 11:54:16 Processing file : ars.xbrl_S.02.01.xlsx</message>
+    <message type="INFO">01/04/2015 11:54:18 ars.xbrl_S.02.01.xlsx Working taxonomy is: S2-2015-Q1-ARS</message>
+    <message type="FATAL">01/04/2015 11:54:18 XctSDKrun =&gt; ubpartner.taxonomymanagement.ConfiguratedTaxonomy.getDeclTblsByMonth()Ljava/util/HashMap;</message>
+  </messages>
+  <ReturnCode>
+    <ID>3</ID>
+    <message>FATAL</message>
+  </ReturnCode>
+</xct>
+

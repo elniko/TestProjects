@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: ubmatrix:xpe:dom:5.3.1.394">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/ubmatrix/xpe/5.3.1.394/xpe-5.3.1.394-dom.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/ubmatrix/xpe/5.3.1.394/xpe-5.3.1.394-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/ubmatrix/xpe/5.3.1.394/xpe-5.3.1.394-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

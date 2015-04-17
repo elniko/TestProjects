@@ -1,15 +1,20 @@
 package service.implimentations;
 
+import Constants.*;
 import dao.interfaces.*;
 import entity.*;
 import exceptions.EntityNotExistsException;
+import exceptions.RoleNotExistException;
+import exceptions.UserAlreadyExistException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import service.interfaces.InitializerService;
+import service.interfaces.UserService;
 
-import javax.persistence.Column;
 import javax.transaction.Transactional;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by Nick on 23/01/2015.
@@ -17,8 +22,14 @@ import java.util.Collection;
 @Service
 public class InitializerServiceImpl implements InitializerService {
 
+    @Value("${app.superadmin.name}")
+    String superName;
 
-    boolean clearFlag = false;
+    @Value("${app.superadmin.pass}")
+    String superPassword;
+
+    @Value("${app.superadmin.mail}")
+    String superMail;
 
     @Autowired
     RoleDao roleDao;
@@ -38,40 +49,19 @@ public class InitializerServiceImpl implements InitializerService {
     @Autowired
     PropertyTypeDao propTypeDao;
 
+    @Autowired
+    UserService userService;
+
+    @Autowired
+    private PropertyDao propertyDao;
 
 
-    public RoleDao getRoleDao() {
-        return roleDao;
-    }
-
-    public UserDao getUserDao() {
-        return userDao;
-    }
-
-    public ResourceTypeDao getResTypeDao() {
-        return resTypeDao;
-    }
-
-    public ProcessStatusDao getProcStatusDao() {
-        return procStatusDao;
-    }
-
-    public ProcessTypeDao getProcTypeDao() {
-        return procTypeDao;
-    }
-
-    public PropertyTypeDao getPropTypeDao() {
-        return propTypeDao;
-    }
-
-
-   private void clearAll(GenericDao<? extends Entity> dao) throws EntityNotExistsException {
+    private void clearAll(GenericDao<? extends Entity> dao) throws EntityNotExistsException {
        Collection<? extends Entity> entities  = dao.getAllEntities();
        for(Entity entity : entities) {
            dao.remove(entity);
        }
     }
-
 
     @Override
     @Transactional
@@ -158,5 +148,35 @@ public class InitializerServiceImpl implements InitializerService {
 
     }
 
+    @Override
+    public void initProperties(Object[] props) {
+        for(Object prop : props) {
+            Property property = (Property) prop;
+            PropertyEntity pe = new PropertyEntity();
+            pe.setName(property.name());
+            pe.setScope(property.scopeStr());
+            List<PropertyTypeEntity> pts = (List<PropertyTypeEntity>) propTypeDao.getAllByCondition("p", "p.name='"+ property.type().name()+"'", 0, 0, "");
+            pe.setType(pts.get(0));
+            propertyDao.saveEntity(pe);
+        }
+    }
+
+    @Override
+    public void initTypes(boolean clearAll) throws EntityNotExistsException, RoleNotExistException, UserAlreadyExistException {
+        if(clearAll) {
+            clearRole();
+            clearProcessStatus();
+            clearProcessType();
+            clearPropertyType();
+            //initService.clearResourceType();
+        }
+        userService.addUserWithRole(superName, superPassword, superMail, "ROLE_SUPERADMIN");
+        initRoles(Role.values());
+        initProcessStatuses(ProcessStatus.values());
+        initProcessTypes(ProcessType.values());
+        initProperties(Property.values());
+        //initService.initResourceTypes(Files.values());
+        initPropertyTypes(PropertyType.values());
+    }
 
 }
