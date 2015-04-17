@@ -2,145 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="dcf993f0-9ded-4b39-b342-412af68fa320" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/MMI3Aspects/src/main/java/aspects/LogAspect.java" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/MMI3/src/main/java/Constants/ProcessStatus.java" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/MMI3/src/main/java/Constants/ProcessType.java" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/MMI3/src/main/java/Constants/Property.java" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/MMI3/src/main/java/Constants/PropertyType.java" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/MMI3/src/main/java/Constants/Role.java" />
-      <change type="DELETED" beforePath="D:\TestProjects2\.idea\artifacts\ServiceTest_war.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\TestProjects2\.idea\artifacts\ServiceTest_war_exploded.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\TestProjects2\.idea\artifacts\TestProjects_war_exploded.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\TestProjects2\.idea\libraries\Maven__com_fasterxml_jackson_core_jackson_annotations_2_3_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\TestProjects2\.idea\libraries\Maven__com_fasterxml_jackson_core_jackson_core_2_3_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\TestProjects2\.idea\libraries\Maven__com_fasterxml_jackson_core_jackson_databind_2_3_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\TestProjects2\.idea\libraries\Maven__commons_logging_commons_logging_1_1_3.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\TestProjects2\.idea\libraries\Maven__javax_servlet_javax_servlet_api_3_1_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\TestProjects2\.idea\libraries\Maven__mysql_mysql_connector_java_5_1_33.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\TestProjects2\.idea\libraries\Maven__org_jboss_spec_javax_transaction_jboss_transaction_api_1_2_spec_1_0_0_Final.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\TestProjects2\.idea\libraries\Maven__org_slf4j_slf4j_log4j12_1_7_7.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\TestProjects2\.idea\libraries\Maven__org_springframework_spring_aop_3_2_12_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\TestProjects2\.idea\libraries\Maven__org_springframework_spring_beans_3_2_12_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\TestProjects2\.idea\libraries\Maven__org_springframework_spring_context_3_2_12_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\TestProjects2\.idea\libraries\Maven__org_springframework_spring_core_3_2_12_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\TestProjects2\.idea\libraries\Maven__org_springframework_spring_expression_3_2_12_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\TestProjects2\.idea\libraries\Maven__org_springframework_spring_jdbc_3_2_12_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\TestProjects2\.idea\libraries\Maven__org_springframework_spring_jdbc_4_1_0_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\TestProjects2\.idea\libraries\Maven__org_springframework_spring_orm_3_2_12_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\TestProjects2\.idea\libraries\Maven__org_springframework_spring_tx_3_2_12_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\TestProjects2\.idea\libraries\Maven__org_springframework_spring_tx_4_1_0_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\TestProjects2\.idea\libraries\Maven__org_springframework_spring_web_4_1_0_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\TestProjects2\.idea\libraries\Maven__org_springframework_spring_webmvc_4_1_0_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\TestProjects2\.idea\libraries\Maven__xml_apis_xml_apis_1_0_b2.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/controller/AdminWebController$RolePropertyEditor.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/controller/AdminWebController$RolePropertyEditor.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/controller/AdminWebController.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/controller/AdminWebController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/tools/AppContextListener.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/tools/AppContextListener.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/spring/old/security/AuthEntryPoint.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/spring/old/security/AuthEntryPoint.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/spring/old/security/AuthSuccessHandler.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/spring/old/security/AuthSuccessHandler.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/exceptions/BadOwnerException.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/exceptions/BadOwnerException.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/exceptions/BadProcessTypeException.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/exceptions/BadProcessTypeException.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/exceptions/BadProfileException.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/exceptions/BadProfileException.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/exceptions/BadRequestParameters.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/exceptions/BadRequestParameters.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/exceptions/BadResourceTypeException.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/exceptions/BadResourceTypeException.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/spring/BeansConfig$1.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/spring/BeansConfig$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/spring/BeansConfig.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/spring/BeansConfig.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/entity/Entity.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/entity/Entity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/exceptions/EntityNotExistsException.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/exceptions/EntityNotExistsException.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/controller/ErrorController.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/controller/ErrorController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/exceptions/ExceptionJSONInfo.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/exceptions/ExceptionJSONInfo.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/service/ExceptionSerializer.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/service/ExceptionSerializer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/controller/FileController.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/controller/FileController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/dao/interfaces/GenericDao.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/dao/interfaces/GenericDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/dao/implimentation/GenericDaoImpl.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/dao/implimentation/GenericDaoImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/controller/GlobalExceptionHandler.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/controller/GlobalExceptionHandler.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/test/Init$Files.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/test/Init$Files.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/test/Init$Process.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/test/Init$Process.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/test/Init$ProcessStatus.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/test/Init$ProcessStatus.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/test/Init$PropertTypes.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/test/Init$PropertTypes.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/test/Init$Roles.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/test/Init$Roles.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/test/Init.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/test/Init.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/controller/InitController.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/controller/InitController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/service/interfaces/InitializerService.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/service/interfaces/InitializerService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/service/implimentations/InitializerServiceImpl.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/service/implimentations/InitializerServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/test-classes/integration/JettyRunner.class" afterPath="$PROJECT_DIR$/MMI3/target/test-classes/integration/JettyRunner.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/dao/interfaces/LogDao.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/dao/interfaces/LogDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/entity/LogEntity.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/entity/LogEntity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/spring/MmiBoot.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/spring/MmiBoot.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/controller/ProcessController.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/controller/ProcessController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/tools/events/ProcessCreateEvent.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/tools/events/ProcessCreateEvent.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/dao/interfaces/ProcessDao.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/dao/interfaces/ProcessDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/dao/implimentation/ProcessDaoImpl.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/dao/implimentation/ProcessDaoImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/entity/ProcessEntity.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/entity/ProcessEntity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/tools/events/ProcessErrorEvent.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/tools/events/ProcessErrorEvent.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/tools/events/ProcessEvent.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/tools/events/ProcessEvent.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/tools/events/ProcessFinishEvent.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/tools/events/ProcessFinishEvent.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/exceptions/ProcessNotExistsException.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/exceptions/ProcessNotExistsException.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/tools/events/ProcessRunEvent.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/tools/events/ProcessRunEvent.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/service/interfaces/ProcessService.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/service/interfaces/ProcessService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/service/implimentations/ProcessServiceImpl.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/service/implimentations/ProcessServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/dao/interfaces/ProcessStatusDao.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/dao/interfaces/ProcessStatusDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/dao/implimentation/ProcessStatusDaoImpl.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/dao/implimentation/ProcessStatusDaoImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/entity/ProcessStatusEntity.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/entity/ProcessStatusEntity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/tools/events/ProcessStopEvent.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/tools/events/ProcessStopEvent.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/dao/interfaces/ProcessTypeDao.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/dao/interfaces/ProcessTypeDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/dao/implimentation/ProcessTypeDaoImpl.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/dao/implimentation/ProcessTypeDaoImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/entity/ProcessTypeEntity.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/entity/ProcessTypeEntity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/entity/ProfileEntity.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/entity/ProfileEntity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/entity/PropertyEntity.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/entity/PropertyEntity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/dao/interfaces/PropertyTypeDao.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/dao/interfaces/PropertyTypeDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/dao/implimentation/PropertyTypeDaoImpl.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/dao/implimentation/PropertyTypeDaoImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/entity/PropertyTypeEntity.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/entity/PropertyTypeEntity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/entity/PropertyValueEntity.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/entity/PropertyValueEntity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/dao/interfaces/ResourceDao.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/dao/interfaces/ResourceDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/dao/implimentation/ResourceDaoImpl.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/dao/implimentation/ResourceDaoImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/entity/ResourceEntity.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/entity/ResourceEntity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/service/interfaces/ResourceService.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/service/interfaces/ResourceService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/service/implimentations/ResourceServiceImpl.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/service/implimentations/ResourceServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/dao/interfaces/ResourceTypeDao.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/dao/interfaces/ResourceTypeDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/entity/ResourceTypeEntity.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/entity/ResourceTypeEntity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/dao/implimentation/ResourceTypeImpl.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/dao/implimentation/ResourceTypeImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/controller/RestController.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/controller/RestController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/dao/interfaces/RoleDao.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/dao/interfaces/RoleDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/dao/implimentation/RoleDaoImpl.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/dao/implimentation/RoleDaoImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/entity/RoleEntity.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/entity/RoleEntity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/exceptions/RoleNotExistException.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/exceptions/RoleNotExistException.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/spring/SecurityConfig.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/spring/SecurityConfig.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/spring/old/ServletConfig$1.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/spring/old/ServletConfig$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/spring/old/ServletConfig.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/spring/old/ServletConfig.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/spring/old/SpringConfig.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/spring/old/SpringConfig.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/test/Test.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/test/Test.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/test-classes/integration/TestAdminController.class" afterPath="$PROJECT_DIR$/MMI3/target/test-classes/integration/TestAdminController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/controller/TestController.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/controller/TestController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/test-classes/service/TestProcessService.class" afterPath="$PROJECT_DIR$/MMI3/target/test-classes/service/TestProcessService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/test-classes/integration/TestProfileAdminController.class" afterPath="$PROJECT_DIR$/MMI3/target/test-classes/integration/TestProfileAdminController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/test-classes/integration/TestResourceController.class" afterPath="$PROJECT_DIR$/MMI3/target/test-classes/integration/TestResourceController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/test-classes/service/TestThreads$CoreThreadsTest.class" afterPath="$PROJECT_DIR$/MMI3/target/test-classes/service/TestThreads$CoreThreadsTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/test-classes/service/TestThreads.class" afterPath="$PROJECT_DIR$/MMI3/target/test-classes/service/TestThreads.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/test-classes/service/TestUserService.class" afterPath="$PROJECT_DIR$/MMI3/target/test-classes/service/TestUserService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/exceptions/UserAlreadyExistException.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/exceptions/UserAlreadyExistException.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/controller/UserController.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/controller/UserController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/dao/interfaces/UserDao.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/dao/interfaces/UserDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/dao/implimentation/UserDao1.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/dao/implimentation/UserDao1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/dao/implimentation/UserDaoImpl.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/dao/implimentation/UserDaoImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/entity/UserEntity.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/entity/UserEntity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/exceptions/UserNotExistsException.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/exceptions/UserNotExistsException.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/service/interfaces/UserService.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/service/interfaces/UserService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/service/implimentations/UserService1.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/service/implimentations/UserService1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/service/implimentations/UserServiceImpl.class" afterPath="$PROJECT_DIR$/MMI3/target/classes/service/implimentations/UserServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ServiceTestClient/ServiceTestClient.iml" afterPath="$PROJECT_DIR$/ServiceTestClient/ServiceTestClient.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SpringBootTest/SpringBootTest.iml" afterPath="$PROJECT_DIR$/SpringBootTest/SpringBootTest.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Xvt/src/ubpartner/xvt/validation/ResultFormatter.java" afterPath="$PROJECT_DIR$/Xvt/src/ubpartner/xvt/validation/ResultFormatter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/src/test/service/TestThreads.java" afterPath="$PROJECT_DIR$/MMI3/src/test/service/TestThreads.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/db.properties" afterPath="$PROJECT_DIR$/MMI3/target/classes/db.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MMI3/target/classes/log4j2.xml" afterPath="$PROJECT_DIR$/MMI3/target/classes/log4j2.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LogManagement/pom.xml" afterPath="$PROJECT_DIR$/LogManagement/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Xct/pom.xml" afterPath="$PROJECT_DIR$/Xct/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Xvt/pom.xml" afterPath="$PROJECT_DIR$/Xvt/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
     </list>
     <list id="c494c5c1-875b-4422-999e-6359a813a160" name="Failed commit: Default" comment="Changes">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/MMI3/src/main/java/Constants" />
@@ -258,7 +131,7 @@
       <file leaf-file-name="UserDaoImpl.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/MMI3/src/main/java/dao/implimentation/UserDaoImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.62475824">
+            <state vertical-scroll-proportion="0.0">
               <caret line="35" column="8" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="8" />
               <folding />
             </state>
@@ -549,28 +422,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TestProjects" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TestProjects" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MMInet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -653,34 +504,30 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+        </subPane>
+      </pane>
+      <pane id="PackagesPane">
+        <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="TestProjects" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TestProjects" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="MMI3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Constants" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemId" value="MMInet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1741,6 +1588,7 @@
       <workItem from="1428059474886" duration="42000" />
       <workItem from="1428059536312" duration="96310000" />
       <workItem from="1429170489981" duration="14427000" />
+      <workItem from="1429263357105" duration="31000" />
     </task>
     <task id="LOCAL-00001" summary="changes">
       <created>1421344975585</created>
@@ -1836,7 +1684,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1027688000" />
+    <option name="totallyTimeSpent" value="1027719000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1864,35 +1712,35 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39377084" sideWeight="0.4552239" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3592881" sideWeight="0.5405117" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.4968017" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24626866" sideWeight="0.49391305" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29477197" sideWeight="0.45948827" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32925472" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1945629" sideWeight="0.499002" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1945629" sideWeight="0.499002" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32782516" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32995737" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24200426" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20735608" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.43604004" sideWeight="0.4914712" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="SVN Repositories" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34593993" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="JRebel Executor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5005562" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.43604004" sideWeight="0.4914712" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39377084" sideWeight="0.4552239" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27030033" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29477197" sideWeight="0.45948827" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23294243" sideWeight="0.50608695" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20788912" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="JRebel" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20735608" sideWeight="0.5016685" order="4" side_tool="true" content_ui="tabs" />
@@ -2404,7 +2252,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="44" column="1" selection-start-line="44" selection-start-column="1" selection-end-line="44" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2412,7 +2259,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="18" column="20" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2427,7 +2273,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="55" column="36" selection-start-line="55" selection-start-column="36" selection-end-line="55" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2435,7 +2280,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="55" column="92" selection-start-line="55" selection-start-column="92" selection-end-line="55" selection-end-column="92" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2443,7 +2287,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="22" column="31" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2451,7 +2294,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="65" column="17" selection-start-line="65" selection-start-column="17" selection-end-line="65" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2459,17 +2301,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="71" column="15" selection-start-line="71" selection-start-column="15" selection-end-line="71" selection-end-column="15" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1158#1159#0" expanded="false" />
-            <element signature="e#1210#1211#0" expanded="false" />
-            <element signature="e#3440#3441#0" expanded="false" />
-            <element signature="e#3471#3472#0" expanded="false" />
-            <element signature="e#4734#4735#0" expanded="false" />
-            <element signature="e#4774#4775#0" expanded="false" />
-            <element signature="e#4822#4823#0" expanded="false" />
-            <element signature="e#4853#4854#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2567,117 +2398,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="832" column="36" selection-start-line="832" selection-start-column="36" selection-end-line="832" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#4286#4287#0" expanded="false" />
-            <element signature="e#4306#4307#0" expanded="false" />
-            <element signature="e#4517#4518#0" expanded="false" />
-            <element signature="e#4545#4546#0" expanded="false" />
-            <element signature="e#4801#4802#0" expanded="false" />
-            <element signature="e#4821#4822#0" expanded="false" />
-            <element signature="e#5024#5025#0" expanded="false" />
-            <element signature="e#5052#5053#0" expanded="false" />
-            <element signature="e#5257#5258#0" expanded="false" />
-            <element signature="e#5283#5284#0" expanded="false" />
-            <element signature="e#5471#5472#0" expanded="false" />
-            <element signature="e#5511#5512#0" expanded="false" />
-            <element signature="e#5775#5776#0" expanded="false" />
-            <element signature="e#5798#5799#0" expanded="false" />
-            <element signature="e#6021#6022#0" expanded="false" />
-            <element signature="e#6055#6056#0" expanded="false" />
-            <element signature="e#6311#6312#0" expanded="false" />
-            <element signature="e#6332#6333#0" expanded="false" />
-            <element signature="e#6547#6548#0" expanded="false" />
-            <element signature="e#6577#6578#0" expanded="false" />
-            <element signature="e#6808#6809#0" expanded="false" />
-            <element signature="e#6832#6833#0" expanded="false" />
-            <element signature="e#7030#7031#0" expanded="false" />
-            <element signature="e#7066#7067#0" expanded="false" />
-            <element signature="e#7440#7441#0" expanded="false" />
-            <element signature="e#7470#7471#0" expanded="false" />
-            <element signature="e#7798#7799#0" expanded="false" />
-            <element signature="e#7846#7847#0" expanded="false" />
-            <element signature="e#8127#8128#0" expanded="false" />
-            <element signature="e#8150#8151#0" expanded="false" />
-            <element signature="e#8351#8352#0" expanded="false" />
-            <element signature="e#8385#8386#0" expanded="false" />
-            <element signature="e#8691#8692#0" expanded="false" />
-            <element signature="e#8715#8716#0" expanded="false" />
-            <element signature="e#8941#8942#0" expanded="false" />
-            <element signature="e#8977#8978#0" expanded="false" />
-            <element signature="e#9246#9247#0" expanded="false" />
-            <element signature="e#9268#9269#0" expanded="false" />
-            <element signature="e#9454#9455#0" expanded="false" />
-            <element signature="e#9486#9487#0" expanded="false" />
-            <element signature="e#9923#9924#0" expanded="false" />
-            <element signature="e#9947#9948#0" expanded="false" />
-            <element signature="e#10161#10162#0" expanded="false" />
-            <element signature="e#10208#10209#0" expanded="false" />
-            <element signature="e#10623#10624#0" expanded="false" />
-            <element signature="e#10647#10648#0" expanded="false" />
-            <element signature="e#10855#10856#0" expanded="false" />
-            <element signature="e#10902#10903#0" expanded="false" />
-            <element signature="e#11345#11346#0" expanded="false" />
-            <element signature="e#11367#11368#0" expanded="false" />
-            <element signature="e#11618#11619#0" expanded="false" />
-            <element signature="e#11661#11662#0" expanded="false" />
-            <element signature="e#11903#11904#0" expanded="false" />
-            <element signature="e#11923#11924#0" expanded="false" />
-            <element signature="e#12122#12123#0" expanded="false" />
-            <element signature="e#12150#12151#0" expanded="false" />
-            <element signature="e#12394#12395#0" expanded="false" />
-            <element signature="e#12413#12414#0" expanded="false" />
-            <element signature="e#12605#12606#0" expanded="false" />
-            <element signature="e#12631#12632#0" expanded="false" />
-            <element signature="e#13266#13267#0" expanded="false" />
-            <element signature="e#13311#13312#0" expanded="false" />
-            <element signature="e#13584#13585#0" expanded="false" />
-            <element signature="e#13620#13621#0" expanded="false" />
-            <element signature="e#14195#14196#0" expanded="false" />
-            <element signature="e#14229#14230#0" expanded="false" />
-            <element signature="e#14425#14426#0" expanded="false" />
-            <element signature="e#14465#14466#0" expanded="false" />
-            <element signature="e#14697#14698#0" expanded="false" />
-            <element signature="e#14720#14721#0" expanded="false" />
-            <element signature="e#14941#14942#0" expanded="false" />
-            <element signature="e#14965#14966#0" expanded="false" />
-            <element signature="e#15256#15257#0" expanded="false" />
-            <element signature="e#15284#15285#0" expanded="false" />
-            <element signature="e#15572#15573#0" expanded="false" />
-            <element signature="e#15593#15594#0" expanded="false" />
-            <element signature="e#15745#15746#0" expanded="false" />
-            <element signature="e#15775#15776#0" expanded="false" />
-            <element signature="e#15930#15931#0" expanded="false" />
-            <element signature="e#15953#15954#0" expanded="false" />
-            <element signature="e#16114#16115#0" expanded="false" />
-            <element signature="e#16159#16160#0" expanded="false" />
-            <element signature="e#16635#16636#0" expanded="false" />
-            <element signature="e#16657#16658#0" expanded="false" />
-            <element signature="e#16918#16919#0" expanded="false" />
-            <element signature="e#16949#16950#0" expanded="false" />
-            <element signature="e#17353#17354#0" expanded="false" />
-            <element signature="e#17386#17387#0" expanded="false" />
-            <element signature="e#17642#17643#0" expanded="false" />
-            <element signature="e#17668#17669#0" expanded="false" />
-            <element signature="e#17879#17880#0" expanded="false" />
-            <element signature="e#17919#17920#0" expanded="false" />
-            <element signature="e#18668#18669#0" expanded="false" />
-            <element signature="e#18696#18697#0" expanded="false" />
-            <element signature="e#18868#18869#0" expanded="false" />
-            <element signature="e#18912#18913#0" expanded="false" />
-            <element signature="e#19045#19046#0" expanded="false" />
-            <element signature="e#19069#19070#0" expanded="false" />
-            <element signature="e#19243#19244#0" expanded="false" />
-            <element signature="e#19279#19280#0" expanded="false" />
-            <element signature="e#19401#19402#0" expanded="false" />
-            <element signature="e#19433#19434#0" expanded="false" />
-            <element signature="e#19780#19781#0" expanded="false" />
-            <element signature="e#19801#19802#0" expanded="false" />
-            <element signature="e#19977#19978#0" expanded="false" />
-            <element signature="e#20007#20008#0" expanded="false" />
-            <element signature="e#20060#20061#0" expanded="false" />
-            <element signature="e#20078#20079#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2762,7 +2482,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="108" column="20" selection-start-line="108" selection-start-column="20" selection-end-line="108" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2797,7 +2516,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2805,7 +2523,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2813,7 +2530,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2821,7 +2537,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="35" column="45" selection-start-line="35" selection-start-column="45" selection-end-line="35" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2829,7 +2544,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2848,9 +2562,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="306" column="26" selection-start-line="306" selection-start-column="26" selection-end-line="306" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2871,7 +2582,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2879,7 +2589,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2895,7 +2604,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="158" column="35" selection-start-line="158" selection-start-column="35" selection-end-line="158" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2903,7 +2611,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.34615386">
           <caret line="57" column="18" selection-start-line="57" selection-start-column="18" selection-end-line="57" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2911,7 +2618,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2919,7 +2625,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2935,26 +2640,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="101" column="5" selection-start-line="101" selection-start-column="5" selection-end-line="101" selection-end-column="5" />
-          <folding>
-            <element signature="method#sortingQ#0;class#Sort#0" expanded="false" />
-            <element signature="method#sortingB#0;class#Sort#0" expanded="false" />
-            <element signature="e#1323#1324#0" expanded="true" />
-            <element signature="e#1363#1364#0" expanded="true" />
-            <element signature="e#1399#1400#0" expanded="true" />
-            <element signature="e#1434#1435#0" expanded="true" />
-            <element signature="e#1478#1479#0" expanded="true" />
-            <element signature="e#1518#1519#0" expanded="true" />
-            <element signature="e#1556#1557#0" expanded="true" />
-            <element signature="e#1604#1605#0" expanded="true" />
-            <element signature="e#1661#1662#0" expanded="true" />
-            <element signature="e#1688#1689#0" expanded="true" />
-            <element signature="e#1728#1729#0" expanded="true" />
-            <element signature="e#1760#1761#0" expanded="true" />
-            <element signature="e#1791#1792#0" expanded="true" />
-            <element signature="e#1826#1827#0" expanded="true" />
-            <element signature="e#1858#1859#0" expanded="true" />
-            <element signature="e#1890#1891#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2962,7 +2647,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="93" column="18" selection-start-line="93" selection-start-column="18" selection-end-line="93" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2970,7 +2654,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.23734729">
           <caret line="15" column="18" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2978,9 +2661,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="34" column="8" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2988,9 +2668,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2998,9 +2675,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3078,7 +2752,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/MMI3/src/main/java/dao/implimentation/UserDaoImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.62475824">
+        <state vertical-scroll-proportion="0.0">
           <caret line="35" column="8" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="8" />
           <folding />
         </state>
